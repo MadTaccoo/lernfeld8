@@ -1,0 +1,21 @@
+.numericButton{
+    -fx-font: 12px "DejaVu Sans Mono";
+    -fx-text-fill: #000000;
+    -fx-background-color: lightgray;
+    -fx-font-scale: inherit;
+    border-radius: 12px;
+}
+.searchButton{
+    -fx-font: 12px "DejaVu Sans Mono";
+    -fx-text-fill: #000000;
+    -fx-background-color: lightgray;
+    -fx-font-scale: inherit;
+    border-radius: 12px;
+}
+.sortButton{
+    -fx-font: 12px "DejaVu Sans Mono";
+    -fx-text-fill: #000000;
+    -fx-background-color: lightgray;
+    -fx-font-scale: inherit;
+    border-radius: 12px;
+}

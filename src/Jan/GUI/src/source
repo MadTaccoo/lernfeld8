@@ -1,0 +1,29 @@
+Folgender Rahmen gilt für das Softwareprojekt für das LF 8:
+
+Abgabe: 31.10.2020
+Abzugegben ist.
+ A) Die Dokumentation mit
+    - ausführlichem Klassendiagramm
+    - Bewertung der verwendeten Algorithmen (insbesondere Genauigkeit, Aufwand für die Ergebnisfindung)
+ B) Der Quelltext
+ C) Ein Verzeichnis mit lauffähigem Programm inklusive aller benötigten Dateien, außer der Javaumgebung selbst
+ D) Es soll nicht die IDE-Umgebung abgegeben werden
+
+Umfang:
+ - Die SW ist in Java zu erstellen.
+ - Die SW ist modular aufzubauen, auf die Trennung von GUI, Steuerfunktion und Fachklassen ist zu achten.
+ - Die Software soll eine Auswahlebene oder ein Menü haben.
+ - Die Dokumentation kann auch Bestandteil der Software sein.
+ - Modular heißt auch, Methoden mit sinnvollen (Teil-) Aufgaben zu implementiern.
+ - Es sollen die Prinzipien der OOP beachten werden (z.B. Objekte erzeugen, Datenkapselung, Vererbung wo sinnvoll).
+ - Es sollen Standards wie Arrays (besser ArrayList o.ä.), Konstanten, Methoden mit Parametern und Rückgabewerten u.a. verwendet werden.
+ - Pro Gruppenmitglied sind jeweils zwei verschiedene Algorithmen zu implementieren.
+
+ - Die Algorithmen sollen so implementiert werden, dass sie ihr Ergenis vernünftig präsentieren.
+ - Die Algorithmen sollen aus folgenden Themenbreichen gewählt werden (alle Bereiche sind abzudecken):
+
+   Sortiern (Insertion Sort, Selectionsort, Quicksort, Mergesort)
+   Suchen
+   Numerische Algorithmen (z.B. Newtonverfahren, Gauß-Seidel)
+
+ - Die Verwendung freier Libraries ist erlaubt, es ist dann aber auf die Lauffähigkeit bei C) zu achten.
