@@ -7,6 +7,9 @@
     -fx-border-width: 2px;
     -fx-border-color: #282828;
 }
+.numericButton:hover{
+    -fx-background-color: darkgray;
+}
 .searchButton{
     -fx-text-fill: #000000;
     -fx-background-color: lightgray;
@@ -16,6 +19,15 @@
     -fx-border-color: #282828;
 }
 .sortButton {
+    -fx-text-fill: #000000;
+    -fx-background-color: lightgray;
+    -fx-font-scale: integer;
+    border-radius: 20px;
+    -fx-border-width: 2px;
+    -fx-border-color: #282828;
+}
+
+.sortButton:hover {
     -fx-text-fill: #000000;
     -fx-background-color: lightgray;
     -fx-font-scale: integer;
