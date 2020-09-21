@@ -6,7 +6,7 @@ public class MergeSort {
     }
 
     static void mergeSort(double[] arr, int start, int end) {
-        if (start <end) {
+        if (start < end) {
             int mid = (start + end) / 2;
             mergeSort(arr, start, mid);
             mergeSort(arr, mid + 1, end);
