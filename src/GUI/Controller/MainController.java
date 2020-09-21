@@ -31,7 +31,6 @@ public class MainController {
             case "mergeSortB":
                 //TODO Wutthichai
                 MainGUI.setWindow("FXML/SortWindow.fxml","Merge Sort",4);
-
                 break;
             case "linearSearchB":
                 //TODO
@@ -44,6 +43,9 @@ public class MainController {
                 break;
             case "GaussSeidelB":
                 //TODO Daniel
+                break;
+            case "bogoSort":
+                //TODO Wutthichai
                 break;
         }
     }

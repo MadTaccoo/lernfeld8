@@ -1,7 +1,6 @@
 package GUI.Controller;
 
 import GUI.MainGUI;
-import Sorting_Algorithms.BubbleSort;
 import Sorting_Algorithms.InsertionSort;
 import Sorting_Algorithms.QuickSort;
 import javafx.event.ActionEvent;
