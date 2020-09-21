@@ -3,32 +3,32 @@ package Sorting_Algorithms;
 import java.util.Arrays;
 
 public abstract class QuickSort {
-    public static void quickSort(double[] ints, int von, int bis) {
+    public static void quickSort(double[] list, int von, int bis) {
         int i1 = von;
         int i2 = bis;
         //selection of pivot
         //pivot = item rough in the middel of the splitlist
         int teilstelle = (i1 + i2) / 2;
 
-        double teilelement = ints[teilstelle];
+        double teilelement = list[teilstelle];
         while (i1 <= i2) {
-            while (ints[i1] < teilelement) {
+            while (list[i1] < teilelement) {
                 i1++;
             }
-            while (ints[i2] > teilelement) {
+            while (list[i2] > teilelement) {
                 i2--;
             }
             if (i1 <= i2) {
-                swap(ints, i1, i2);
+                swap(list, i1, i2);
                 i1++;
                 i2--;
             }
         }
         if (von < i2) {
-            quickSort(ints, von, i2);
+            quickSort(list, von, i2);
         }
         if (bis > i1) {
-            quickSort(ints, i1, bis);
+            quickSort(list, i1, bis);
         }
     }
 

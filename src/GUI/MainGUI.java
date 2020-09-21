@@ -10,28 +10,40 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class MainGUI extends Application {
-    static Stage main;
+    static Stage stage;
+    static Stage lastStage;
     @Override
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("FXML/mainMenu.fxml"));
-        primaryStage.setTitle("");
+        primaryStage.setTitle("Menu");
         primaryStage.sizeToScene();
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
-        main = primaryStage;
+        stage = primaryStage;
     }
 
     public static void setWindow(String path,String title,int augment) throws IOException {
-        double width = main.getWidth();
-        double heigth = main.getHeight();
+        lastStage = stage;
+        double width = stage.getWidth();
+        double height = stage.getHeight();
         Parent root = FXMLLoader.load(MainGUI.class.getResource((path)));
-        main.setTitle(title.equals("") ? main.getTitle() : title);
-        main.setWidth(width);
-        main.setHeight(heigth);
-        main.setScene(new Scene(root));
+        stage.setTitle(title.equals("") ? stage.getTitle() : title);
+        stage.setWidth(width);
+        stage.setHeight(height);
+        stage.setScene(new Scene(root));
         if(path.equals("FXML/SortWindow.fxml"))
             SortController.whichSort = augment;
-        main.show();
+        stage.show();
+    }
+    public static void goToMenu() throws IOException {
+        double width = stage.getWidth();
+        double height = stage.getHeight();
+        Parent root = FXMLLoader.load(MainGUI.class.getResource("FXML/mainMenu.fxml"));
+        stage.setTitle("Menu");
+        stage.setWidth(width);
+        stage.setHeight(height);
+        stage.setScene(new Scene(root));
+        stage.show();
     }
 
     public static void main(String[] args) {

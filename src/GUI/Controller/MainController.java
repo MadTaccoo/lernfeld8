@@ -19,16 +19,19 @@ public class MainController {
         String ident = b.getId();
         switch (ident){
             case "insertionSortB":
-                MainGUI.setWindow("FXML/SortWindow.fxml","",1);
+                MainGUI.setWindow("FXML/SortWindow.fxml","Insertion Sort",1);
                 break;
             case "selectionSortB":
                 //TODO Wutthichai
+                MainGUI.setWindow("FXML/SortWindow.fxml","Selection Sort",3);
                 break;
             case "quickSortB":
-                //TODO Jan
+                MainGUI.setWindow("FXML/SortWindow.fxml","Quicksort",2);
                 break;
             case "mergeSortB":
                 //TODO Wutthichai
+                MainGUI.setWindow("FXML/SortWindow.fxml","Merge Sort",4);
+
                 break;
             case "linearSearchB":
                 //TODO
