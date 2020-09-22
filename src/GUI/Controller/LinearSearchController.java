@@ -7,7 +7,7 @@ import javafx.scene.control.Button;
 
 import java.io.IOException;
 
-public class SearchController {
+public class LinearSearchController {
     @FXML
     public void handleButtons(ActionEvent e) throws IOException {
         Button b = null;

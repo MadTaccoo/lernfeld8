@@ -35,6 +35,17 @@ public class MainGUI extends Application {
             SortController.whichSort = augment;
         stage.show();
     }
+    public static void setWindow(String path,String title) throws IOException {
+        lastStage = stage;
+        double width = stage.getWidth();
+        double height = stage.getHeight();
+        Parent root = FXMLLoader.load(MainGUI.class.getResource((path)));
+        stage.setTitle(title.equals("") ? stage.getTitle() : title);
+        stage.setWidth(width);
+        stage.setHeight(height);
+        stage.setScene(new Scene(root));
+        stage.show();
+    }
     public static void goToMenu() throws IOException {
         double width = stage.getWidth();
         double height = stage.getHeight();

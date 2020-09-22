@@ -33,7 +33,7 @@ public class MainController {
                 MainGUI.setWindow("FXML/SortWindow.fxml","Merge Sort",4);
                 break;
             case "linearSearchB":
-                //TODO
+                MainGUI.setWindow("FXML/LinearSearchWindow.fxml","Linear Search");
                 break;
             case "binarySearchB":
                 //TODO
