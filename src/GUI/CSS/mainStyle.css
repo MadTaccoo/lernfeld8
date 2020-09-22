@@ -7,7 +7,18 @@
     -fx-border-width: 2px;
     -fx-border-color: #282828;
 }
-.searchButton{
+.numericButton:hover{
+    -fx-background-color: darkgray;
+}
+.header{
+    -fx-text-fill: #e38704;
+    -fx-background-color: #374152;
+    -fx-border-radius: 50px;
+}
+.header:hover{
+    -fx-background-color: #505561;
+}
+.sortButton {
     -fx-text-fill: #000000;
     -fx-background-color: lightgray;
     -fx-font-scale: integer;
@@ -15,7 +26,8 @@
     -fx-border-width: 2px;
     -fx-border-color: #282828;
 }
-.sortButton {
+
+.sortButton:hover {
     -fx-text-fill: #000000;
     -fx-background-color: lightgray;
     -fx-font-scale: integer;

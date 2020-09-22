@@ -1,12 +1,15 @@
-package GUI;
+package GUI.Controller;
 
+import GUI.MainGUI;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 
-public class Controller {
+import java.io.IOException;
+
+public class MainController {
     @FXML
-    public void handleButtons(ActionEvent e){
+    public void handleButtons(ActionEvent e) throws IOException {
         Button b = null;
         if(e.getSource() instanceof Button) {
             b = (Button)e.getSource();
@@ -16,16 +19,18 @@ public class Controller {
         String ident = b.getId();
         switch (ident){
             case "insertionSortB":
-                //TODO Jan
+                MainGUI.setWindow("FXML/SortWindow.fxml","Insertion Sort",1);
                 break;
             case "selectionSortB":
                 //TODO Wutthichai
+                MainGUI.setWindow("FXML/SortWindow.fxml","Selection Sort",3);
                 break;
             case "quickSortB":
-                //TODO Jan
+                MainGUI.setWindow("FXML/SortWindow.fxml","Quicksort",2);
                 break;
             case "mergeSortB":
                 //TODO Wutthichai
+                MainGUI.setWindow("FXML/SortWindow.fxml","Merge Sort",4);
                 break;
             case "linearSearchB":
                 //TODO
@@ -38,6 +43,9 @@ public class Controller {
                 break;
             case "GaussSeidelB":
                 //TODO Daniel
+                break;
+            case "bogoSort":
+                //TODO Wutthichai
                 break;
         }
     }

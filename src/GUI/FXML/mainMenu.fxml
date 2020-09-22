@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<GridPane prefHeight="600.0" prefWidth="888.0" style="-fx-background-color: #212731;" stylesheets="@../CSS/mainStyle.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controller.MainController">
+    <columnConstraints>
+      <ColumnConstraints hgrow="ALWAYS" maxWidth="30.0" minWidth="10.0" />
+      <ColumnConstraints hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="10.0" />
+        <ColumnConstraints hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="10.0" />
+        <ColumnConstraints hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="10.0" />
+        <ColumnConstraints hgrow="ALWAYS" maxWidth="30.0" minWidth="10.0" prefWidth="10.0" />
+    </columnConstraints>
+
+    <rowConstraints>
+      <RowConstraints maxHeight="25.0" minHeight="10.0" vgrow="ALWAYS" />
+      <RowConstraints maxHeight="50.0" minHeight="10.0" prefHeight="50.0" vgrow="ALWAYS" />
+      <RowConstraints maxHeight="-Infinity" minHeight="10.0" vgrow="ALWAYS" />
+      <RowConstraints minHeight="10.0" vgrow="ALWAYS" />
+      <RowConstraints minHeight="10.0" vgrow="ALWAYS" />
+      <RowConstraints minHeight="10.0" vgrow="ALWAYS" />
+      <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" vgrow="ALWAYS" />
+      <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" vgrow="ALWAYS" />
+      <RowConstraints maxHeight="30.0" minHeight="10.0" vgrow="ALWAYS" />
+        <RowConstraints />
+    </rowConstraints>
+   <children>
+      <Label alignment="CENTER" contentDisplay="CENTER" style="-fx-text-fill: #e38704;" text="Software Projekt" textAlignment="CENTER" wrapText="true" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+         <font>
+            <Font size="27.0" />
+         </font>
+      </Label>
+      <Label fx:id="sortButton" alignment="CENTER" maxWidth="1.7976931348623157E308" minHeight="80.0" style="-fx-background-color: #374152; -fx-text-fill: #e38704;" styleClass="header" text="Sort" textAlignment="CENTER" wrapText="true" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.vgrow="ALWAYS">
+         <GridPane.margin>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </GridPane.margin>
+         <font>
+            <Font size="20.0" />
+         </font>
+         <effect>
+            <Glow />
+         </effect></Label>
+      <Label fx:id="searchButton" alignment="CENTER" maxWidth="1.7976931348623157E308" minHeight="80.0" style="-fx-background-color: #374152; -fx-text-fill: #e38704;" styleClass="header" text="Suchen" textAlignment="CENTER" wrapText="true" GridPane.columnIndex="2" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.vgrow="ALWAYS">
+         <GridPane.margin>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </GridPane.margin>
+         <font>
+            <Font size="20.0" />
+         </font>
+         <effect>
+            <Glow />
+         </effect></Label>
+      <Label fx:id="numericButton" alignment="CENTER" maxWidth="1.7976931348623157E308" minHeight="80.0" style="-fx-text-fill: #e38704; -fx-background-color: #374152;" styleClass="searchButton" text="Numerische Algorithmen" textAlignment="CENTER" wrapText="true" GridPane.columnIndex="3" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.vgrow="ALWAYS">
+         <GridPane.margin>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </GridPane.margin>
+         <font>
+            <Font size="20.0" />
+         </font>
+         <effect>
+            <Glow />
+         </effect></Label>
+      <Button fx:id="bogoSort" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleButtons" style="-fx-text-fill: #e38704; -fx-background-color: #374152;" styleClass="header" text="Insertion Sort" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="3" GridPane.vgrow="ALWAYS">
+          <GridPane.margin>
+              <Insets bottom="10.0" left="35.0" right="35.0" top="10.0" />
+          </GridPane.margin>
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Button>
+
+      <Button fx:id="selectionSortB" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleButtons" style="-fx-text-fill: #e38704; -fx-background-color: #374152;" styleClass="header" text="Selectionsort" GridPane.columnIndex="1" GridPane.rowIndex="4">
+         <GridPane.margin>
+            <Insets bottom="10.0" left="35.0" right="35.0" top="10.0" />
+         </GridPane.margin>
+         <font>
+            <Font size="20.0" />
+         </font></Button>
+      <Button fx:id="quckSortB" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleButtons" style="-fx-text-fill: #e38704; -fx-background-color: #374152;" styleClass="header" text="Quicksort" GridPane.columnIndex="1" GridPane.rowIndex="5">
+         <GridPane.margin>
+            <Insets bottom="10.0" left="35.0" right="35.0" top="10.0" />
+         </GridPane.margin>
+         <font>
+            <Font size="20.0" />
+         </font></Button>
+      <Button fx:id="mergeSortB" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleButtons" style="-fx-text-fill: #e38704; -fx-background-color: #374152;" styleClass="header" text="Mergesort" GridPane.columnIndex="1" GridPane.rowIndex="6">
+         <GridPane.margin>
+            <Insets bottom="10.0" left="35.0" right="35.0" top="10.0" />
+         </GridPane.margin>
+         <font>
+            <Font size="20.0" />
+         </font></Button>
+      <Button fx:id="linearSearchB" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleButtons" style="-fx-text-fill: #e38704; -fx-background-color: #374152;" styleClass="header" text="Linear" GridPane.columnIndex="2" GridPane.rowIndex="3">
+         <GridPane.margin>
+            <Insets bottom="10.0" left="35.0" right="35.0" top="10.0" />
+         </GridPane.margin>
+         <font>
+            <Font size="20.0" />
+         </font></Button>
+      <Button fx:id="binarySearchB" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleButtons" style="-fx-text-fill: #e38704; -fx-background-color: #374152;" styleClass="header" text="Binary" GridPane.columnIndex="2" GridPane.rowIndex="4">
+         <GridPane.margin>
+            <Insets bottom="10.0" left="35.0" right="35.0" top="10.0" />
+         </GridPane.margin>
+         <font>
+            <Font size="20.0" />
+         </font></Button>
+      <Button fx:id="newtonverfahrenB" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleButtons" style="-fx-text-fill: #e38704; -fx-background-color: #374152;" styleClass="header" text="Newtonverfahren" GridPane.columnIndex="3" GridPane.rowIndex="3">
+         <GridPane.margin>
+            <Insets bottom="10.0" left="35.0" right="35.0" top="10.0" />
+         </GridPane.margin>
+         <font>
+            <Font size="20.0" />
+         </font></Button>
+      <Button fx:id="GaussSeidelB" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleButtons" style="-fx-text-fill: #e38704; -fx-background-color: #374152;" styleClass="header" text="Gauß-Seidel" GridPane.columnIndex="3" GridPane.rowIndex="4">
+         <GridPane.margin>
+            <Insets bottom="10.0" left="35.0" right="35.0" top="10.0" />
+         </GridPane.margin>
+         <font>
+            <Font size="20.0" />
+         </font></Button>
+      <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-text-fill: #e38704; -fx-background-color: #374152;" styleClass="header" text="Bogo (Troll)" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="7" GridPane.vgrow="ALWAYS">
+         <GridPane.margin>
+            <Insets bottom="10.0" left="35.0" right="35.0" top="10.0" />
+         </GridPane.margin>
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Button>
+   </children>
+</GridPane>
