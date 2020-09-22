@@ -21,16 +21,20 @@ public class MainController {
             case "insertionSortB":
                 MainGUI.setWindow("FXML/SortWindow.fxml","Insertion Sort",1);
                 break;
-            case "selectionSortB":
-                //TODO Wutthichai
-                MainGUI.setWindow("FXML/SortWindow.fxml","Selection Sort",3);
-                break;
             case "quickSortB":
                 MainGUI.setWindow("FXML/SortWindow.fxml","Quicksort",2);
                 break;
+            case "bubbleSortB":
+                MainGUI.setWindow("FXML/SortWindow.fxml","Bubble Sort",3);
+                break;
             case "mergeSortB":
-                //TODO Wutthichai
                 MainGUI.setWindow("FXML/SortWindow.fxml","Merge Sort",4);
+                break;
+            case "bogoSortB":
+                MainGUI.setWindow("FXML/SortWindow.fxml","Bogo Sort",5);
+                break;
+            case "selectionSortB": // augment 6
+                MainGUI.setWindow("FXML/SortWindow.fxml","Merge Sort",6);
                 break;
             case "linearSearchB":
                 MainGUI.setWindow("FXML/LinearSearchWindow.fxml","Linear Search");
@@ -44,9 +48,7 @@ public class MainController {
             case "GaussSeidelB":
                 //TODO Daniel
                 break;
-            case "bogoSort":
-                //TODO Wutthichai
-                break;
+
         }
     }
 }

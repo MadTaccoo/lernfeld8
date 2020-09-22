@@ -1,11 +1,11 @@
 package Sorting_Algorithms;
 
 public abstract class MergeSort {
-    static void mergeSort(double[] arr) {
+    public static void mergeSort(double[] arr) {
         mergeSort(arr, 0, arr.length - 1);
     }
 
-    static void mergeSort(double[] arr, int start, int end) {
+    private static void mergeSort(double[] arr, int start, int end) {
         if (start <end) {
             int mid = (start + end) / 2;
             mergeSort(arr, start, mid);
@@ -14,7 +14,7 @@ public abstract class MergeSort {
         }
     }
 
-    static void merge(double[] arr, int start, int mid, int end) {
+    private static void merge(double[] arr, int start, int mid, int end) {
         int size1 = mid - start + 1;
         int size2 = end - mid;
 
@@ -57,7 +57,7 @@ public abstract class MergeSort {
         }
     }
 
-    public static void main(String[] args) {
+    private static void main(String[] args) {
         double[] testArr = new double[]{2.3, 2, 6, 5.4, 7.8, 80, 4.5, 9};
 
         System.out.println("Unsorted array: ");

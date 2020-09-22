@@ -29,6 +29,7 @@ public abstract class QuickSort {
         double doubleY = doubles[y];
         doubles[x] = doubleY;
         doubles[y] = doubleX;
+
     }
 
     public static boolean isSortedOwn(int[] array) {

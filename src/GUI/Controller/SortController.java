@@ -1,8 +1,8 @@
 package GUI.Controller;
 
 import GUI.MainGUI;
-import Sorting_Algorithms.InsertionSort;
-import Sorting_Algorithms.QuickSort;
+import Sorting_Algorithms.*;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -36,7 +36,8 @@ public class SortController {
         String ident = b.getId();
         switch (ident){
             case "sortB":
-                sortList();
+                Thread t1 = new Thread(this::sortList);
+                t1.start();
                 break;
             case "scrambleB":
                 addRandomValues();
@@ -87,12 +88,22 @@ public class SortController {
                 break;
             case 3:
                 from = System.nanoTime();
-                //TODO selectionSort
+                BubbleSort.bubbleSortOptimized(lsdouble);
                 to = System.nanoTime();
                 break;
             case 4:
                 from = System.nanoTime();
-                //TODO mergeSort
+                MergeSort.mergeSort(lsdouble);
+                to = System.nanoTime();
+                break;
+            case 5:
+                from = System.nanoTime();
+                BogoSort.bogoSort(lsdouble);
+                to = System.nanoTime();
+                break;
+            case 6:
+                from = System.nanoTime();
+                //TODO SELECTION sort
                 to = System.nanoTime();
                 break;
             default:
@@ -107,8 +118,10 @@ public class SortController {
         sorted.setText(result.substring(0,result.length()-2));
         long nanoToComp = (to-from);
         long miliToComp = nanoToComp/1000000; //TODO check conversion
-        statsL.setText("Stats:\n" +
-                "Nano seconds  " + nanoToComp + "\n" +
-                "Milli seconds " + miliToComp);
+        Platform.runLater(()->{
+            statsL.setText("Stats:\n" +
+                    "Nano seconds  " + nanoToComp + "\n" +
+                    "Milli seconds " + miliToComp);
+        });
     }
 }
