@@ -79,4 +79,56 @@ public abstract class Newton
 
         return f;
     }
+
+
+    private static double solve(double x_abscissa_n, double x_abscissa_p, int chosen)
+    {
+        double abscissa_nod = 0;
+        double ordinate_n = 0;
+        double ordinate_p = 0;
+        double abscissa_mid = 0;
+        double ordinate_mid = 0;
+        double temp = 0;
+
+        ordinate_n = get_ordinate(x_abscissa_n, chosen);
+        ordinate_p = get_ordinate(x_abscissa_p, chosen);
+
+        if ((ordinate_n + ordinate_p) > 0)
+        {
+            System.out.println("No intersection with x-axis!");
+        }
+
+
+        return abscissa_nod;
+    }
+
+    private static double get_ordinate(double x_value, int chosen)
+    {
+        double ordinate = 0;
+
+        switch (chosen)
+        {
+            case 0:
+                ordinate = fun_0(x_value);
+                break;
+            case 1:
+                ordinate = fun_1(x_value);
+                break;
+            case 2:
+                ordinate = fun_2(x_value);
+                break;
+            case 3:
+                ordinate = fun_5(x_value);
+                break;
+            case 4:
+                ordinate = fun_cos(x_value);
+                break;
+            case 5:
+                ordinate = fun_tan(x_value);
+                break;
+            default:
+                break;
+        }
+        return ordinate;
+    }
 }
