@@ -1,6 +1,6 @@
 package Sorting_Algorithms;
 
-public class MergeSort {
+public abstract class MergeSort {
     static void mergeSort(double[] arr) {
         mergeSort(arr, 0, arr.length - 1);
     }

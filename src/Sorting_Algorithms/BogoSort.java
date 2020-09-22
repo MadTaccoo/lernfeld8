@@ -1,6 +1,6 @@
 package Sorting_Algorithms;
 
-public class BogoSort {
+public abstract class BogoSort {
     static void bogoSort(double[] arr) {
         while (!isSorted(arr)) {
             shuffleAndSwap(arr);

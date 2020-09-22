@@ -1,6 +1,6 @@
 package Sorting_Algorithms;
 
-public class BubbleSort {
+public abstract class BubbleSort {
 
     static void bubbleSort(double[] arr) {
         for(int i = arr.length - 1; i > 0; --i) {
