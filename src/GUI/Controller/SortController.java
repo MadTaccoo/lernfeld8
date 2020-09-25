@@ -12,7 +12,7 @@ import javafx.scene.control.TextField;
 
 import java.io.IOException;
 import java.util.Random;
-
+//WUTTI
 public class SortController {
     @FXML
     TextArea
@@ -64,6 +64,10 @@ public class SortController {
     }
 
     public void sortList(){
+        Platform.runLater(()->{
+            statsL.setText("Stats:\n" +
+                    "Working!");
+        });
         long from = 0;
         long to = 0;
         String[] ls = unsorted.getText().split("\n");
