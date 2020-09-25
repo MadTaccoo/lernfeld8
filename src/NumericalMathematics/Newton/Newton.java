@@ -262,7 +262,6 @@ public abstract class Newton
         return ordinate;
     }
 
-
     /**
      * @param chosen Contains the choice which function should be calculated.
      * @return coord[][] Returns a table with x-coordinates and the corresponding y-coordinates for a function in a given interval.
