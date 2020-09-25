@@ -11,6 +11,7 @@ public class Function {
         f.insertInto(2,5);
         f.insertInto(0,-5);
         Function fI = new Function(f);
+        //0.0001 very slow xD
         double[][] ls = f.intervall(-1000,1000,f,0.0001);
         for (int i = 0; i <= ls.length; i++) {
             System.out.println(ls[0][i] +" "+ls[1][i]);
@@ -59,7 +60,7 @@ public class Function {
         char cL = '+';
         ArrayList<Double> interV1 = new ArrayList<>();
         ArrayList<Double> interV2 = new ArrayList<>();
-        for (double i = from; i < to; i+=) {
+        for (double i = from; i < to; i+=precision) {
             if(cL != ((func.sum(i)>0 && i != 0)?'+':'-')){
                 interV1.add(lastIndex);
                 interV2.add(i);
