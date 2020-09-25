@@ -64,7 +64,7 @@
                   <Insets bottom="10.0" left="10.0" right="10.0" />
                </GridPane.margin>
             </Label>
-            <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="header" text="Prev" GridPane.halignment="CENTER">
+            <Button fx:id="prevB" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="header" text="Prev" GridPane.halignment="CENTER">
                <GridPane.margin>
                   <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
                </GridPane.margin>
@@ -72,7 +72,7 @@
                   <Font size="20.0" />
                </font>
             </Button>
-            <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="header" stylesheets="@../CSS/mainStyle.css" text="Next" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.vgrow="ALWAYS">
+            <Button fx:id="nextB" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="header" stylesheets="@../CSS/mainStyle.css" text="Next" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.vgrow="ALWAYS">
                <GridPane.margin>
                   <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
                </GridPane.margin>
@@ -97,10 +97,25 @@
             </TextField>
          </children>
       </GridPane>
-      <Label alignment="CENTER" contentDisplay="CENTER" stylesheets="@../CSS/mainStyle.css" text="Linear Search" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+      <Label alignment="CENTER" contentDisplay="CENTER" stylesheets="@../CSS/mainStyle.css" text="Linear Search" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="1">
          <font>
             <Font size="35.0" />
          </font>
+      </Label>
+      <TextArea fx:id="nSelection" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="10.0" prefWidth="10.0" styleClass="label" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+         <GridPane.margin>
+            <Insets />
+         </GridPane.margin>
+         <font>
+            <Font size="14.0" />
+         </font></TextArea>
+      <Label text="N = " GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+         <font>
+            <Font size="25.0" />
+         </font>
+         <GridPane.margin>
+            <Insets right="50.0" />
+         </GridPane.margin>
       </Label>
    </children>
 </GridPane>

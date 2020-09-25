@@ -43,7 +43,7 @@ public class MainController {
                 //TODO
                 break;
             case "newtonverfahrenB":
-                //TODO Daniel
+                MainGUI.setWindow("FXML/NewtonGraph.fxml","NewtonGraph");
                 break;
             case "GaussSeidelB":
                 //TODO Daniel
