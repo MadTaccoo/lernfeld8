@@ -1,23 +1,38 @@
 package NumericalMathematics.Newton;
 
+/**
+ * @author Daniel Wilke
+ * @version 1.0
+ * @category numerical mathematics
+ * @description Class to solve a function for zero
+ */
 public abstract class Newton
 {
-    private static final int PLOT_SCALE = 75;
 
+    private static final int PLOT_SCALE = 75;
+    private static Double x_abscissa_n;
+    private static Double x_abscissa_p;
+
+    /**
+     * @param x_value X-Coordinate to calculate the y-coordinate of the function.
+     * @return f Y-Coordinate of the function for given x.
+     */
     private static double fun_0(double x_value)
     {
-        double f = 0;
-        double a = 0;
+        double f, a = 0;
 
-        f = a;
+        f = a + x_value * 0;
 
         return f;
     }
 
-    // [-3, 0]
+    /**
+     * @param x_value X-Coordinate to calculate the y-coordinate of the function.
+     * @return f Y-Coordinate of the function for given x.
+     */
     private static double fun_1(double x_value)
     {
-        double f = 0;
+        double f;
         double a = 7;
         double b = 4;
 
@@ -26,10 +41,13 @@ public abstract class Newton
         return f;
     }
 
-    // [-3, 0]
+    /**
+     * @param x_value X-Coordinate to calculate the y-coordinate of the function.
+     * @return f Y-Coordinate of the function for given x.
+     */
     private static double fun_2(double x_value)
     {
-        double f = 0;
+        double f;
         double a = 4;
         double b = 7;
         double c = -10;
@@ -39,23 +57,13 @@ public abstract class Newton
         return f;
     }
 
-    // [-0.2, 0]
-    private static double fun_cos(double x_value)
-    {
-        double f = 0;
-        double a = 1;
-        double b = 17;
-        double c = 0;
-
-        f = a * Math.cos(b * (x_value - c));
-
-        return f;
-    }
-
-    //[-2, 0]
+    /**
+     * @param x_value X-Coordinate to calculate the y-coordinate of the function.
+     * @return f Y-Coordinate of the function for given x.
+     */
     private static double fun_5(double x_value)
     {
-        double f = 0;
+        double f;
         double a = -7;
         double b = 8;
         double c = 12;
@@ -68,10 +76,29 @@ public abstract class Newton
         return f;
     }
 
-    // [-1, -0.5]
+    /**
+     * @param x_value X-Coordinate to calculate the y-coordinate of the function.
+     * @return f Y-Coordinate of the function for given x.
+     */
+    private static double fun_cos(double x_value)
+    {
+        double f;
+        double a = 1;
+        double b = 17;
+        double c = 0;
+
+        f = a * Math.cos(b * (x_value - c));
+
+        return f;
+    }
+
+    /**
+     * @param x_value X-Coordinate to calculate the y-coordinate of the function.
+     * @return f Y-Coordinate of the function for given x.
+     */
     private static double fun_tan(double x_value)
     {
-        double f = 0;
+        double f;
         double a = 1;
         double b = -4;
         double c = 0;
@@ -81,39 +108,44 @@ public abstract class Newton
         return f;
     }
 
-    private static double controller(int chosen)
+    /**
+     * @param chosen Contains the choice which function should be calculated.
+     * @return cSolve Returns the x-coordinate for the intersection with the x-axis in a given interval.
+     */
+    public static double controller(int chosen)
     {
-        double cSolve = 0;
-        double x_abscissa_n = 0;
-        double x_abscissa_p = 0;
+        double cSolve;
+
+        x_abscissa_n = 0.0;
+        x_abscissa_p = 0.0;
 
         switch (chosen)
         {
-            // func_0
+            // func_0 [-3, 3]
             case 0:
-                x_abscissa_n = -3;
-                x_abscissa_p = 3;
+                x_abscissa_n = -3.0;
+                x_abscissa_p = 3.0;
                 break;
-            // func_1
+            // func_1 [-3, 0]
             case 1:
-                // func_2
+                // func_2 [-3, 0]
             case 2:
-                x_abscissa_n = -3;
-                x_abscissa_p = 0;
+                x_abscissa_n = -3.0;
+                x_abscissa_p = 0.0;
                 break;
-            // func_5
+            // func_5 [-2, 0]
             case 3:
-                x_abscissa_n = -2;
-                x_abscissa_p = 0;
+                x_abscissa_n = -2.0;
+                x_abscissa_p = 0.0;
                 break;
-            // func_cos
+            // func_cos [-0.2, 0]
             case 4:
                 x_abscissa_n = -0.2;
-                x_abscissa_p = 0;
+                x_abscissa_p = 0.0;
                 break;
-            // func_tan
+            // func_tan [-1, -0.5]
             case 5:
-                x_abscissa_n = -1;
+                x_abscissa_n = -1.0;
                 x_abscissa_p = -0.5;
                 break;
             default:
@@ -125,27 +157,30 @@ public abstract class Newton
         return cSolve;
     }
 
+    /**
+     * @param x_abscissa_n X-coordinate for the negative interval side.
+     * @param x_abscissa_p X-coordinate for the positive interval side.
+     * @param chosen       Contains the choice which function should be calculated.
+     * @return Returns abscissa_nod the x-coordinate for the intersection with the x-axis in a given interval.
+     */
     private static double solve(double x_abscissa_n, double x_abscissa_p, int chosen)
     {
-        double abscissa_nod = 0;
-        double ordinate_n = 0;
-        double ordinate_p = 0;
-        double abscissa_mid = 0;
-        double ordinate_mid = 0;
-        double temp = 0;
+        double abscissa_nod;
+        double ordinate_n;
+        double ordinate_p;
+        double abscissa_mid;
+        double ordinate_mid;
+        double temp;
         double x_tol = 1e-15;
 
+        abscissa_nod = 0;
+        abscissa_mid = 0;
         ordinate_n = get_ordinate(x_abscissa_n, chosen);
         ordinate_p = get_ordinate(x_abscissa_p, chosen);
 
         if ((ordinate_n + ordinate_p) > 0)
         {
             System.out.println("No intersection with x-axis!");
-        }
-
-        if (x_tol > (x_abscissa_p - x_abscissa_n) / 2)
-        {
-
         }
 
         if ((ordinate_n * ordinate_p) == 0)
@@ -192,6 +227,11 @@ public abstract class Newton
         return abscissa_nod;
     }
 
+    /**
+     * @param x_value X-Coordinate to calculate the y-coordinate of the function.
+     * @param chosen  Contains the choice which function should be calculated.
+     * @return ordinate Returns the calculated ordinate for a given x-coordinate.
+     */
     private static double get_ordinate(double x_value, int chosen)
     {
         double ordinate = 0;
@@ -222,15 +262,20 @@ public abstract class Newton
         return ordinate;
     }
 
-    // Creating a table to plot the function
-    public static double[][] plottingTable(double a, double b, int chosen)
+    /**
+     * @param chosen Contains the choice which function should be calculated.
+     * @return coord[][] Returns a table with x-coordinates and the corresponding y-coordinates for a function in a given interval.
+     */
+    public static double[][] plottingTable(int chosen)
     {
-        double steps = 0;
-        double counter = a * 2;
+        double steps;
+        double counter;
 
-        double cord[][] = new double[2][PLOT_SCALE]; // cord[x-axis][y-axis]
+        counter = x_abscissa_n * 2;
 
-        steps = ((b - a) * 2) / PLOT_SCALE;
+        double[][] cord = new double[2][PLOT_SCALE]; // cord[x-axis][y-axis]
+
+        steps = ((x_abscissa_p - x_abscissa_n) * 2) / PLOT_SCALE;
 
         for (int i = 0; i < PLOT_SCALE; i++)
         {
@@ -241,8 +286,10 @@ public abstract class Newton
         return cord;
     }
 
+    //Remove main method after testing!
     public static void main(String[] args)
     {
-        System.out.println(String.format("%.4f", controller(2)));
+        System.out.printf("%.4f%n", controller(2));
+        double[][] test = plottingTable(2);
     }
 }
