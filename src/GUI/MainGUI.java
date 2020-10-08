@@ -12,10 +12,14 @@ import java.io.IOException;
 public class MainGUI extends Application {
     static Stage stage;
     static Stage lastStage;
+    public static String windowTitle;
+    public static FXMLLoader f;
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("FXML/mainMenu.fxml"));
+        f = new FXMLLoader(MainGUI.class.getResource(("FXML/mainMenu.fxml")));
+        Parent root = f.load();
         primaryStage.setTitle("Menu");
+        windowTitle = primaryStage.getTitle();
         primaryStage.sizeToScene();
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
@@ -26,8 +30,10 @@ public class MainGUI extends Application {
         lastStage = stage;
         double width = stage.getWidth();
         double height = stage.getHeight();
-        Parent root = FXMLLoader.load(MainGUI.class.getResource((path)));
+        f = new FXMLLoader(MainGUI.class.getResource((path)));
+        Parent root = f.load();
         stage.setTitle(title.equals("") ? stage.getTitle() : title);
+        windowTitle = stage.getTitle();
         stage.setWidth(width);
         stage.setHeight(height);
         stage.setScene(new Scene(root));
@@ -39,8 +45,11 @@ public class MainGUI extends Application {
         lastStage = stage;
         double width = stage.getWidth();
         double height = stage.getHeight();
-        Parent root = FXMLLoader.load(MainGUI.class.getResource((path)));
+        f = new FXMLLoader(MainGUI.class.getResource((path)));
+        Parent root = f.load();
         stage.setTitle(title.equals("") ? stage.getTitle() : title);
+        windowTitle = stage.getTitle();
+
         stage.setWidth(width);
         stage.setHeight(height);
         stage.setScene(new Scene(root));
@@ -49,8 +58,10 @@ public class MainGUI extends Application {
     public static void goToMenu() throws IOException {
         double width = stage.getWidth();
         double height = stage.getHeight();
-        Parent root = FXMLLoader.load(MainGUI.class.getResource("FXML/mainMenu.fxml"));
+        f = new FXMLLoader(MainGUI.class.getResource(("FXML/mainMenu.fxml")));
+        Parent root = f.load();
         stage.setTitle("Menu");
+        windowTitle = stage.getTitle();
         stage.setWidth(width);
         stage.setHeight(height);
         stage.setScene(new Scene(root));

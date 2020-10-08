@@ -30,4 +30,8 @@ public class LinearSearchController {
                 break;
         }
     }
+
+    public void load(){
+
+    }
 }

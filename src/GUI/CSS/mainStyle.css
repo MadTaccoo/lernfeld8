@@ -22,3 +22,7 @@
     -fx-text-fill: #e38704;
     -fx-background-color: #374152;
 }
+.list-view{
+    -fx-background-color: darkgray;
+
+}

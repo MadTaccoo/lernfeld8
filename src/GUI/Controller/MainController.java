@@ -1,6 +1,7 @@
 package GUI.Controller;
 
 import GUI.MainGUI;
+import Search.LinearSearch;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -38,9 +39,13 @@ public class MainController {
                 break;
             case "linearSearchB":
                 MainGUI.setWindow("FXML/LinearSearchWindow.fxml","Linear Search");
+                LinearSearchController lsc = (LinearSearchController)MainGUI.f.getController();
+                lsc.load();
                 break;
             case "binarySearchB":
-                //TODO
+                MainGUI.setWindow("FXML/BinarySearchWindow.fxml","Binary Search");
+                BinarySearchController bsc = (BinarySearchController)MainGUI.f.getController();
+                bsc.load();
                 break;
             case "newtonverfahrenB":
                 MainGUI.setWindow("FXML/NewtonGraph.fxml","NewtonGraph");
@@ -48,7 +53,6 @@ public class MainController {
             case "GaussSeidelB":
                 //TODO Daniel
                 break;
-
         }
     }
 }

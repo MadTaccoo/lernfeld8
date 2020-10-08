@@ -3,19 +3,23 @@ package GUI.Controller;
 import GUI.MainGUI;
 import Sorting_Algorithms.*;
 import javafx.application.Platform;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 
 import java.io.IOException;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Random;
+
 //WUTTI
 public class SortController {
     @FXML
-    TextArea
+    ListView
             sorted,
             unsorted;
     @FXML
@@ -28,13 +32,13 @@ public class SortController {
 
     public void handleButtons(ActionEvent e) throws IOException {
         Button b = null;
-        if(e.getSource() instanceof Button) {
-            b = (Button)e.getSource();
+        if (e.getSource() instanceof Button) {
+            b = (Button) e.getSource();
         }
         assert b != null;
 
         String ident = b.getId();
-        switch (ident){
+        switch (ident) {
             case "sortB":
                 Thread t1 = new Thread(this::sortList);
                 t1.start();
@@ -48,38 +52,44 @@ public class SortController {
         }
     }
 
-    public void addRandomValues(){
+    public void addRandomValues() {
         String strhowMany = howManyRandom.getText();
         String regex = "[0-9]+";
-        if(!strhowMany.matches(regex)){
-            unsorted.setText("Error!");
-        }
+        if (!strhowMany.matches(regex))
+            System.out.println("Error");
         int howMany = Integer.parseInt(strhowMany);
         Random r = new Random();
-        StringBuilder res = new StringBuilder();
-        for (int i = 0; i < howMany; i++) {
-            res.append(r.nextFloat()).append("\n");
+        List<String> ls = new ArrayList<>();
+        StringBuilder str = new StringBuilder();
+        for (int i = 0; i < howMany - 1; i++) {
+            ls.add(r.nextFloat()+"");
         }
-        unsorted.setText(res.substring(0,res.length()-1));
+        ls.add(""+r.nextFloat());
+        unsorted.setItems(FXCollections.observableArrayList(ls));
     }
 
-    public void sortList(){
-        Platform.runLater(()->{
-            statsL.setText("Stats:\n" +
+    public void sortList() {
+        Platform.runLater(() -> {
+            statsL.setText("Stats: " + MainGUI.windowTitle +
                     "Working!");
         });
         long from = 0;
         long to = 0;
-        String[] ls = unsorted.getText().split("\n");
-        if(ls.length < 2){
-            sorted.setText("Error!");
+        ArrayList<String> lst = new ArrayList<>();
+        for (Object s:
+             unsorted.getItems()) {
+             lst.add(String.valueOf(s));
+        }
+        String[] ls  = new String[lst.size()];
+        ls = lst.toArray(ls);
+        if (ls.length < 2) {
             return;
         }
         double[] lsdouble = new double[ls.length];
         for (int i = 0; i < ls.length; i++) {
             lsdouble[i] = Double.parseDouble(ls[i]);
         }
-        switch (whichSort){
+        switch (whichSort) {
             case 1:
                 from = System.nanoTime();
                 InsertionSort.insertionSort(lsdouble);
@@ -87,7 +97,7 @@ public class SortController {
                 break;
             case 2:
                 from = System.nanoTime();
-                QuickSort.quickSort(lsdouble,0, lsdouble.length-1);
+                QuickSort.quickSort(lsdouble, 0, lsdouble.length - 1);
                 to = System.nanoTime();
                 break;
             case 3:
@@ -114,16 +124,14 @@ public class SortController {
                 throw new IllegalStateException("Unexpected value: " + whichSort);
         }
 
-        StringBuilder result = new StringBuilder();
-        for (double d:lsdouble) {
-            result.append(d).append("\n");
-        }
-
-        sorted.setText(result.substring(0,result.length()-2));
-        long nanoToComp = (to-from);
-        long miliToComp = nanoToComp/1000000; //TODO check conversion
-        Platform.runLater(()->{
-            statsL.setText("Stats:\n" +
+        ArrayList<String> result = new ArrayList<>();
+        for (double d : lsdouble)
+            result.add(d+"\n");
+        sorted.setItems(FXCollections.observableArrayList(result));
+        long nanoToComp = (to - from);
+        long miliToComp = nanoToComp / 1000000; //TODO check conversion
+        Platform.runLater(() -> {
+            statsL.setText("Stats: " + MainGUI.windowTitle + "\n" +
                     "Nano seconds  " + nanoToComp + "\n" +
                     "Milli seconds " + miliToComp);
         });

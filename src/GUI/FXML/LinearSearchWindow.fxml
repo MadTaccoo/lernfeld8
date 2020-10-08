@@ -102,13 +102,13 @@
             <Font size="35.0" />
          </font>
       </Label>
-      <TextArea fx:id="nSelection" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="10.0" prefWidth="10.0" styleClass="label" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+      <TextField fx:id="nSelection" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="10.0" prefWidth="40.0" style="-fx-background-color: darkgrey;" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
          <GridPane.margin>
             <Insets />
          </GridPane.margin>
          <font>
             <Font size="14.0" />
-         </font></TextArea>
+         </font></TextField>
       <Label text="N = " GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
          <font>
             <Font size="25.0" />
