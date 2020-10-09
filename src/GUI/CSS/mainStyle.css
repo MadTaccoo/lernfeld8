@@ -26,3 +26,13 @@
     -fx-background-color: darkgray;
 
 }
+
+.menueButton{
+    -fx-text-fill:  #e38704;
+    -fx-background-color:  #374152;
+    -fx-border-radius: 50px;
+}
+
+.menueButton:hover{
+    -fx-background-color: #505561;
+}

@@ -3,7 +3,12 @@ package Sorting_Algorithms;
 import java.util.Arrays;
 
 public abstract class QuickSort {
-    public static void quickSort(double[] list, int from, int to) {
+
+    public static void quickSort(double[] list){
+        quickSortRec(list,0,list.length-1);
+    }
+
+    public static void quickSortRec(double[] list, int from, int to) {
         int i1 = from;
         int i2 = to;
         double pivot = list[(i1 + i2) / 2];
@@ -19,9 +24,9 @@ public abstract class QuickSort {
             }
         }
         if (from < i2)
-            quickSort(list, from, i2);
+            quickSortRec(list, from, i2);
         if (to > i1)
-            quickSort(list, i1, to);
+            quickSortRec(list, i1, to);
     }
 
     private static void swap(double[] doubles, int x, int y) {
@@ -29,7 +34,6 @@ public abstract class QuickSort {
         double doubleY = doubles[y];
         doubles[x] = doubleY;
         doubles[y] = doubleX;
-
     }
 
     public static boolean isSortedOwn(int[] array) {
@@ -49,7 +53,7 @@ public abstract class QuickSort {
             System.out.print(item + " ");
         }
 
-        quickSort(testArr,0, testArr.length-1);
+        quickSort(testArr);
 
         System.out.println("\nSorted array: ");
         for (double item : testArr) {

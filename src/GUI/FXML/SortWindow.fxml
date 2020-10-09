@@ -23,7 +23,6 @@
         <RowConstraints />
     </rowConstraints>
     <children>
-      <Label contentDisplay="BOTTOM" prefWidth="133.0" text="Count of Random Numbers" wrapText="true" GridPane.columnIndex="3" GridPane.halignment="LEFT" GridPane.rowIndex="2" GridPane.valignment="BOTTOM" />
       <Label fx:id="statsL" alignment="TOP_LEFT" contentDisplay="TOP" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" wrapText="true" GridPane.columnIndex="3" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS">
          <font>
             <Font size="20.0" />
@@ -107,13 +106,30 @@
             <ColumnConstraints />
          </columnConstraints>
       </GridPane>
-      <TextField fx:id="howManyRandom" alignment="CENTER" maxWidth="-Infinity" nodeOrientation="RIGHT_TO_LEFT" prefWidth="80.0" styleClass="numericButton" text="6" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="BOTTOM">
-         <GridPane.margin>
-            <Insets left="10.0" top="10.0" />
-         </GridPane.margin>
-         <font>
-            <Font size="18.0" />
-         </font>
-      </TextField>
+      <GridPane GridPane.columnIndex="3" GridPane.rowIndex="2">
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints />
+        </rowConstraints>
+         <children>
+            <Label contentDisplay="BOTTOM" text="Count of Random Numbers" wrapText="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <TextField fx:id="howManyRandom" alignment="CENTER" maxWidth="-Infinity" nodeOrientation="RIGHT_TO_LEFT" styleClass="numericButton" text="6" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
+               <GridPane.margin>
+                  <Insets right="10.0" />
+               </GridPane.margin>
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </TextField>
+         </children>
+         <columnConstraints>
+            <ColumnConstraints />
+            <ColumnConstraints maxWidth="1.7976931348623157E308" />
+         </columnConstraints>
+      </GridPane>
     </children>
 </GridPane>

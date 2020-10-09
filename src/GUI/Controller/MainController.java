@@ -35,7 +35,7 @@ public class MainController {
                 MainGUI.setWindow("FXML/SortWindow.fxml","Bogo Sort",5);
                 break;
             case "selectionSortB": // augment 6
-                MainGUI.setWindow("FXML/SortWindow.fxml","Merge Sort",6);
+                MainGUI.setWindow("FXML/SortWindow.fxml","Selection Sort",6);
                 break;
             case "linearSearchB":
                 MainGUI.setWindow("FXML/LinearSearchWindow.fxml","Linear Search");

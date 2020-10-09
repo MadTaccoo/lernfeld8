@@ -97,7 +97,7 @@ public class SortController {
                 break;
             case 2:
                 from = System.nanoTime();
-                QuickSort.quickSort(lsdouble, 0, lsdouble.length - 1);
+                QuickSort.quickSort(lsdouble);
                 to = System.nanoTime();
                 break;
             case 3:
@@ -117,7 +117,7 @@ public class SortController {
                 break;
             case 6:
                 from = System.nanoTime();
-                //TODO SELECTION sort
+                SelectionSort.SelectionSort(lsdouble);
                 to = System.nanoTime();
                 break;
             default:
@@ -127,10 +127,11 @@ public class SortController {
         ArrayList<String> result = new ArrayList<>();
         for (double d : lsdouble)
             result.add(d+"\n");
-        sorted.setItems(FXCollections.observableArrayList(result));
+
         long nanoToComp = (to - from);
         long miliToComp = nanoToComp / 1000000; //TODO check conversion
         Platform.runLater(() -> {
+            sorted.setItems(FXCollections.observableArrayList(result));
             statsL.setText("Stats: " + MainGUI.windowTitle + "\n" +
                     "Nano seconds  " + nanoToComp + "\n" +
                     "Milli seconds " + miliToComp);
