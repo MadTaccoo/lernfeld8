@@ -1,7 +1,6 @@
 package GUI.Controller;
 
 import GUI.MainGUI;
-import Search.LinearSearch;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -11,24 +10,34 @@ import java.io.IOException;
 import java.util.Random;
 
 public class LinearSearchController {
+    //array with random integer values
     public static int[] ls;
+    //index which displays the given value at this index
     private static int showIndex = 0;
+    //list which contains all Labels
     private static Label[] lArr;
-    private int targetIndex = 0;
-
+    //FXML imports Buttons,Labels,TextFields
     @FXML
     Button prevB,nextB;
     @FXML
     Label txt_n_m1,txt_n,txt_n_p1;
     @FXML
     TextField nSelection;
+
+    /**
+     *
+     * @param e ActionEvent which is used to identify the button
+     * @throws IOException
+     */
     @FXML
     public void handleButtons(ActionEvent e) throws IOException {
         Button b = null;
+        //in case the event source is a Button
         if(e.getSource() instanceof Button) {
             b = (Button)e.getSource();
         }
         assert b != null;
+        //where we use the FXML id of the buttons to identify them and give them a function
         String ident = b.getId();
         switch (ident){
             case "prevB":
@@ -45,6 +54,9 @@ public class LinearSearchController {
         }
     }
 
+    /**
+     * function to print the values around n (n-1) (n+1)
+     */
     public void printData(){
         resetAll();
         String sm1 = (showIndex>=1) ? ls[showIndex-1] + "" : "";
@@ -58,6 +70,9 @@ public class LinearSearchController {
         }
     }
 
+    /**
+     * function which is used to initilize the random values and sort the array
+     */
     public void load(){
         Random r = new Random();
         ls = new int[]{r.nextInt(100),r.nextInt(100),r.nextInt(100),r.nextInt(100),r.nextInt(100),r.nextInt(100),r.nextInt(100),r.nextInt(100),r.nextInt(100),r.nextInt(100)};
@@ -65,6 +80,9 @@ public class LinearSearchController {
         printData();
     }
 
+    /**
+     * resets all Label backgrounds
+     */
     public void resetAll(){
         for (Label txtF : lArr) {
             txtF.setStyle("-fx-background-color: #374152");

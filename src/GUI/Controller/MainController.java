@@ -9,16 +9,23 @@ import javafx.scene.control.Button;
 import java.io.IOException;
 
 public class MainController {
+    /**
+     *
+     * @param e ActionEvent which is used to identify the button
+     * @throws IOException
+     */
     @FXML
     public void handleButtons(ActionEvent e) throws IOException {
         Button b = null;
+        //in case the event source is a Button
         if(e.getSource() instanceof Button) {
             b = (Button)e.getSource();
         }
         assert b != null;
-
+        //where we use the FXML id of the buttons to identify them and give them a function
         String ident = b.getId();
         switch (ident){
+            //Opens window for given Sorting algorithm,Numerical Algorithm or Search Algorithm
             case "insertionSortB":
                 MainGUI.setWindow("FXML/SortWindow.fxml","Insertion Sort",1);
                 break;

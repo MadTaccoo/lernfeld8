@@ -132,9 +132,10 @@ public class SortController {
         long miliToComp = nanoToComp / 1000000; //TODO check conversion
         Platform.runLater(() -> {
             sorted.setItems(FXCollections.observableArrayList(result));
-            statsL.setText("Stats: " + MainGUI.windowTitle + "\n" +
-                    "Nano seconds  " + nanoToComp + "\n" +
-                    "Milli seconds " + miliToComp);
+            statsL.setText("Stats: " +
+                    "\nSorting Algorithm: " + MainGUI.windowTitle + "\n" +
+                    "Nano seconds: " + nanoToComp + "\n" +
+                    "Milli seconds: " + miliToComp);
         });
     }
 }
