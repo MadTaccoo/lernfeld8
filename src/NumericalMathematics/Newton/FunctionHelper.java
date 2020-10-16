@@ -1,16 +1,21 @@
 package NumericalMathematics.Newton;
 
-public class SpecialFunctionHelper {
-    double a,c,b,yVal;
+public class FunctionHelper {
+    double a,c,b,n,yVal;
     int selection;
 
-    public SpecialFunctionHelper(double a, double c, double b,double n, int selection) {
+    public FunctionHelper(double a, double c, double b, double n, int selection) {
         this.a = a;
         this.c = c;
         this.b = b;
+        this.n = n;
         this.selection = selection;
     }
-
+    public FunctionHelper(double a,double n) {
+        this.a = a;
+        this.n = n;
+        selection = Integer.MIN_VALUE;
+    }
 
     public double getA() {
         return a;

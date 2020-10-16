@@ -2,6 +2,10 @@ package Sorting_Algorithms;
 
 public abstract class QuickSort {
 
+    /**
+     *
+     * @param list
+     */
     public static void quickSort(double[] list){
         quickSortRec(list,0,list.length-1);
     }
@@ -12,7 +16,7 @@ public abstract class QuickSort {
      * @param from start index of subarray
      * @param to end index of subarray
      */
-    public static void quickSortRec(double[] list, int from, int to) {
+    private static void quickSortRec(double[] list, int from, int to) {
         int i1 = from;
         int i2 = to;
         //gets the pivot that is roughly in the (index)middle
@@ -52,28 +56,12 @@ public abstract class QuickSort {
         doubles[y] = doubleX;
     }
 
-    public static boolean isSortedOwn(int[] array) {
+    private static boolean isSortedOwn(int[] array) {
         for (int i = 0; i < array.length-1; i++) {
             if (array[i] > array[i+1]){
                 return false;
             }
         }
         return true;
-    }
-
-    public static void main(String[] args) {
-        double[] testArr = new double[]{2.3, 2, 6, 5.4, 7.8, 80, 4.5, 9};
-
-        System.out.println("Unsorted array: ");
-        for (double item : testArr) {
-            System.out.print(item + " ");
-        }
-
-        quickSort(testArr);
-
-        System.out.println("\nSorted array: ");
-        for (double item : testArr) {
-            System.out.print(item + " ");
-        }
     }
 }
