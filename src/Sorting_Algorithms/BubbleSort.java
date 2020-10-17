@@ -1,7 +1,10 @@
 package Sorting_Algorithms;
 
+/**
+ * An implementation of an optimized version of The Bubble Sort
+ * @author Wutthichai Laphutama
+ */
 public abstract class BubbleSort {
-
     public static void bubbleSort(double[] arr) {
         for(int i = arr.length - 1; i > 0; --i) {
             for (int j = 0; j < i; ++j) {
@@ -15,11 +18,21 @@ public abstract class BubbleSort {
     }
 
     public static void bubbleSortOptimized(double[] arr) {
+        /**
+         * The initial array is stepped through from left to right.
+         * In each step the current element is compared with an adjacent
+         * element and then swapped if the criteria, in which they are to be sorted, is wrong.
+         *
+         * In case that some or all elements in the given array are already in their final position, i.e.
+         * already sorted, they do not need to be checked again.
+         *
+         * @param arr initial unsorted array, which is going to be sorted
+         */
         int n = arr.length;
-        boolean swapped;
+        boolean swapped;    /* checks whether elements in the array need to be swapped */
         do {
             swapped = false;
-            for (int i = 0; i < n - 1; ++i) {
+            for (int i = 0; i < n - 1; ++i) {   /* steps through the elements, which are to be sorted */
                 if (arr[i] > arr[i+1]) {
                     double temp = arr[i];
                     arr[i] = arr[i+1];
