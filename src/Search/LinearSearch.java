@@ -8,8 +8,8 @@ package Search;
 public class LinearSearch {
     public static int searchTarget(double[] arr, double target){
         /**
-         * @param arr inital array
-         * @param target
+         * @param arr inital array of type double
+         * @param target double value that needs to be found
          * @return location of the target otherwise @return -1
          * if target is not in the array
          */
