@@ -1,6 +1,7 @@
 package GUI.Controller;
 
 import GUI.MainGUI;
+import Interfaces.Controller;
 import Search.BinarySearch;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -13,7 +14,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
 
-public class BinarySearchController {
+public class BinarySearchController implements Controller {
     //list in which the random generated numbers are stored
     double[] arr = new double[11];
     //list that contains the designated labels to display numbers stored in arr
@@ -31,8 +32,9 @@ public class BinarySearchController {
     TextField nSelection;
 
     /**
-     *
-     * @param e ActionEvent which is used to identify the button
+     * this function handles all click events of Buttons
+     * it uses the fxml id of the button to identify it and than execute the code for the button
+     * @param e ActionEvent used to get the source of the event
      * @throws IOException
      */
     @FXML

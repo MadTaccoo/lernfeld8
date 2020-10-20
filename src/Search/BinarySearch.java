@@ -10,17 +10,17 @@ public class BinarySearch {
         if(!isSorted(arr))
             return -1;
         int index = arr.length/2;
-        double tmp = arr[index];
+        double itemAtIndex = arr[index];
         int count = 0;
-        while (tmp != target){
+        while (itemAtIndex != target){
             if(count >=arr.length)
                 return -1;
-            if(tmp <= target)
+            if(itemAtIndex <= target)
                 index += index/2;
-            else if(tmp > target)
+            else if(itemAtIndex > target)
                 index -= index/2;
             ls.add(index);
-            tmp = arr[index-1];
+            itemAtIndex = arr[index-1];
             count++;
         }
         return index-1;
@@ -39,7 +39,7 @@ public class BinarySearch {
     public static int binarySearchR(double[] arr,double target) {
         ls.clear();
         if(!isSorted(arr))
-            return -1;
+            return Integer.MIN_VALUE;
         return binarySearchRec(arr,0,arr.length-1,target);
     }
 

@@ -1,6 +1,7 @@
 package GUI.Controller;
 
 import GUI.MainGUI;
+import Interfaces.Controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -9,7 +10,7 @@ import javafx.scene.control.TextField;
 import java.io.IOException;
 import java.util.Random;
 
-public class LinearSearchController {
+public class LinearSearchController implements Controller {
     //array with random integer values
     public static int[] ls;
     //index which displays the given value at this index
@@ -25,8 +26,9 @@ public class LinearSearchController {
     TextField nSelection;
 
     /**
-     *
-     * @param e ActionEvent which is used to identify the button
+     * this function handles all click events of Buttons
+     * it uses the fxml id of the button to identify it and than execute the code for the button
+     * @param e ActionEvent used to get the source of the event
      * @throws IOException
      */
     @FXML

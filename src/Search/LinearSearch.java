@@ -6,6 +6,6 @@ public class LinearSearch {
             if(ls[i]==target)
                 return i;
         }
-        return -1;
+        return Integer.MIN_VALUE;
     }
 }

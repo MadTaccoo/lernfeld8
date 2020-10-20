@@ -22,7 +22,7 @@ public class MainGUI extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        f = new FXMLLoader(MainGUI.class.getResource(("FXML/mainMenu.fxml")));
+        f = new FXMLLoader(MainGUI.class.getResource(("FXML/MainMenuWindow.fxml")));
         Parent root = f.load();
         primaryStage.setTitle("Menu");
         windowTitle = primaryStage.getTitle();
@@ -73,7 +73,8 @@ public class MainGUI extends Application {
         windowTitle = stage.getTitle();
         stage.setWidth(width);
         stage.setHeight(height);
-        stage.setResizable(false);
+        stage.setResizable(path.contains("Graph"));
+
         stage.setScene(new Scene(root));
         stage.show();
     }
@@ -85,7 +86,7 @@ public class MainGUI extends Application {
     public static void goToMenu() throws IOException {
         double width = stage.getWidth();
         double height = stage.getHeight();
-        f = new FXMLLoader(MainGUI.class.getResource(("FXML/mainMenu.fxml")));
+        f = new FXMLLoader(MainGUI.class.getResource(("FXML/MainMenuWindow.fxml")));
         Parent root = f.load();
         stage.setTitle("Menu");
         windowTitle = stage.getTitle();
