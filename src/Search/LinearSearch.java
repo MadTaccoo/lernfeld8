@@ -17,6 +17,6 @@ public class LinearSearch {
             if(arr[i] == target)
                 return i;
         }
-        return -1;
+        return Integer.MIN_VALUE;
     }
 }

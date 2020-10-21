@@ -23,10 +23,18 @@
     -fx-background-color: #374152;
 }
 .list-view{
-    -fx-background-color: darkgray;
-
+    -fx-background-color: #374152;
+    -fx-font-size: 25;
+}
+.list-view .list-cell:odd {
+    -fx-background-color: #374152;
+    -fx-text-fill: #e38704;
 }
 
+.list-view .list-cell:even {
+    -fx-background-color: #374152;
+    -fx-text-fill: #e38704;
+}
 .menueButton{
     -fx-text-fill:  #e38704;
     -fx-background-color:  #374152;
@@ -35,4 +43,37 @@
 
 .menueButton:hover{
     -fx-background-color: #505561;
+
 }
+
+.text-area {
+    text-area-background: #374152;
+    text-area-foreground: #e38704;
+    -fx-text-fill: text-area-foreground;
+    -fx-prompt-text-fill: text-area-foreground;
+    -fx-border-color: transparent;
+    -fx-animated: false;
+}
+
+.text-area .content {
+    -fx-background-color: text-area-background ;
+    -fx-fill: text-area-foreground;
+}
+.axis {
+    -fx-foreground-color: #e38704;
+}
+
+.chart {
+    -fx-padding: 10px;
+    -fx-background-color: #374152;
+}
+.chart-plot-background {
+    -fx-background-color: transparent;
+}
+.chart-vertical-grid-lines {
+    -fx-stroke: #dedddc; -fx-stroke-width: 1;
+}
+.chart-horizontal-grid-lines {
+    -fx-stroke: #dedddc; -fx-stroke-width: 1;
+}
+

@@ -1,17 +1,23 @@
 package GUI.Controller;
 
 import GUI.MainGUI;
-import Search.LinearSearch;
+import Interfaces.Controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 
 import java.io.IOException;
 
-public class MainController {
+public class MainController implements Controller {
+    @Override
+    public void load() {
+
+    }
+
     /**
-     *
-     * @param e ActionEvent which is used to identify the button
+     * this function handles all click events of Buttons
+     * it uses the fxml id of the button to identify it and than execute the code for the button
+     * @param e ActionEvent used to get the source of the event
      * @throws IOException
      */
     @FXML
@@ -46,19 +52,23 @@ public class MainController {
                 break;
             case "linearSearchB":
                 MainGUI.setWindow("FXML/LinearSearchWindow.fxml","Linear Search");
-                LinearSearchController lsc = (LinearSearchController)MainGUI.f.getController();
+                LinearSearchController lsc = MainGUI.f.getController();
                 lsc.load();
                 break;
             case "binarySearchB":
                 MainGUI.setWindow("FXML/BinarySearchWindow.fxml","Binary Search");
-                BinarySearchController bsc = (BinarySearchController)MainGUI.f.getController();
+                BinarySearchController bsc = MainGUI.f.getController();
                 bsc.load();
                 break;
             case "newtonverfahrenB":
-                MainGUI.setWindow("FXML/NewtonGraph.fxml","NewtonGraph");
+                MainGUI.setWindow("FXML/NewtonGraphWindow.fxml","NewtonGraph");
+                NewtonGraphController ngc = MainGUI.f.getController();
+                ngc.load();
                 break;
             case "GaussSeidelB":
-                //TODO Daniel
+                MainGUI.setWindow("FXML/GaussSeidelWindow.fxml","Gauss Seidel");
+                GaussSeidelController gsc = MainGUI.f.getController();
+                gsc.load();
                 break;
         }
     }
