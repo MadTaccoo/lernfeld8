@@ -58,6 +58,7 @@
 .text-area .content {
     -fx-background-color: text-area-background ;
     -fx-fill: text-area-foreground;
+    -fx-text-alignment: center;
 }
 .axis {
     -fx-foreground-color: #e38704;
@@ -75,5 +76,15 @@
 }
 .chart-horizontal-grid-lines {
     -fx-stroke: #dedddc; -fx-stroke-width: 1;
+}
+
+.roundButtonDijkstraHidden{
+    -fx-background-radius: 1px;
+    -fx-background-color: transparent;
+}
+
+.roundButtonDijkstraVisible{
+    -fx-background-radius: 40px;
+    -fx-background-color: #98c6ea;
 }
 

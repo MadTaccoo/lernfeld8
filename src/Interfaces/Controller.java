@@ -8,5 +8,5 @@ import java.io.IOException;
 public interface Controller {
     void load();
     @FXML
-    void handleButtons(ActionEvent e) throws IOException;
+    void handleButtons(ActionEvent e) throws Exception;
 }

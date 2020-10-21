@@ -70,6 +70,11 @@ public class MainController implements Controller {
                 GaussSeidelController gsc = MainGUI.f.getController();
                 gsc.load();
                 break;
+            case "dijkstraB":
+                MainGUI.setWindow("FXML/DijkstraWindow.fxml","Dijkstra");
+                DijkstraController djc = MainGUI.f.getController();
+                djc.load();
+                break;
         }
     }
 }
