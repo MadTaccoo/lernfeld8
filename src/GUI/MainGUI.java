@@ -65,14 +65,14 @@ public class MainGUI extends Application {
      */
     public static void setWindow(String path,String title) throws IOException {
         lastStage = stage;
-        double width = stage.getWidth();
-        double height = stage.getHeight();
+        double width = 1000;
+        double height = 700;
         f = new FXMLLoader(MainGUI.class.getResource((path)));
         Parent root = f.load();
         stage.setTitle(title.equals("") ? stage.getTitle() : title);
         windowTitle = stage.getTitle();
-        stage.setWidth(width);
-        stage.setHeight(height);
+        stage.setWidth(1200);
+        stage.setHeight(700);
         stage.setResizable(path.contains("Graph"));
 
         stage.setScene(new Scene(root));

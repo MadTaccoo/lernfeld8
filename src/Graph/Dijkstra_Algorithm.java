@@ -28,4 +28,9 @@ public class Dijkstra_Algorithm {
         g.dijkstra(start);
         g.printAllPaths();
     }
+    public static Graph Dijkstra(Edge[] graph){
+        return new Graph(graph);
+    }
+
+
 }

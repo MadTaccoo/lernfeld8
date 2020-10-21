@@ -1,13 +1,10 @@
 package Graph;
 
 import java.security.KeyException;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.NavigableSet;
-import java.util.TreeSet;
+import java.util.*;
 
 public class Graph {
-    private final Map<String, Vertex> graph;
+    private static Map<String, Vertex> graph;
 
    public Graph (Edge[] edges) {
        this.graph = new HashMap<>(edges.length);
@@ -28,7 +25,6 @@ public class Graph {
        if (!graph.containsKey(startName)) {
            throw new KeyException("Graph does not contain start vertex " + startName);
        }
-
        final Vertex source = graph.get(startName);
        NavigableSet<Vertex> q = new TreeSet<>();
 
@@ -75,9 +71,16 @@ public class Graph {
        if(!graph.containsKey(endName)) {
            throw new KeyException("Graph does not contain end vertex" + endName);
        }
-
        graph.get(endName).printPath();
        System.out.println();
+   }
+
+   public ArrayList<Integer> valuesOfALl(){
+       ArrayList<Integer> ret = new ArrayList<>();
+       for (Vertex v : graph.values()) {
+           ret.add(v.distance);
+       }
+       return ret;
    }
 
    public void printAllPaths() {
