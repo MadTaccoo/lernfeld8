@@ -47,37 +47,4 @@ public abstract class BubbleSort {
             n -= 1;
         } while (swapped);
     }
-
-
-    /* For testing purposes */
-    private static void main(String[] args) {
-
-        double[] testArr = new double[]{2.3, 2, 6, 5.4, 7.8, 80, 4.5, 9};
-
-        System.out.println("Unsorted array: ");
-        for (double item : testArr) {
-            System.out.print(item + " ");
-        }
-
-        bubbleSort(testArr);
-
-        System.out.println("\nSorted array: ");
-        for (double item : testArr) {
-            System.out.print(item + " ");
-        }
-
-        double[] testArr2 = new double[]{2.3, 2, 6, 5.4, 7.8, 80, 4.5, 9, 10, 42.3, 4, 2};
-
-        System.out.println("\nUnsorted array: ");
-        for (double item : testArr2) {
-            System.out.print(item + " ");
-        }
-
-        bubbleSortOptimized(testArr2);
-
-        System.out.println("\nSorted array optimized: ");
-        for (double item : testArr2) {
-            System.out.print(item + " ");
-        }
-    }
 }

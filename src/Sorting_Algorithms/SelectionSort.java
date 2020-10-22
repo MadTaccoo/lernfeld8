@@ -1,14 +1,6 @@
 package Sorting_Algorithms;
 
 public abstract class SelectionSort {
-    public static void main(String[] args) {
-        double[] ls = {412,46231,2,253532,1231,3};
-        SelectionSort(ls);
-        for (double l : ls) {
-            System.out.println(l);
-        }
-    }
-
     /**
      * help function to execute Selectionsort
      * @param arr

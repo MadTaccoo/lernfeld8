@@ -17,36 +17,6 @@ public class Function {
     }
 
     /**
-     * @param x    start index for table
-     * @param x1   end index for table
-     * @param prec precision of the table or steps
-     * @return ArrayList which contains 2 other Arraylists with Coordinates
-     */
-    public ArrayList<ArrayList<Double>> table(double x, double x1, double prec) {
-        //declare arrays
-        ArrayList<ArrayList<Double>> ls = new ArrayList<>();
-        ArrayList<Double> fx = new ArrayList<>();
-        ArrayList<Double> ord = new ArrayList<>();
-        //set starting point
-        double j = x;
-        //generate all points for table in prec seps
-        while (j <= x1) {
-            ord.add(j);
-            fx.add(sum(j));
-            j += prec;
-        }
-        //because of double precision problems the last set of values is generated here
-        if (ord.get(ord.size() - 1) < x1) {
-            ord.add(x1);
-            fx.add(sum(x1));
-        }
-        //add the x and y Coordinate arraylists to the return arraylist
-        ls.add(ord);
-        ls.add(fx);
-        return ls;
-    }
-
-    /**
      * allows to create a function which is the derivative of the given function
      * only basic functions work nothing with sqr() or 1/x work
      *
@@ -83,6 +53,36 @@ public class Function {
                 throw new NotImplementedException();
             }
         }
+    }
+
+    /**
+     * @param x    start index for table
+     * @param x1   end index for table
+     * @param prec precision of the table or steps
+     * @return ArrayList which contains 2 other Arraylists with Coordinates
+     */
+    public ArrayList<ArrayList<Double>> table(double x, double x1, double prec) {
+        //declare arrays
+        ArrayList<ArrayList<Double>> ls = new ArrayList<>();
+        ArrayList<Double> fx = new ArrayList<>();
+        ArrayList<Double> ord = new ArrayList<>();
+        //set starting point
+        double j = x;
+        //generate all points for table in prec seps
+        while (j <= x1) {
+            ord.add(j);
+            fx.add(sum(j));
+            j += prec;
+        }
+        //because of double precision problems the last set of values is generated here
+        if (ord.get(ord.size() - 1) < x1) {
+            ord.add(x1);
+            fx.add(sum(x1));
+        }
+        //add the x and y Coordinate arraylists to the return arraylist
+        ls.add(ord);
+        ls.add(fx);
+        return ls;
     }
 
     /**
@@ -149,116 +149,12 @@ public class Function {
         return sum;
     }
 
-    /**
-     * simple "Newton's method" function based on
-     * x1 = x0-(f(x0)/f'(x0))
-     *
-     * @param f       function of which we want to find the roots
-     * @param inteval start interval right before the root (As close as possible)
-     * @param prec    repetitions of for loop with increase precision
-     * @return approximation of root
-     */
-    public double newton(Function f, double inteval, int prec) {
-        Function df = new Function(f);
-        for (int i = 0; i < prec; i++) {
-            inteval = inteval - f.sum(inteval) / df.sum(inteval);
-        }
-        return inteval;
-    }
-
-    public static void main(String[] args) {
-        Function f = new Function();
-        f.insertInto(2,1);
-        System.out.println(f.newton(f,-0.1,0.1,0.01));
-
-    }
-
-    public double round(double value, int places) {
-        if (places < 0) throw new IllegalArgumentException();
-
-        long factor = (long) Math.pow(10, places);
-        value = value * factor;
-        long tmp = Math.round(value);
-        return (double) tmp / factor;
-    }
-
-    /**
-     * "Newton's method" function based on
-     * x1 = x0-(f(x0)/f'(x0))
-     * but this time it is optimized with a check for convergence
-     * only downside we need to know the complete interval x1 to x2
-     *
-     * @param fkt function of which we want to approximation the roots
-     * @param x1  start interval
-     * @param x2  end interval
-     *            this function will search for roots between x1 and x2
-     * @param eps acceptable difference between f(x) and f'(x)
-     * @return approximated root
-     */
-    public double newton(Function fkt, double x1, double x2, double eps) {
-        if(round(x1,1)==-0.1 && round(x2,1) ==0.1)
-            return 0;
-        double x = 0.5 * (x1 + x2);
-        Function df = new Function(fkt);
-        for (int j = 0; j < 10000; j++) {
-            double dx = fkt.sum(x) / df.sum(x);
-            x -= dx;
-            if (Math.abs(dx) < eps) return x;
-        }
-        System.out.println("Error");
-        return Integer.MIN_VALUE;
-    }
-
-    /**
-     * function to get the root interval of given function
-     * @param from      x index from which the function is checked
-     * @param to        x index to which the function is checked
-     * @param func      function of which we want he interval of its roots
-     * @param precision how precise you want the interval to be
-     * @return double[][] array with x and x1 arr[0][x] is always the start and arr[1][x] is the end
-     */
-    public double[][] interval(int from, int to, Function func, Float precision) {
-        float lastIndex = from;
-        //math sign '+'|'-'
-        char LastMathSign = func.sum(from) > 0 ? '+' : '-';
-        ArrayList<Float> interV1 = new ArrayList<>();
-        ArrayList<Float> interV2 = new ArrayList<>();
-        //iterate from -> to
-        for (float i = from; i < to; i += precision) {
-            //detects if the function in f(i) is falling or rising
-            char MathSign = func.sum(i) > 0 && i != 0 ? '+' : '-';
-            //if the sign changes there is an root nearby i can smell it
-            if (LastMathSign != MathSign) {
-                interV1.add(lastIndex);
-                interV2.add(i);
-            }
-            //sets the last index to i
-            if (func.sum(lastIndex) > func.sum(i) || func.sum(lastIndex) < func.sum(i))
-                lastIndex = i;
-            LastMathSign = func.sum(i) >= 0 ? '+' : '-';
-        }
-        //if the function has a root at (0|0)
-        if (func.sum(0) == 0) {
-            interV1.add(-0.1F);
-            interV2.add(0.1F);
-        }
-        //create array to return both arraylists
-        double[][] retLst = new double[2][interV1.size()];
-        for (int i = 0; i < retLst[0].length; i++) {
-            retLst[0][i] = interV1.get(i);
-            retLst[1][i] = interV2.get(i);
-        }
-        return retLst;
-    }
-
     public void setIntervalAndRoots(int x, int x1, float prec) {
         roots.clear();
-        intervalAr = interval(x, x1, this, prec);
+        intervalAr = Newton.interval(x, x1, this, prec);
         for (int i = 0; i < intervalAr[0].length; i++)
-            roots.add(newton(this, intervalAr[0][i],intervalAr[1][i], prec));
-
+            roots.add(Newton.newton(this, intervalAr[0][i],intervalAr[1][i], prec));
     }
-
 
     //(a, c, b, n, cos_tan_sin * arc));
     @Override
@@ -296,6 +192,4 @@ public class Function {
         }
         return str.toString();
     }
-
-
 }

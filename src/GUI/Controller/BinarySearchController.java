@@ -3,6 +3,7 @@ package GUI.Controller;
 import GUI.MainGUI;
 import Interfaces.Controller;
 import Search.BinarySearch;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
