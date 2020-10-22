@@ -1,23 +1,21 @@
 package GUI.Controller;
 
 import GUI.MainGUI;
+import Interfaces.Controller;
 import Sorting_Algorithms.*;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
 import java.io.IOException;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
 //WUTTI
-public class SortController {
+public class SortController implements Controller {
     @FXML
     ListView
             sorted,
@@ -30,6 +28,17 @@ public class SortController {
             statsL;
     public static int whichSort = 0;
 
+    @Override
+    public void load() {
+
+    }
+    /**
+     * this function handles all click events of Buttons
+     * it uses the fxml id of the button to identify it and than execute the code for the button
+     * @param e ActionEvent used to get the source of the event
+     * @throws IOException
+     */
+    @FXML
     public void handleButtons(ActionEvent e) throws IOException {
         Button b = null;
         if (e.getSource() instanceof Button) {

@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<GridPane prefHeight="400.0" prefWidth="600.0" styleClass="label" stylesheets="@../CSS/mainStyle.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controller.SortController">
+<GridPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #212731;" styleClass="header" stylesheets="@../CSS/mainStyle.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controller.SortController">
     <columnConstraints>
         <ColumnConstraints hgrow="ALWAYS" maxWidth="30.0" minWidth="10.0" />
         <ColumnConstraints hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="10.0" />
@@ -38,19 +38,28 @@
             <RowConstraints />
         </rowConstraints>
          <children>
-            <Button fx:id="fkGoBack" mnemonicParsing="false" onAction="#handleButtons" styleClass="numericButton" text="Menu" GridPane.columnIndex="1">
+            <Button fx:id="fkGoBack" mnemonicParsing="false" onAction="#handleButtons" styleClass="menueButton" text="Menu" GridPane.columnIndex="1">
                <GridPane.margin>
                   <Insets />
-               </GridPane.margin></Button>
-            <Button fx:id="scrambleB" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleButtons" styleClass="numericButton" text="Scramble" GridPane.columnSpan="2" GridPane.rowIndex="1">
+               </GridPane.margin>
+               <font>
+                  <Font size="20.0" />
+               </font></Button>
+            <Button fx:id="scrambleB" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleButtons" styleClass="menueButton" text="Scramble" GridPane.columnSpan="2" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets bottom="10.0" top="10.0" />
                </GridPane.margin>
+               <font>
+                  <Font size="20.0" />
+               </font>
             </Button>
-            <Button fx:id="sortB" mnemonicParsing="false" onAction="#handleButtons" styleClass="numericButton" text="Sort" GridPane.columnSpan="2">
+            <Button fx:id="sortB" mnemonicParsing="false" onAction="#handleButtons" styleClass="menueButton" text="Sort" GridPane.columnSpan="2">
                <GridPane.margin>
                   <Insets />
                </GridPane.margin>
+               <font>
+                  <Font size="20.0" />
+               </font>
             </Button>
          </children>
       </GridPane>
@@ -117,7 +126,7 @@
                   <Font size="20.0" />
                </font>
             </Label>
-            <TextField fx:id="howManyRandom" alignment="CENTER" maxWidth="-Infinity" nodeOrientation="RIGHT_TO_LEFT" styleClass="numericButton" text="6" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
+            <TextField fx:id="howManyRandom" alignment="CENTER" maxWidth="-Infinity" nodeOrientation="RIGHT_TO_LEFT" styleClass="menueButton" text="6" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
                <GridPane.margin>
                   <Insets right="10.0" />
                </GridPane.margin>

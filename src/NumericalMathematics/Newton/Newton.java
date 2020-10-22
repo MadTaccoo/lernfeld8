@@ -1,295 +1,99 @@
 package NumericalMathematics.Newton;
 
-/**
- * @author Daniel Wilke
- * @version 1.0
- * @category numerical mathematics
- * @description Class to solve a function for zero
- */
-public abstract class Newton
-{
+import java.util.ArrayList;
 
-    private static final int PLOT_SCALE = 75;
-    private static Double x_abscissa_n;
-    private static Double x_abscissa_p;
-
+public class Newton {
     /**
-     * @param x_value X-Coordinate to calculate the y-coordinate of the function.
-     * @return f Y-Coordinate of the function for given x.
+     * simple "Newton's method" function based on
+     * x1 = x0-(f(x0)/f'(x0))
+     *
+     * @param f       function of which we want to find the roots
+     * @param inteval start interval right before the root (As close as possible)
+     * @param prec    repetitions of for loop with increase precision
+     * @return approximation of root
      */
-    private static double fun_0(double x_value)
-    {
-        double f, a = 0;
-
-        f = a + x_value * 0;
-
-        return f;
-    }
-
-    /**
-     * @param x_value X-Coordinate to calculate the y-coordinate of the function.
-     * @return f Y-Coordinate of the function for given x.
-     */
-    private static double fun_1(double x_value)
-    {
-        double f;
-        double a = 7;
-        double b = 4;
-
-        f = a * x_value + b;
-
-        return f;
-    }
-
-    /**
-     * @param x_value X-Coordinate to calculate the y-coordinate of the function.
-     * @return f Y-Coordinate of the function for given x.
-     */
-    private static double fun_2(double x_value)
-    {
-        double f;
-        double a = 4;
-        double b = 7;
-        double c = -10;
-
-        f = a * Math.pow(x_value, 2) + b * x_value + c;
-
-        return f;
-    }
-
-    /**
-     * @param x_value X-Coordinate to calculate the y-coordinate of the function.
-     * @return f Y-Coordinate of the function for given x.
-     */
-    private static double fun_5(double x_value)
-    {
-        double f;
-        double a = -7;
-        double b = 8;
-        double c = 12;
-        double d = 1;
-        double e = 4;
-        double g = -9;
-
-        f = a * Math.pow(x_value, 5) + b * Math.pow(x_value, 4) + c * Math.pow(x_value, 3) + d * Math.pow(x_value, 2) + e * x_value + g;
-
-        return f;
-    }
-
-    /**
-     * @param x_value X-Coordinate to calculate the y-coordinate of the function.
-     * @return f Y-Coordinate of the function for given x.
-     */
-    private static double fun_cos(double x_value)
-    {
-        double f;
-        double a = 1;
-        double b = 17;
-        double c = 0;
-
-        f = a * Math.cos(b * (x_value - c));
-
-        return f;
-    }
-
-    /**
-     * @param x_value X-Coordinate to calculate the y-coordinate of the function.
-     * @return f Y-Coordinate of the function for given x.
-     */
-    private static double fun_tan(double x_value)
-    {
-        double f;
-        double a = 1;
-        double b = -4;
-        double c = 0;
-
-        f = a * Math.tan(b * (x_value - c));
-
-        return f;
-    }
-
-    /**
-     * @param chosen Contains the choice which function should be calculated.
-     * @return cSolve Returns the x-coordinate for the intersection with the x-axis in a given interval.
-     */
-    public static double controller(int chosen)
-    {
-        double cSolve;
-
-        x_abscissa_n = 0.0;
-        x_abscissa_p = 0.0;
-
-        switch (chosen)
-        {
-            // func_0 [-3, 3]
-            case 0:
-                x_abscissa_n = -3.0;
-                x_abscissa_p = 3.0;
-                break;
-            // func_1 [-3, 0]
-            case 1:
-                // func_2 [-3, 0]
-            case 2:
-                x_abscissa_n = -3.0;
-                x_abscissa_p = 0.0;
-                break;
-            // func_5 [-2, 0]
-            case 3:
-                x_abscissa_n = -2.0;
-                x_abscissa_p = 0.0;
-                break;
-            // func_cos [-0.2, 0]
-            case 4:
-                x_abscissa_n = -0.2;
-                x_abscissa_p = 0.0;
-                break;
-            // func_tan [-1, -0.5]
-            case 5:
-                x_abscissa_n = -1.0;
-                x_abscissa_p = -0.5;
-                break;
-            default:
-                break;
+    public static double newton(Function f, double inteval, int prec) {
+        Function df = new Function(f);
+        for (int i = 0; i < prec; i++) {
+            inteval = inteval - f.sum(inteval) / df.sum(inteval);
         }
-
-        cSolve = solve(x_abscissa_n, x_abscissa_p, chosen);
-
-        return cSolve;
+        return inteval;
     }
 
     /**
-     * @param x_abscissa_n X-coordinate for the negative interval side.
-     * @param x_abscissa_p X-coordinate for the positive interval side.
-     * @param chosen       Contains the choice which function should be calculated.
-     * @return Returns abscissa_nod the x-coordinate for the intersection with the x-axis in a given interval.
+     * "Newton's method" function based on
+     * x1 = x0-(f(x0)/f'(x0))
+     * but this time it is optimized with a check for convergence
+     * only downside we need to know the complete interval x1 to x2
+     *
+     * @param fkt function of which we want to approximation the roots
+     * @param x1  start interval
+     * @param x2  end interval
+     *            this function will search for roots between x1 and x2
+     * @param eps acceptable difference between f(x) and f'(x)
+     * @return approximated root
      */
-    private static double solve(double x_abscissa_n, double x_abscissa_p, int chosen)
-    {
-        double abscissa_nod;
-        double ordinate_n;
-        double ordinate_p;
-        double abscissa_mid;
-        double ordinate_mid;
-        double temp;
-        double x_tol = 1e-15;
-
-        abscissa_nod = 0;
-        abscissa_mid = 0;
-        ordinate_n = get_ordinate(x_abscissa_n, chosen);
-        ordinate_p = get_ordinate(x_abscissa_p, chosen);
-
-        if ((ordinate_n + ordinate_p) > 0)
-        {
-            System.out.println("No intersection with x-axis!");
+    public static double newton(Function fkt, double x1, double x2, double eps) {
+        if(round(x1,1)==-0.1 && round(x2,1) ==0.1)
+            return 0;
+        double x = 0.5 * (x1 + x2);
+        Function df = new Function(fkt);
+        for (int j = 0; j < 10000; j++) {
+            double dx = fkt.sum(x) / df.sum(x);
+            x -= dx;
+            if (Math.abs(dx) < eps) return x;
         }
+        System.out.println("Error");
+        return Integer.MIN_VALUE;
+    }
 
-        if ((ordinate_n * ordinate_p) == 0)
-        {
-            if (Math.abs(ordinate_n) == 0)
-            {
-                abscissa_nod = ordinate_n;
+    /**
+     * function to get the root interval of given function
+     * @param from      x index from which the function is checked
+     * @param to        x index to which the function is checked
+     * @param func      function of which we want he interval of its roots
+     * @param precision how precise you want the interval to be
+     * @return double[][] array with x and x1 arr[0][x] is always the start and arr[1][x] is the end
+     */
+    public static double[][] interval(int from, int to, Function func, Float precision) {
+        float lastIndex = from;
+        //math sign '+'|'-'
+        char LastMathSign = func.sum(from) > 0 ? '+' : '-';
+        ArrayList<Float> interV1 = new ArrayList<>();
+        ArrayList<Float> interV2 = new ArrayList<>();
+        //iterate from -> to
+        for (float i = from; i < to; i += precision) {
+            //detects if the function in f(i) is falling or rising
+            char MathSign = func.sum(i) > 0 && i != 0 ? '+' : '-';
+            //if the sign changes there is an root nearby i can smell it
+            if (LastMathSign != MathSign) {
+                interV1.add(lastIndex);
+                interV2.add(i);
             }
-            if (Math.abs(ordinate_p) == 0)
-            {
-                abscissa_nod = ordinate_p;
-            }
-
-        } else
-        {
-            while (Math.abs(x_abscissa_n - x_abscissa_p) > x_tol)
-            {
-                // calculating the median of x_abscissa_n and x_abscissa_p
-                abscissa_mid = (x_abscissa_n + x_abscissa_p) / 2.0;
-
-                // calculating the ordinate
-                ordinate_mid = get_ordinate(abscissa_mid, chosen);
-                ordinate_n = get_ordinate(x_abscissa_n, chosen);
-                ordinate_p = get_ordinate(x_abscissa_p, chosen);
-
-                if (ordinate_n > ordinate_p)
-                {
-                    temp = x_abscissa_n;
-                    x_abscissa_n = x_abscissa_p;
-                    x_abscissa_p = temp;
-                }
-
-                if (ordinate_mid > 0)
-                {
-                    x_abscissa_p = abscissa_mid;
-                } else
-                {
-                    x_abscissa_n = abscissa_mid;
-                }
-            }
-            abscissa_nod = abscissa_mid;
+            //sets the last index to i
+            if (func.sum(lastIndex) > func.sum(i) || func.sum(lastIndex) < func.sum(i))
+                lastIndex = i;
+            LastMathSign = func.sum(i) >= 0 ? '+' : '-';
         }
-
-        return abscissa_nod;
+        //if the function has a root at (0|0)
+        if (func.sum(0) == 0) {
+            interV1.add(-0.1F);
+            interV2.add(0.1F);
+        }
+        //create array to return both arraylists
+        double[][] retLst = new double[2][interV1.size()];
+        for (int i = 0; i < retLst[0].length; i++) {
+            retLst[0][i] = interV1.get(i);
+            retLst[1][i] = interV2.get(i);
+        }
+        return retLst;
     }
 
-    /**
-     * @param x_value X-Coordinate to calculate the y-coordinate of the function.
-     * @param chosen  Contains the choice which function should be calculated.
-     * @return ordinate Returns the calculated ordinate for a given x-coordinate.
-     */
-    private static double get_ordinate(double x_value, int chosen)
-    {
-        double ordinate = 0;
-
-        switch (chosen)
-        {
-            case 0:
-                ordinate = fun_0(x_value);
-                break;
-            case 1:
-                ordinate = fun_1(x_value);
-                break;
-            case 2:
-                ordinate = fun_2(x_value);
-                break;
-            case 3:
-                ordinate = fun_5(x_value);
-                break;
-            case 4:
-                ordinate = fun_cos(x_value);
-                break;
-            case 5:
-                ordinate = fun_tan(x_value);
-                break;
-            default:
-                break;
-        }
-        return ordinate;
-    }
-
-    /**
-     * @param chosen Contains the choice which function should be calculated.
-     * @return coord[][] Returns a table with x-coordinates and the corresponding y-coordinates for a function in a given interval.
-     */
-    public static double[][] plottingTable(int chosen)
-    {
-        double steps;
-        double counter;
-
-        counter = x_abscissa_n * 2;
-
-        double[][] cord = new double[2][PLOT_SCALE]; // cord[x-axis][y-axis]
-
-        steps = ((x_abscissa_p - x_abscissa_n) * 2) / PLOT_SCALE;
-
-        for (int i = 0; i < PLOT_SCALE; i++)
-        {
-            cord[0][i] = counter;
-            cord[1][i] = get_ordinate(counter, chosen);
-            counter += (2 * steps);
-        }
-        return cord;
-    }
-
-    //Remove main method after testing!
-    public static void main(String[] args)
-    {
-        System.out.printf("%.4f%n", controller(2));
-        double[][] test = plottingTable(2);
+    public static double round(double value, int places) {
+        if (places < 0) throw new IllegalArgumentException();
+        long factor = (long) Math.pow(10, places);
+        value = value * factor;
+        long tmp = Math.round(value);
+        return (double) tmp / factor;
     }
 }

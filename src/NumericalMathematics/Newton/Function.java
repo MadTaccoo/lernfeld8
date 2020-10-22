@@ -1,173 +1,194 @@
 package NumericalMathematics.Newton;
 
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
 public class Function {
-    public static void main(String[] args) {
-        Function f = new Function();
-        f.insertInto(4,1); //x^4+5x^2
-        f.insertInto(2,5);
-        f.insertInto(0,10);
+    //1=cos, 2=tan, 3=sin, -1=acos, -2=atan, -3=asin
+    private ArrayList<FunctionHelper> map;
+    public double[][] intervalAr;
+    public ArrayList<Double> roots = new ArrayList<>();
 
-        double[][] ls = f.intervall(-1000,1000,f,0.001F);
-        for (int i = 0; i < ls[0].length; i++) {
-            System.out.println(ls[0][i]+" "+ls[1][i]);
-            //System.out.println(f.newton3(f,ls[0][i],ls[1][i],1));
-        }
-        //System.out.println("0 und 2/3");
-    }
-
-    //ax^n
-    //map(n,a)
-    private Map<Double,Double> map;
-    private Map<Double,SpecialFunctionHelper> specialFunc;
-
+    /**
+     * basic constructor
+     */
     public Function() {
-        map = new HashMap<>();
-        specialFunc = new HashMap<>();
+        map = new ArrayList<>();
     }
 
-    //Ableitung Basic
-    public Function(Function f){
-        map = new HashMap<>();
-        double a,n;
-        for (Map.Entry<Double, Double> entry : f.getMap().entrySet()) {
-            a = entry.getValue()*entry.getKey();
-            n = entry.getKey()-1;
-            if(a>0)
-                map.put(n,a);
-        }
-    }
-
-    public double newtonEz(Function f,double inteval,int prec){
-        Function df = new Function(f);
-        for (int i = 0; i < prec; i++) {
-            inteval = inteval -f.sum(inteval)/df.sum(inteval);
-        }
-        return inteval;
-    }
-
-    double newton3(Function fkt, double x1, double x2, double eps) {
-        double x=0.5*(x1+x2);
-        Function df = new Function(fkt);
-        for (int j=0; j<10000; j++) {
-            double dx=fkt.sum(x)/df.sum(x);
-            x -= dx;
-            if ((x1-x)*(x-x2) < 0.0) {
-                return 0.0;
+    /**
+     * allows to create a function which is the derivative of the given function
+     * only basic functions work nothing with sqr() or 1/x work
+     *
+     * @param f function which is used to generate the derivative
+     */
+    public Function(Function f) {
+        map = new ArrayList<>();
+        double a, n;
+        for (FunctionHelper fh : f.map) {
+            if (fh.selection == Integer.MIN_VALUE) {
+                //multiplies a with n to calculate a for the new function
+                a = fh.a * fh.n;
+                //dec n to create the new n
+                n = fh.n - 1;
+                if (a != 0)
+                    map.add(new FunctionHelper(a,n));
+            } else {
+            /*
+                int selection = fh.selection;
+                switch (fh.selection) {
+                    //1=cos, 2=tan, 3=sin, 4=acos, 5=atan, 6=asin
+                    case 1: fh.selection = 3; fh.a*=-1; break;
+                    case 2:
+                    case 3:
+                        fh.selection = 1; break;
+                    case -1:
+                    case -2:
+                    case -3:
+                        fh.selection = Integer.MIN_VALUE; break;
+                    default: System.out.println("Error");
+                }
+                map.add(new FunctionHelper(fh.a,fh.c,fh.b,fh.n,4));
+                */
+                throw new NotImplementedException();
             }
-            if (Math.abs(dx) < eps) return x;
         }
-        return 0.0;
     }
 
-    //insert more data
+    /**
+     * @param x    start index for table
+     * @param x1   end index for table
+     * @param prec precision of the table or steps
+     * @return ArrayList which contains 2 other Arraylists with Coordinates
+     */
+    public ArrayList<ArrayList<Double>> table(double x, double x1, double prec) {
+        //declare arrays
+        ArrayList<ArrayList<Double>> ls = new ArrayList<>();
+        ArrayList<Double> fx = new ArrayList<>();
+        ArrayList<Double> ord = new ArrayList<>();
+        //set starting point
+        double j = x;
+        //generate all points for table in prec seps
+        while (j <= x1) {
+            ord.add(j);
+            fx.add(sum(j));
+            j += prec;
+        }
+        //because of double precision problems the last set of values is generated here
+        if (ord.get(ord.size() - 1) < x1) {
+            ord.add(x1);
+            fx.add(sum(x1));
+        }
+        //add the x and y Coordinate arraylists to the return arraylist
+        ls.add(ord);
+        ls.add(fx);
+        return ls;
+    }
+
+    /**
+     * insert more function data ax^n
+     *
+     * @param n exponent
+     * @param a coefficient
+     */
     public void insertInto(double n, double a) {
-        if (!map.containsKey(n))
-            map.put(n, a);
-        else
-            throw new IllegalArgumentException();
-    }
-    public void insertInto(double n, double a,double c,double b, int cos_tan_sin, int arc) {
-        if (!specialFunc.containsKey(n))
-            specialFunc.put(n, new SpecialFunctionHelper(a,c,b,n,cos_tan_sin*arc));
-        else
-            throw new IllegalArgumentException();
-        if (!map.containsKey(n))
-            map.put(n, a);
-        else
-            throw new IllegalArgumentException();
+        map.add(new FunctionHelper(a, n));
     }
 
-    //sum value at x
-    public double sum(double x){
-        if(specialFunc.size() == 0){
-            double sum = 0;
-            for (Map.Entry<Double, Double> entry : map.entrySet()) {
-                sum += Math.pow(x,entry.getKey())*entry.getValue();
-            }
-            return sum;
-        }else {
-            double sum = 0;
-            for (Map.Entry<Double, Double> entry : map.entrySet()) {
-                double a = entry.getValue(),n = entry.getKey();
-                if(specialFunc.containsKey(entry.getKey())){
-                    SpecialFunctionHelper selection = specialFunc.get(n);
-                    switch (selection.selection){
-                        case 1:
-                            sum += selection.a*Math.cos(selection.getB()*(x-selection.getC()));
-                            break;
-                        case 2:
-                            sum += selection.a*Math.tan(selection.getB()*(x-selection.getC()));
-                            break;
-                        case 3:
-                            sum += selection.a*Math.sin(selection.getB()*(x-selection.getC()));
-                            break;
-                        case -1:
-                            sum += selection.a*Math.acos(selection.getB()*(x-selection.getC()));
-                            break;
-                        case -2:
-                            sum += selection.a*Math.atan(selection.getB()*(x-selection.getC()));
-                            break;
-                        case -3:
-                            sum += selection.a*Math.asin(selection.getB()*(x-selection.getC()));
-                            break;
-                    }
+    /**
+     * asin(b(x-c))
+     *
+     * @param a           Asin(b(x-c))
+     * @param c           asin(b(x-C))
+     * @param b           asin(B(x-c))
+     * @param cos_tan_sin this and arc are used to give the user the possibility to select sin/cos/asin/acos
+     * @param arc         cos = 1, acos = -1
+     *                    tan = 2, atan = -2
+     *                    sin = 3, asin = -3
+     */
+    public void insertInto(double a, double c, double b, int cos_tan_sin, int arc) {
+        map.add(new FunctionHelper(a, c, b, 1, cos_tan_sin * arc));
+    }
 
+    /**
+     * @param x given x value to calculate the y of given function at x
+     * @return f(x)
+     */
+    public double sum(double x) {
+        double sum = 0;
+        for (FunctionHelper entry : map) {
+            //in case selection equals Integer.MIN_VALUE we just calculate f(x)
+            if (entry.selection == Integer.MIN_VALUE) {
+                sum += Math.pow(x, entry.n) * entry.a;
+            } else {
+                //else the selection value is used to calculate the value of f(x) but from function with sin/cos...
+                switch (entry.selection) {
+                    case 1:
+                        sum += entry.a * Math.pow(Math.cos(entry.getB() * (x - entry.getC())), entry.n);
+                        break;
+                    case 2:
+                        sum += entry.a * Math.pow(Math.tan(entry.getB() * (x - entry.getC())), entry.n);
+                        break;
+                    case 3:
+                        sum += entry.a * Math.pow(Math.sin(entry.getB() * (x - entry.getC())), entry.n);
+                        break;
+                    case -1:
+                        sum += entry.a * Math.pow(Math.acos(entry.getB() * (x - entry.getC())), entry.n);
+                        break;
+                    case -2:
+                        sum += entry.a * Math.pow(Math.atan(entry.getB() * (x - entry.getC())), entry.n);
+                        break;
+                    case -3:
+                        sum += entry.a * Math.pow(Math.asin(entry.getB() * (x - entry.getC())), entry.n);
+                        break;
+                    default:
+                        System.out.println("Error");
                 }
             }
-            return sum;
         }
-
+        return sum;
     }
 
-    public double[][] intervall(int from,int to,Function func,Float precision){
-        float lastIndex = from;
-        char cL = '+';
-        ArrayList<Float> interV1 = new ArrayList<>();
-        ArrayList<Float> interV2 = new ArrayList<>();
-
-        for (float i = from; i < to; i+=precision) {
-            char c = func.sum(i) > 0 && i != 0 ? '+' : '-';
-            if(cL != c){
-                interV1.add(lastIndex);
-                interV2.add(i);
-            }
-            if(func.sum(lastIndex)>func.sum(i) || func.sum(lastIndex)<func.sum(i))
-                lastIndex = i;
-            cL = func.sum(i) >= 0 ? '+' : '-';
-        }
-
-
-
-        if (interV1.size()>0)
-            interV1.remove(0);
-        if(interV2.size()>0)
-            interV2.remove(0);
-        if(func.sum(0) == 0){
-            interV1.add(-0.1F);
-            interV2.add(0.1F);
-        }
-
-        double[][] lst = new double[2][interV1.size()];
-        for (int i = 0; i < lst[0].length; i++) {
-            lst[0][i] = interV1.get(i);
-            lst[1][i] = interV2.get(i);
-        }
-        return lst;
+    public void setIntervalAndRoots(int x, int x1, float prec) {
+        roots.clear();
+        intervalAr = Newton.interval(x, x1, this, prec);
+        for (int i = 0; i < intervalAr[0].length; i++)
+            roots.add(Newton.newton(this, intervalAr[0][i],intervalAr[1][i], prec));
     }
 
-    public Map<Double, Double> getMap() {
-        return map;
-    }
-
+    //(a, c, b, n, cos_tan_sin * arc));
     @Override
     public String toString() {
         StringBuilder str = new StringBuilder();
-        for (Map.Entry<Double, Double> entry : map.entrySet()) {
-            str.append((entry.getValue() > 0) ? "+" : "").append(entry.getValue()).append("x^").append(entry.getKey());
+        for (FunctionHelper f : map) {
+            String operation = "";
+            if (f.selection == Integer.MIN_VALUE) {
+                str.append(f.a).append("x^").append(f.n).append(" ");
+            } else {
+                switch (f.selection) {
+                    case 1:
+                        operation = "cos";
+                        break;
+                    case 2:
+                        operation = "tan";
+                        break;
+                    case 3:
+                        operation = "sin";
+                        break;
+                    case -1:
+                        operation = "acos";
+                        break;
+                    case -2:
+                        operation = "atan";
+                        break;
+                    case -3:
+                        operation = "asin";
+                        break;
+                    default:
+                        System.out.println("Error");
+                }
+                str.append(f.a).append(operation).append("(").append(f.b).append("(").append("x-").append(f.c).append(") ");
+            }
         }
         return str.toString();
     }

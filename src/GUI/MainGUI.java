@@ -22,7 +22,7 @@ public class MainGUI extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        f = new FXMLLoader(MainGUI.class.getResource(("FXML/mainMenu.fxml")));
+        f = new FXMLLoader(MainGUI.class.getResource(("FXML/MainMenuWindow.fxml")));
         Parent root = f.load();
         primaryStage.setTitle("Menu");
         windowTitle = primaryStage.getTitle();
@@ -65,15 +65,16 @@ public class MainGUI extends Application {
      */
     public static void setWindow(String path,String title) throws IOException {
         lastStage = stage;
-        double width = stage.getWidth();
-        double height = stage.getHeight();
+        double width = 1000;
+        double height = 700;
         f = new FXMLLoader(MainGUI.class.getResource((path)));
         Parent root = f.load();
         stage.setTitle(title.equals("") ? stage.getTitle() : title);
         windowTitle = stage.getTitle();
-        stage.setWidth(width);
-        stage.setHeight(height);
-        stage.setResizable(false);
+        stage.setWidth(1200);
+        stage.setHeight(700);
+        stage.setResizable(path.contains("Graph"));
+
         stage.setScene(new Scene(root));
         stage.show();
     }
@@ -85,7 +86,7 @@ public class MainGUI extends Application {
     public static void goToMenu() throws IOException {
         double width = stage.getWidth();
         double height = stage.getHeight();
-        f = new FXMLLoader(MainGUI.class.getResource(("FXML/mainMenu.fxml")));
+        f = new FXMLLoader(MainGUI.class.getResource(("FXML/MainMenuWindow.fxml")));
         Parent root = f.load();
         stage.setTitle("Menu");
         windowTitle = stage.getTitle();
