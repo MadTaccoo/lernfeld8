@@ -20,13 +20,13 @@
    <children>
       <LineChart fx:id="graph" alternativeColumnFillVisible="true" animated="false" axisSortingPolicy="NONE" createSymbols="false" legendVisible="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" scaleShape="false" GridPane.columnSpan="2" GridPane.rowIndex="1">
         <xAxis>
-          <NumberAxis animated="false" autoRanging="false" forceZeroInRange="false" lowerBound="-10.0" side="BOTTOM" tickLabelFill="#e38704" upperBound="10.0" fx:id="xAxis">
+          <NumberAxis animated="false" autoRanging="false" forceZeroInRange="false" lowerBound="-10.0" minorTickCount="1" minorTickLength="1.0" side="BOTTOM" tickLabelFill="#e38704" tickUnit="1.0" upperBound="10.0" fx:id="xAxis">
                <tickLabelFont>
                   <Font size="20.0" />
                </tickLabelFont></NumberAxis>
         </xAxis>
         <yAxis>
-          <NumberAxis fx:id="yAxis" animated="false" autoRanging="false" forceZeroInRange="false" lowerBound="-10.0" side="LEFT" tickLabelFill="#e38704" upperBound="10.0">
+          <NumberAxis fx:id="yAxis" animated="false" autoRanging="false" forceZeroInRange="false" lowerBound="-10.0" minorTickLength="1.0" side="LEFT" tickLabelFill="#e38704" tickUnit="1.0" upperBound="10.0">
                <tickLabelFont>
                   <Font size="20.0" />
                </tickLabelFont></NumberAxis>

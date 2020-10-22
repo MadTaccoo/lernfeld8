@@ -1,23 +1,26 @@
 package GUI.Controller;
 
-
 import GUI.MainGUI;
 import Graph.Dijkstra_Algorithm;
 import Graph.*;
 import Interfaces.Controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
+import javafx.scene.control.*;
+import java.io.IOException;
 import java.util.ArrayList;
 
+/**
+ * Control Class for Dijkstra Visualizer
+ */
 public class DijkstraController implements Controller {
+    /*start and endpoint for Dijkstra Algorithm*/
     private String startV = "",endV="";
+    /*Lists which contain Controls for easier management later on*/
     private TextArea[] taLS;
-    private ArrayList<Button> bLS;
     private ArrayList<TextArea> lsL;
 
+    /*edges for the given graph*/
     private static Edge[] graph = {
             new Edge("a", "b", Integer.MIN_VALUE),
             new Edge("a", "c", Integer.MIN_VALUE),
@@ -29,12 +32,14 @@ public class DijkstraController implements Controller {
             new Edge("d", "f", Integer.MIN_VALUE),
             new Edge("e", "f", Integer.MIN_VALUE)};
 
+    /*TextArea FXML imports for later use in Program*/
     @FXML
-    Button aB,bB,cB,dB,eB,fB;
-    @FXML
-    TextArea abTA,acTA,ceTA,cdTA,beTA,bdTA,deTA,dfTA,efTA;
-    @FXML
-    TextArea aTA,bTA,cTA,dTA,eTA,fTA;
+    TextArea abTA,acTA,ceTA,cdTA,beTA,bdTA,deTA,dfTA,efTA,aTA,bTA,cTA,dTA,eTA,fTA;
+
+    /**
+     * load function to get the controller ready for the user
+     * fills Arrays and ArrayLists which make it easier to access all the controls
+    */
     public void load() {
         taLS = new TextArea[9];
         taLS[0] = abTA;
@@ -55,6 +60,12 @@ public class DijkstraController implements Controller {
         lsL.add(fTA);
     }
 
+    /**
+     * this function handles all click events of Buttons
+     * it uses the fxml id of the button to identify it and than execute the code for the button
+     * @param e ActionEvent used to get the source of the event
+     * @throws IOException
+     */
     @FXML
     public void handleButtons(ActionEvent e) throws Exception {
         Button b = null;
@@ -66,26 +77,36 @@ public class DijkstraController implements Controller {
         //where we use the FXML id of the buttons to identify them and give them a function
         String ident = b.getId();
         switch (ident){
+            /*enables the user to return to the menu*/
             case "menuB":
                 MainGUI.goToMenu();
                 break;
-
+            /*resets the result values*/
             case "resetB":
                 startV = "";
                 endV = "";
-                for (int i = 0; i < lsL.size(); i++) {
-                    lsL.get(i).setText("");
+                for (TextArea textArea : lsL) {
+                    textArea.setText("");
                 }
                 break;
-
+            /*starts the Dijkstra algorithm*/
             case "startB":
-                for (int i = 0; i < graph.length; i++) {
+                /*reads all values from xxTA TextAreas which contain edges costs and sets the cost to the edge*/
+                for (int i = 0; i < graph.length; i++)
                     graph[i].distance = Integer.parseInt(taLS[i].getText());
-                }
-                if(endV.equals("")||startV.equals(""))
+                /*in case no start or endpoint has been set*/
+                if(startV.equals("")){
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Error");
+                    alert.setHeaderText("You should have selected a Start point!");
+                    alert.show();
                     return;
+                }
+                /*initializes Graph object*/
                 Graph gph = Dijkstra_Algorithm.Dijkstra(graph);
+                /*starts the algorithm and makes gph ready to read data from*/
                 gph.dijkstra(startV);
+                /*returns the value of each vertex(Point)*/
                 ArrayList<Integer> ls = gph.valuesOfALl();
                 for (int i = 0; i < lsL.size(); i++) {
                     if(ls.get(i).equals(Integer.MAX_VALUE))
@@ -95,49 +116,41 @@ public class DijkstraController implements Controller {
                 }
                 break;
             case "aB":
+                /*sets startV*/
                 if(startV.equals(""))
                     startV = "a";
-                else
-                    endV = "a";
                 System.out.println("S:"+startV+" E:"+endV);
                 break;
             case "bB":
+                /*sets startV*/
                 if (startV.equals(""))
                     startV = "b";
-                else
-                    endV = "b";
                 System.out.println("S:"+startV+" E:"+endV);
                 break;
             case "cB":
+                /*sets startV*/
                 if (startV.equals(""))
                     startV = "c";
-                else
-                    endV = "c";
                 System.out.println("S:"+startV+" E:"+endV);
                 break;
             case "dB":
+                /*sets startV*/
                 if (startV.equals(""))
                     startV = "d";
-                else
-                    endV = "d";
                 System.out.println("S:"+startV+" E:"+endV);
                 break;
             case "eB":
+                /*sets startV*/
                 if (startV.equals(""))
                     startV = "e";
-                else
-                    endV = "e";
                 System.out.println("S:"+startV+" E:"+endV);
                 break;
-
             case "fB":
+                /*sets startV*/
                 if (startV.equals(""))
                     startV = "f";
-                else
-                    endV = "f";
                 System.out.println("S:"+startV+" E:"+endV);
                 break;
         }
-
     }
 }

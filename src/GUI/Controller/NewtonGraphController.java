@@ -3,7 +3,7 @@ package GUI.Controller;
 import GUI.MainGUI;
 import Interfaces.Controller;
 import NumericalMathematics.Newton.Function;
-import NumericalMathematics.Newton.Newton;
+import NumericalMathematics.Newton.NewtonDaniel;
 import Parser.FunctionParser;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -44,8 +44,8 @@ public class NewtonGraphController implements Controller {
         Series series = new Series();
         series.setName("Test");
         int type = 2;
-        Newton.controller(type);
-        double[][] ls = Newton.plottingTable(type);
+        NewtonDaniel.controller(type);
+        double[][] ls = NewtonDaniel.plottingTable(type);
         for (int i = 0; i < ls[0].length; i++) series.getData().add(new XYChart.Data(ls[0][i], ls[1][i]));
         graph.getData().add(series);
     }
