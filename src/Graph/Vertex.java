@@ -11,9 +11,15 @@ public class Vertex implements Comparable<Vertex> {
 
     public Vertex(String name) {
         this.name = name;
-    }
+    } /* Constructor */
 
 
+
+    /**
+     * Compares the distances of vertices
+     * @param other of type Vertex
+     * @return shorter distance
+     */
     @Override
     public int compareTo(Vertex other) {
         if (distance == other.distance) {
@@ -30,6 +36,10 @@ public class Vertex implements Comparable<Vertex> {
                 '}';
     }
 
+    /**
+     * prints the shortest path from starting vertex
+     * to other vertices
+     */
     public void printPath() {
         if (this == this.previous) {
             System.out.printf("%s", this.name);
