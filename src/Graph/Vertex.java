@@ -5,7 +5,8 @@ import java.util.Map;
 
 public class Vertex implements Comparable<Vertex> {
     public final String name;
-    public int distance = Integer.MAX_VALUE;
+    public int distance = Integer.MAX_VALUE; /* MAX_VAlUE (assumed to be infinity)
+    is used to indicate that the distances to other vertices are unknown */
     public Vertex previous = null;
     public Map<Vertex, Integer> neighbours = new HashMap<>();
 
