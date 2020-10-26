@@ -22,12 +22,6 @@ public class Dijkstra_Algorithm {
             new Edge("c", "e", 50),
             new Edge("d", "e", 250),};
 
-
-    public static void main(String[] args) throws Exception {
-        Graph g = new Graph(graph);
-        g.dijkstra(start);
-        g.printAllPaths();
-    }
     public static Graph Dijkstra(Edge[] graph){
         return new Graph(graph);
     }
