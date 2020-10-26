@@ -33,25 +33,4 @@ public abstract class GaussSeidel
         }
         return true;
     }
-    public static void main(String[] args) {
-        double[][] ls = new double[2][2];
-        ls[0] = new double[]{16,3};
-        ls[1] = new double[]{7,-11};
-        double[] res = new double[]{11,13};
-        double[] sol = GaussSeidel.gaussseidel(ls,res,100,new double[]{0,0});
-
-        ls = new double[2][2];
-        ls[0] = new double[]{16,3};
-        ls[1] = new double[]{7,-11};
-
-        res = new double[]{11,13};
-        sol =  GaussSeidel.gaussseidel(ls,res,100,new double[]{0,0});
-
-
-        for (double d: sol) {
-            System.out.println(d);
-        }
-    }
-
-
 }

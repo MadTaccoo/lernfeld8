@@ -141,8 +141,6 @@ public class Function {
                     case -3:
                         sum += entry.a * Math.pow(Math.asin(entry.getB() * (x - entry.getC())), entry.n);
                         break;
-                    default:
-                        System.out.println("Error");
                 }
             }
         }

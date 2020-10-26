@@ -76,6 +76,7 @@ public class LinearSearchController implements Controller {
      * function which is used to initilize the random values and sort the array
      */
     public void load(){
+        IconHandler.handleIcon("search");
         Random r = new Random();
         ls = new int[]{r.nextInt(100),r.nextInt(100),r.nextInt(100),r.nextInt(100),r.nextInt(100),r.nextInt(100),r.nextInt(100),r.nextInt(100),r.nextInt(100),r.nextInt(100)};
         lArr = new Label[]{txt_n_m1,txt_n,txt_n_p1};

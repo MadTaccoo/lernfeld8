@@ -105,7 +105,7 @@
                   <Font size="35.0" />
                </font>
             </Label>
-            <Button fx:id="menu" mnemonicParsing="false" onAction="#handleButtons" styleClass="menueButton" text="Menu" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="3" GridPane.valignment="BOTTOM">
+            <Button fx:id="menu" mnemonicParsing="false" onAction="#handleButtons" styleClass="menuButton" text="Menu" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="3" GridPane.valignment="BOTTOM">
                <font>
                   <Font size="18.0" />
                </font>

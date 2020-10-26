@@ -26,7 +26,7 @@ public abstract class Gauss_Jordan {
             normalize(arr);
             topRow++;
         }
-        if(!stillPosible(arr))
+        if(!stillPossible(arr))
             return null;
         int index = arr[0].length-2;
         while(topRow!=0){
@@ -43,7 +43,7 @@ public abstract class Gauss_Jordan {
         }
         normalize(arr);
 
-        if(!stillPosible(arr))
+        if(!stillPossible(arr))
             return null;
         double[] ret = new double[arr.length];
         for (int i = 0; i < ret.length; i++)
@@ -51,7 +51,7 @@ public abstract class Gauss_Jordan {
         return ret;
     }
 
-    private static boolean stillPosible(double[][] arr){
+    private static boolean stillPossible(double[][] arr){
         for (double[] doubles : arr) {
             boolean allZero = true;
             for (int j = 0; j < doubles.length - 1; j++) {

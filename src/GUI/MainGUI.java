@@ -1,17 +1,19 @@
 package GUI;
 
+import GUI.Controller.IconHandler;
 import GUI.Controller.SortController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 
 public class MainGUI extends Application {
-    static Stage stage;
-    static Stage lastStage;
+    public static Stage stage;
+    public static Stage lastStage;
     public static String windowTitle;
     public static FXMLLoader f;
 
@@ -31,6 +33,7 @@ public class MainGUI extends Application {
         primaryStage.show();
         primaryStage.setResizable(false);
         stage = primaryStage;
+        IconHandler.handleIcon("menu");
     }
 
     /**
@@ -84,9 +87,10 @@ public class MainGUI extends Application {
      * @throws IOException in case the given path does not exist
      */
     public static void goToMenu() throws IOException {
+        IconHandler.handleIcon("menu");
         double width = stage.getWidth();
         double height = stage.getHeight();
-        f = new FXMLLoader(MainGUI.class.getResource(("FXML/MainMenuWindow.fxml")));
+        f = new FXMLLoader(MainGUI.class.getResource("FXML/MainMenuWindow.fxml"));
         Parent root = f.load();
         stage.setTitle("Menu");
         windowTitle = stage.getTitle();
@@ -95,6 +99,11 @@ public class MainGUI extends Application {
         stage.setResizable(false);
         stage.setScene(new Scene(root));
         stage.show();
+    }
+
+    public static void setIcon(String path){
+        stage.getIcons().clear();
+        stage.getIcons().add(new Image(MainGUI.class.getResource(path).toString()));
     }
 
     public static void main(String[] args) {
