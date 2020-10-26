@@ -3,20 +3,20 @@ package Sorting_Algorithms;
 public abstract class InsertionSort {
     /**
      * Insertion Sort
-     * @param sortieren
+     * @param arr
      */
-    public static void insertionSort(double[] sortieren) {
+    public static void insertionSort(double[] arr) {
         double temp;
-        for (int i = 1; i < sortieren.length; i++) {
+        for (int i = 1; i < arr.length; i++) {
             //saves the value at index i E i<=1
-            temp = sortieren[i];
+            temp = arr[i];
             int j = i;
             //shifts the array. To place the current value at the correct place
-            while (j > 0 && sortieren[j - 1] > temp) {
-                sortieren[j] = sortieren[j - 1];
+            while (j > 0 && arr[j - 1] > temp) {
+                arr[j] = arr[j - 1];
                 j--;
             }
-            sortieren[j] = temp;
+            arr[j] = temp;
         }
     }
 }

@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<GridPane fx:id="mainGrid" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #212731;" stylesheets="@../CSS/mainStyle.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controller.NewtonGraphController">
+<GridPane fx:id="mainGrid" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #212731;" stylesheets="@../CSS/mainStyle.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controller.NewtonRaphsonController">
    <columnConstraints>
       <ColumnConstraints hgrow="ALWAYS" maxWidth="1.7976931348623157E308" />
       <ColumnConstraints maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="100.0" />
@@ -18,15 +18,15 @@
       <RowConstraints minHeight="10.0" prefHeight="78.0" />
    </rowConstraints>
    <children>
-      <LineChart fx:id="graph" alternativeColumnFillVisible="true" animated="false" axisSortingPolicy="NONE" createSymbols="false" legendVisible="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" scaleShape="false" GridPane.columnSpan="2" GridPane.rowIndex="1">
+      <LineChart fx:id="graph" alternativeColumnFillVisible="true" animated="false" axisSortingPolicy="NONE" createSymbols="false" horizontalGridLinesVisible="false" legendVisible="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" scaleShape="false" verticalGridLinesVisible="false" GridPane.columnSpan="2" GridPane.rowIndex="1">
         <xAxis>
-          <NumberAxis animated="false" autoRanging="false" forceZeroInRange="false" lowerBound="-10.0" minorTickCount="1" minorTickLength="1.0" side="BOTTOM" tickLabelFill="#e38704" tickUnit="1.0" upperBound="10.0" fx:id="xAxis">
+          <NumberAxis animated="false" autoRanging="false" forceZeroInRange="false" lowerBound="-10.0" minorTickCount="1" minorTickLength="1.0" side="BOTTOM" tickLabelFill="#e38704" tickLength="1.0" tickUnit="0.1" upperBound="10.0" fx:id="xAxis">
                <tickLabelFont>
                   <Font size="20.0" />
                </tickLabelFont></NumberAxis>
         </xAxis>
         <yAxis>
-          <NumberAxis fx:id="yAxis" animated="false" autoRanging="false" forceZeroInRange="false" lowerBound="-10.0" minorTickLength="1.0" side="LEFT" tickLabelFill="#e38704" tickUnit="1.0" upperBound="10.0">
+          <NumberAxis fx:id="yAxis" animated="false" autoRanging="false" forceZeroInRange="false" lowerBound="-10.0" minorTickLength="1.0" side="LEFT" tickLabelFill="#e38704" tickLength="1.0" tickUnit="0.1" upperBound="10.0">
                <tickLabelFont>
                   <Font size="20.0" />
                </tickLabelFont></NumberAxis>
@@ -56,17 +56,17 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Button fx:id="menuB" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleButtons" styleClass="menueButton" text="Menu">
+                  <Button fx:id="menuB" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleButtons" styleClass="menuButton" text="Menu">
                      <GridPane.margin>
                         <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
                      </GridPane.margin>
                   </Button>
-                  <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleButtons" styleClass="menueButton" text="Zoom +" GridPane.columnIndex="2" fx:id="xPlusB">
+                  <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleButtons" styleClass="menuButton" text="Zoom +" GridPane.columnIndex="2" fx:id="xPlusB">
                      <GridPane.margin>
                         <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
                      </GridPane.margin>
                   </Button>
-                  <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleButtons" styleClass="menueButton" text="Zoom -" GridPane.columnIndex="1" fx:id="xMinusB">
+                  <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleButtons" styleClass="menuButton" text="Zoom -" GridPane.columnIndex="1" fx:id="xMinusB">
                      <GridPane.margin>
                         <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
                      </GridPane.margin>
@@ -84,22 +84,22 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Button fx:id="upB" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleButtons" styleClass="menueButton" text="Up" GridPane.columnIndex="1">
+                  <Button fx:id="upB" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleButtons" styleClass="menuButton" text="Up" GridPane.columnIndex="1">
                      <GridPane.margin>
                         <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
                      </GridPane.margin>
                   </Button>
-                  <Button fx:id="leftB" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleButtons" styleClass="menueButton" text="Left" GridPane.columnIndex="2">
+                  <Button fx:id="leftB" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleButtons" styleClass="menuButton" text="Left" GridPane.columnIndex="2">
                      <GridPane.margin>
                         <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
                      </GridPane.margin>
                   </Button>
-                  <Button fx:id="rightB" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleButtons" styleClass="menueButton" text="Right" GridPane.columnIndex="3">
+                  <Button fx:id="rightB" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleButtons" styleClass="menuButton" text="Right" GridPane.columnIndex="3">
                      <GridPane.margin>
                         <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
                      </GridPane.margin>
                   </Button>
-                  <Button fx:id="downB" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleButtons" styleClass="menueButton" text="Down">
+                  <Button fx:id="downB" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleButtons" styleClass="menuButton" text="Down">
                      <GridPane.margin>
                         <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
                      </GridPane.margin>
@@ -108,7 +108,7 @@
             </GridPane>
          </children>
       </GridPane>
-      <Button fx:id="readFunc" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleButtons" styleClass="menueButton" text="Read Fuc" GridPane.columnIndex="1">
+      <Button fx:id="readFunc" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleButtons" styleClass="menuButton" text="Read Fuc" GridPane.columnIndex="1">
          <GridPane.margin>
             <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
          </GridPane.margin>

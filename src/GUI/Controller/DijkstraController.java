@@ -41,6 +41,7 @@ public class DijkstraController implements Controller {
      * fills Arrays and ArrayLists which make it easier to access all the controls
     */
     public void load() {
+        IconHandler.handleIcon("dijkstra");
         taLS = new TextArea[9];
         taLS[0] = abTA;
         taLS[1] = acTA;

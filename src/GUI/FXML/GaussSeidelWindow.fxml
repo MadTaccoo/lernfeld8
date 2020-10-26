@@ -49,7 +49,7 @@
                 <RowConstraints minHeight="100.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Button fx:id="solveB" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#handleButtons" styleClass="menueButton" text="Solve" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                  <Button fx:id="solveB" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#handleButtons" styleClass="menuButton" text="Solve" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                      <GridPane.margin>
                         <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
                      </GridPane.margin>
@@ -57,7 +57,7 @@
                         <Font size="20.0" />
                      </font>
                   </Button>
-                  <Button fx:id="menuB" mnemonicParsing="false" onAction="#handleButtons" styleClass="menueButton" text="Menu" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                  <Button fx:id="menuB" mnemonicParsing="false" onAction="#handleButtons" styleClass="menuButton" text="Menu" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                      <GridPane.margin>
                         <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
                      </GridPane.margin>
