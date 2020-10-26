@@ -59,7 +59,7 @@ public class GaussSeidelController implements Controller {
         for (int i = 0; i < howManyVar; i++)
             guess[i] = 0;
         //solve SLE with the GaussSeidel algorithm
-        double[] sol = NumericalMathematics.Gauss.GaussSeidel.gaussseidel(lgs,res,Integer.parseInt(precisionTF.getText()),guess);
+        double[] sol = NumericalMathematics.Gauss.GaussSeidel.gaussSeidel(lgs,res,Integer.parseInt(precisionTF.getText()),guess);
 
         //builds string out of returns from the algorithm
         StringBuilder resStringGS = new StringBuilder();

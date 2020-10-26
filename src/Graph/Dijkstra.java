@@ -49,11 +49,4 @@ public class Dijkstra {
         }
     }
 
-
-    public static void main(String[] args) {
-        int[][] graph = new int[][] { {0, 2, 3},
-                                      {1, 0, 0},
-                                      {0, 4, 5}};
-        dijsktra_algorithm(graph, 1);
-    }
 }

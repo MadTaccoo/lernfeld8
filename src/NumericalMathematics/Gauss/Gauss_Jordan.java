@@ -3,21 +3,16 @@ package NumericalMathematics.Gauss;
 import java.util.Arrays;
 
 public abstract class Gauss_Jordan {
-
-    public static void main(String[] args) {
-        double[][] arr = new double[3][4];
-        arr[0] = new double[]{1,4,5,7};
-        arr[1] = new double[]{0,1,1,8};
-        arr[2] = new double[]{0,0,1,2};
-        for (double d:
-                gaussJ(arr)) {
-            System.out.println(d);
-        }
-    }
-
+    /** SLE = System of linear Equations
+     * takes a SLE and solves it according to the Gauss Jordan algorithm
+     * @param arr SLE
+     * @return result vector
+     */
     public static double[] gaussJ(double[][] arr){
+        /*normalizes the SLE*/
         normalize(arr);
         int topRow = 0;
+        /*subtracts the topRow from all below that to reach the wanted triangular form*/
         while (topRow < arr.length-1) {
             for (int i = topRow + 1; i < arr.length; i++) {
                 if(getFirstNot0(arr,i) == getFirstNot0(arr,topRow))
@@ -26,8 +21,14 @@ public abstract class Gauss_Jordan {
             normalize(arr);
             topRow++;
         }
+        /*checks if it is still possible to solve*/
         if(!stillPossible(arr))
             return null;
+        /*subtracts the lowest line 0 0 1 | X from the upper lines to reach the the final solution
+        * 1 0 0|X
+        * 0 1 0|Y
+        * 0 0 1|Z
+        * */
         int index = arr[0].length-2;
         while(topRow!=0){
             normalize(arr,index);
@@ -42,7 +43,7 @@ public abstract class Gauss_Jordan {
             topRow--;
         }
         normalize(arr);
-
+        /*creates a double array to return the solution to the SLE*/
         if(!stillPossible(arr))
             return null;
         double[] ret = new double[arr.length];
@@ -51,6 +52,12 @@ public abstract class Gauss_Jordan {
         return ret;
     }
 
+    /**
+     * check if one row is false
+     * 0 0 0 | 1 for example
+     * @param arr SLE
+     * @return if its possible to solve
+     */
     private static boolean stillPossible(double[][] arr){
         for (double[] doubles : arr) {
             boolean allZero = true;
@@ -73,12 +80,22 @@ public abstract class Gauss_Jordan {
         return Integer.MIN_VALUE;
     }
 
+    /**
+     *
+     * @param arr SLE
+     * @param row0
+     * @param toSubFrom
+     */
     private static void subtractRow(double[][] arr,int row0,int toSubFrom){
         for (int i = 0; i < arr[toSubFrom].length; i++) {
             arr[toSubFrom][i] -= arr[row0][i];
         }
     }
 
+    /**
+     * sets the first index which is not 0 to 1 and adjusts the following values accordingly
+     * @param arr takes the SLE
+     */
     private static void normalize(double[][] arr){
         for (int i = 0; i < arr.length; i++) {
             int firstIndex = 0;
@@ -96,6 +113,10 @@ public abstract class Gauss_Jordan {
             }
         }
     }
+    /**
+     * sets the selected index to 1 and adjusts the following values accordingly
+     * @param arr takes the SLE
+     */
     private static void normalize(double[][] arr,int index){
         for (int i = 0; i < arr.length; i++) {
             if(arr[i][index] != 1) {
