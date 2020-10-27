@@ -28,27 +28,34 @@ public class MainController implements Controller {
             b = (Button)e.getSource();
         }
         assert b != null;
+        boolean isSort = false;
         //where we use the FXML id of the buttons to identify them and give them a function
         String ident = b.getId();
         switch (ident){
             //Opens window for given Sorting algorithm,Numerical Algorithm or Search Algorithm
             case "insertionSortB":
                 MainGUI.setWindow("FXML/SortWindow.fxml","Insertion Sort",1);
+                isSort = true;
                 break;
             case "quickSortB":
                 MainGUI.setWindow("FXML/SortWindow.fxml","Quicksort",2);
+                isSort = true;
                 break;
             case "bubbleSortB":
                 MainGUI.setWindow("FXML/SortWindow.fxml","Bubble Sort",3);
+                isSort = true;
                 break;
             case "mergeSortB":
                 MainGUI.setWindow("FXML/SortWindow.fxml","Merge Sort",4);
+                isSort = true;
                 break;
             case "bogoSortB":
                 MainGUI.setWindow("FXML/SortWindow.fxml","Bogo Sort",5);
+                isSort = true;
                 break;
             case "selectionSortB": // augment 6
                 MainGUI.setWindow("FXML/SortWindow.fxml","Selection Sort",6);
+                isSort = true;
                 break;
             case "linearSearchB":
                 MainGUI.setWindow("FXML/LinearSearchWindow.fxml","Linear Search");
@@ -60,9 +67,9 @@ public class MainController implements Controller {
                 BinarySearchController bsc = MainGUI.f.getController();
                 bsc.load();
                 break;
-            case "newtonverfahrenB":
-                MainGUI.setWindow("FXML/NewtonGraphWindow.fxml","NewtonGraph");
-                NewtonGraphController ngc = MainGUI.f.getController();
+            case "newtonRaphsonB":
+                MainGUI.setWindow("FXML/NewtonRaphsonWindow.fxml","NewtonGraph");
+                NewtonRaphsonController ngc = MainGUI.f.getController();
                 ngc.load();
                 break;
             case "GaussSeidelB":
@@ -75,6 +82,10 @@ public class MainController implements Controller {
                 DijkstraController djc = MainGUI.f.getController();
                 djc.load();
                 break;
+        }
+        if(isSort){
+            SortController sc = MainGUI.f.getController();
+            sc.load();
         }
     }
 }

@@ -1,8 +1,11 @@
 package NumericalMathematics.Newton;
 
+/**
+ * just a help class to store mathematical functions
+ */
 public class FunctionHelper {
-    double a,c,b,n,yVal;
-    int selection;
+    public double a,c,b,n;
+    public int selection;
 
     public FunctionHelper(double a, double c, double b, double n, int selection) {
         this.a = a;
@@ -39,13 +42,5 @@ public class FunctionHelper {
 
     public void setB(double b) {
         this.b = b;
-    }
-
-    public int getSelection() {
-        return selection;
-    }
-
-    public void setSelection(int selection) {
-        this.selection = selection;
     }
 }

@@ -20,7 +20,7 @@ import javafx.scene.layout.GridPane;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class NewtonGraphController implements Controller {
+public class NewtonRaphsonController implements Controller {
     @FXML
     LineChart graph;
     @FXML
@@ -188,6 +188,7 @@ public class NewtonGraphController implements Controller {
                 break;
             case "readFunc":
                 //makes use of the Function Parser to generate a function
+                rootsL.setText("");
                 functionToDraw = FunctionParser.parse(funcEntry.getText());
                 draw(functionToDraw, initalPrec);
                 break;
@@ -228,6 +229,7 @@ public class NewtonGraphController implements Controller {
      * also enables the scroll event
      */
     public void load() {
+        IconHandler.handleIcon("algorithm");
         functionToDraw = new Function();
         //just an initial Function can be changed later
         functionToDraw.insertInto(3, 1);

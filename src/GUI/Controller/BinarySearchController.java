@@ -87,6 +87,7 @@ public class BinarySearchController implements Controller {
      * function which is used to initilize the random values and sort the array
      */
     public void load(){
+        IconHandler.handleIcon("search");
         Random r = new Random();
         arr = new double[] {r.nextInt(1000),r.nextInt(1000),r.nextInt(1000),r.nextInt(1000),r.nextInt(1000),r.nextInt(1000),r.nextInt(1000),r.nextInt(1000),r.nextInt(1000),r.nextInt(1000),r.nextInt(1000)};
         Arrays.sort(arr);

@@ -30,7 +30,7 @@ public class SortController implements Controller {
 
     @Override
     public void load() {
-
+        IconHandler.handleIcon("sort");
     }
     /**
      * this function handles all click events of Buttons

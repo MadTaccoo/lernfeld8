@@ -141,14 +141,18 @@ public class Function {
                     case -3:
                         sum += entry.a * Math.pow(Math.asin(entry.getB() * (x - entry.getC())), entry.n);
                         break;
-                    default:
-                        System.out.println("Error");
                 }
             }
         }
         return sum;
     }
 
+    /**
+     * calculates the interval of roots and than the roots themself and store them in a arraylist
+     * @param x start interval
+     * @param x1 end interval
+     * @param prec
+     */
     public void setIntervalAndRoots(int x, int x1, float prec) {
         roots.clear();
         intervalAr = Newton.interval(x, x1, this, prec);
