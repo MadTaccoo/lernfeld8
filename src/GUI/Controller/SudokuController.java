@@ -1,18 +1,15 @@
 package GUI.Controller;
 
+import Backtracking.Sudoku;
 import GUI.MainGUI;
 import Interfaces.Controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
-import sun.applet.Main;
-
 import java.io.IOException;
 
 public class SudokuController implements Controller {
@@ -41,13 +38,19 @@ public class SudokuController implements Controller {
         String ident = b.getId();
         switch (ident){
             case "solveB":
-                //TODO solve
+                Sudoku.grid = arrayGameField;
+                Sudoku.solve();
+                arrayGameField = Sudoku.grid;
+                for (int i = 0; i < arrayGameField.length; i++) {
+                    for (int j = 0; j < arrayGameField.length ; j++) {
+                        arrayGameFieldLabel[i][j].setText(""+arrayGameField[i][j]);
+                    }
+                }
                 break;
             case "menuB":
                 MainGUI.goToMenu();
                 break;
         }
-
     }
     @Override
     public void load() {

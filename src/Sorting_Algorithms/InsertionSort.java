@@ -1,5 +1,8 @@
 package Sorting_Algorithms;
 
+/**
+ * @author Jan-Frederik Reuter
+ */
 public abstract class InsertionSort {
     /**
      * Insertion Sort

@@ -1,5 +1,8 @@
 package Sorting_Algorithms;
 
+/**
+ * @author Jan-Frederik
+ */
 public abstract class SelectionSort {
     /**
      * help function to execute Selectionsort

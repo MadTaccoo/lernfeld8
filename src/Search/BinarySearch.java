@@ -2,6 +2,9 @@ package Search;
 
 import java.util.ArrayList;
 
+/**
+ * @author Jan-Frederik
+ */
 public class BinarySearch {
     /*List of steps take by the algorithm*/
     public static ArrayList<Integer> ls = new ArrayList<>();
