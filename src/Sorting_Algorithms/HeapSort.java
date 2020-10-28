@@ -33,7 +33,7 @@ public abstract class HeapSort {
 
     private static void createHeap(double[] arr) {
         int heapLength = arr.length;
-        for (int i = heapLength / 2 - 1; i >= 0 ; --i) {
+        for (int i = heapLength / 2 - 1; i >= 0; --i) {
             maxHeapify(arr, heapLength, i);
         }
     }
@@ -50,4 +50,4 @@ public abstract class HeapSort {
             maxHeapify(arr, i, 0);
         }
     }
-
+}
