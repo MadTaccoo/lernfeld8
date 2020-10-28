@@ -1,5 +1,8 @@
 package Sorting_Algorithms;
 
+/**
+ * @author Jan-Frederik
+ */
 public abstract class QuickSort {
 
     public static void quickSort(double[] list){

@@ -1,2 +1,4 @@
-package Hashing_algorithm;public class Hashing {
+package Hashing_algorithm;
+
+public class Hashing {
 }

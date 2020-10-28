@@ -1,6 +1,5 @@
 package NumericalMathematics.Gauss;
 
-import java.util.Arrays;
 
 public abstract class Gauss_Jordan {
     /** SLE = System of linear Equations
