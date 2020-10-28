@@ -129,6 +129,11 @@ public class SortController implements Controller {
                 SelectionSort.SelectionSort(lsdouble);
                 to = System.nanoTime();
                 break;
+            case 7:
+                from = System.nanoTime();
+                HeapSort.heapSort(lsdouble);
+                to = System.nanoTime();
+                break;
             default:
                 throw new IllegalStateException("Unexpected value: " + whichSort);
         }

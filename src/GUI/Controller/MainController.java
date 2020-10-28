@@ -57,6 +57,10 @@ public class MainController implements Controller {
                 MainGUI.setWindow("FXML/SortWindow.fxml","Selection Sort",6);
                 isSort = true;
                 break;
+            case "heapSortB":
+                MainGUI.setWindow("FXML/SortWindow.fxml","Heap Sort",7);
+                isSort = true;
+                break;
             case "linearSearchB":
                 MainGUI.setWindow("FXML/LinearSearchWindow.fxml","Linear Search");
                 LinearSearchController lsc = MainGUI.f.getController();
@@ -87,6 +91,7 @@ public class MainController implements Controller {
                 SudokuController sc = MainGUI.f.getController();
                 sc.load();
                 break;
+
         }
         if(isSort){
             SortController sc = MainGUI.f.getController();
