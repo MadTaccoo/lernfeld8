@@ -17,19 +17,19 @@
 
    <rowConstraints>
       <RowConstraints maxHeight="25.0" minHeight="10.0" vgrow="ALWAYS" />
-      <RowConstraints maxHeight="50.0" minHeight="10.0" prefHeight="50.0" vgrow="ALWAYS" />
-      <RowConstraints maxHeight="-Infinity" minHeight="10.0" vgrow="ALWAYS" />
+      <RowConstraints maxHeight="1.7976931348623157E308" minHeight="-Infinity" vgrow="ALWAYS" />
       <RowConstraints minHeight="10.0" vgrow="ALWAYS" />
       <RowConstraints minHeight="10.0" vgrow="ALWAYS" />
       <RowConstraints minHeight="10.0" vgrow="ALWAYS" />
-      <RowConstraints maxHeight="63.0" minHeight="10.0" vgrow="ALWAYS" />
-      <RowConstraints maxHeight="94.0" minHeight="10.0" vgrow="ALWAYS" />
+      <RowConstraints minHeight="10.0" vgrow="ALWAYS" />
+      <RowConstraints minHeight="10.0" vgrow="ALWAYS" />
+      <RowConstraints minHeight="10.0" vgrow="ALWAYS" />
       <RowConstraints minHeight="10.0" vgrow="ALWAYS" />
       <RowConstraints minHeight="10.0" vgrow="ALWAYS" />
       <RowConstraints maxHeight="30.0" minHeight="10.0" vgrow="ALWAYS" />
       <RowConstraints />
    </rowConstraints>
-   <Label alignment="CENTER" contentDisplay="CENTER" style="-fx-text-fill: #e38704;" text="Software Project" textAlignment="CENTER" wrapText="true" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+   <Label alignment="CENTER" contentDisplay="CENTER" style="-fx-text-fill: #e38704; -fx-background-color: transparent;" text="Software Project" textAlignment="CENTER" wrapText="true" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
       <font>
          <Font size="27.0" />
       </font>
@@ -69,7 +69,7 @@
    </Label>
    <Button fx:id="insertionSortB" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleButtons" styleClass="menuButton" text="Insertion Sort" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="3" GridPane.vgrow="ALWAYS">
       <GridPane.margin>
-         <Insets bottom="10.0" left="35.0" right="35.0" top="10.0" />
+         <Insets bottom="15.0" left="35.0" right="35.0" top="15.0" />
       </GridPane.margin>
       <font>
          <Font size="20.0" />
@@ -78,7 +78,7 @@
 
    <Button fx:id="bubbleSortB" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleButtons" styleClass="menuButton" text="Bubble Sort" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4">
       <GridPane.margin>
-         <Insets bottom="10.0" left="35.0" right="35.0" top="10.0" />
+         <Insets bottom="15.0" left="35.0" right="35.0" top="15.0" />
       </GridPane.margin>
       <font>
          <Font size="20.0" />
@@ -86,7 +86,7 @@
    </Button>
    <Button fx:id="quickSortB" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleButtons" styleClass="menuButton" text="Quicksort" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="5">
       <GridPane.margin>
-         <Insets bottom="10.0" left="35.0" right="35.0" top="10.0" />
+         <Insets bottom="15.0" left="35.0" right="35.0" top="15.0" />
       </GridPane.margin>
       <font>
          <Font size="20.0" />
@@ -94,7 +94,7 @@
    </Button>
    <Button fx:id="mergeSortB" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleButtons" styleClass="menuButton" text="Mergesort" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="6">
       <GridPane.margin>
-         <Insets bottom="10.0" left="35.0" right="35.0" top="10.0" />
+         <Insets bottom="15.0" left="35.0" right="35.0" top="15.0" />
       </GridPane.margin>
       <font>
          <Font size="20.0" />
@@ -134,7 +134,7 @@
    </Button>
    <Button fx:id="bogoSortB" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleButtons" styleClass="menuButton" text="Bogo Sort" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="7" GridPane.vgrow="ALWAYS">
       <GridPane.margin>
-         <Insets bottom="10.0" left="35.0" right="35.0" top="10.0" />
+         <Insets bottom="15.0" left="35.0" right="35.0" top="15.0" />
       </GridPane.margin>
       <font>
          <Font size="20.0" />
@@ -145,10 +145,10 @@
          <Font size="20.0" />
       </font>
       <GridPane.margin>
-         <Insets bottom="10.0" left="35.0" right="35.0" top="10.0" />
+         <Insets bottom="15.0" left="35.0" right="35.0" top="15.0" />
       </GridPane.margin>
    </Button>
-   <Label fx:id="searchButton1" alignment="CENTER" layoutX="347.0" layoutY="86.0" maxWidth="1.7976931348623157E308" minHeight="38.0" prefHeight="40.0" prefWidth="297.0" style="-fx-background-color: #374152; -fx-text-fill: #e38704;" styleClass="header" text="Graph" textAlignment="CENTER" wrapText="true" GridPane.columnIndex="2" GridPane.rowIndex="5">
+   <Label fx:id="searchButton1" alignment="CENTER" layoutX="347.0" layoutY="86.0" maxWidth="1.7976931348623157E308" style="-fx-background-color: #374152; -fx-text-fill: #e38704;" styleClass="header" text="Graph" textAlignment="CENTER" wrapText="true" GridPane.columnIndex="2" GridPane.rowIndex="5">
       <font>
          <Font size="30.0" />
       </font>
@@ -167,7 +167,7 @@
          <Insets bottom="15.0" left="35.0" right="35.0" top="15.0" />
       </GridPane.margin>
    </Button>
-   <Label fx:id="searchButton11" alignment="CENTER" layoutX="337.0" layoutY="323.0" maxWidth="1.7976931348623157E308" minHeight="38.0" prefHeight="40.0" prefWidth="266.0" style="-fx-background-color: #374152; -fx-text-fill: #e38704;" styleClass="header" text="Other" textAlignment="CENTER" wrapText="true" GridPane.columnIndex="3" GridPane.rowIndex="5">
+   <Label fx:id="searchButton11" alignment="CENTER" layoutX="337.0" layoutY="323.0" maxWidth="1.7976931348623157E308" style="-fx-background-color: #374152; -fx-text-fill: #e38704;" styleClass="header" text="Other" textAlignment="CENTER" wrapText="true" GridPane.columnIndex="3" GridPane.rowIndex="5">
       <font>
          <Font size="30.0" />
       </font>
@@ -195,6 +195,14 @@
       </GridPane.margin>
    </Button>
    <Button fx:id="heapSortB" layoutX="75.0" layoutY="519.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleButtons" styleClass="menuButton" text="Heap Sort" GridPane.columnIndex="1" GridPane.rowIndex="9">
+      <font>
+         <Font size="20.0" />
+      </font>
+      <GridPane.margin>
+         <Insets bottom="15.0" left="35.0" right="35.0" top="15.0" />
+      </GridPane.margin>
+   </Button>
+   <Button fx:id="euclideanB" layoutX="669.0" layoutY="414.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleButtons" styleClass="menuButton" text="Euclidean" GridPane.columnIndex="3" GridPane.rowIndex="8">
       <font>
          <Font size="20.0" />
       </font>

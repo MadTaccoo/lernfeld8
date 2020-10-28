@@ -1,6 +1,8 @@
 package NumericalMathematics.Gauss;
 
-
+/**
+ * !!! not numerical but easier for access to save it in Numerical/Gauss !!!
+ */
 public abstract class Gauss_Jordan {
     /** SLE = System of linear Equations
      * takes a SLE and solves it according to the Gauss Jordan algorithm

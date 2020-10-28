@@ -1,5 +1,6 @@
 package GUI.Controller;
 
+import Euclidean_Algorithm.EuclideanAlgorithm;
 import GUI.MainGUI;
 import Interfaces.Controller;
 import javafx.event.ActionEvent;
@@ -90,6 +91,11 @@ public class MainController implements Controller {
                 MainGUI.setWindow("FXML/SudokuWindow.fxml","Sudoku");
                 SudokuController sc = MainGUI.f.getController();
                 sc.load();
+                break;
+            case "euclideanB":
+                MainGUI.setWindow("FXML/EuclideanWindow.fxml","Euclidean Algorithm",600,400);
+                EuclideanController ea = MainGUI.f.getController();
+                ea.load();
                 break;
 
         }
