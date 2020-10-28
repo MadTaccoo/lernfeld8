@@ -68,8 +68,6 @@ public class MainGUI extends Application {
      */
     public static void setWindow(String path,String title) throws IOException {
         lastStage = stage;
-        double width = 1000;
-        double height = 700;
         f = new FXMLLoader(MainGUI.class.getResource((path)));
         Parent root = f.load();
         stage.setTitle(title.equals("") ? stage.getTitle() : title);
@@ -81,21 +79,37 @@ public class MainGUI extends Application {
         stage.setScene(new Scene(root));
         stage.show();
     }
+    /**
+     *
+     * @param path to given FXML file
+     * @param title window title
+     * @throws IOException in case the given path does not exist
+     */
+    public static void setWindow(String path,String title,double width, double height) throws IOException {
+        lastStage = stage;
+        f = new FXMLLoader(MainGUI.class.getResource((path)));
+        Parent root = f.load();
+        stage.setTitle(title.equals("") ? stage.getTitle() : title);
+        windowTitle = stage.getTitle();
+        stage.setWidth(width);
+        stage.setHeight(height);
+        stage.setResizable(path.contains("Graph"));
 
+        stage.setScene(new Scene(root));
+        stage.show();
+    }
     /**
      * allows the user to go back to the main menu
      * @throws IOException in case the given path does not exist
      */
     public static void goToMenu() throws IOException {
         IconHandler.handleIcon("menu");
-        double width = stage.getWidth();
-        double height = stage.getHeight();
         f = new FXMLLoader(MainGUI.class.getResource("FXML/MainMenuWindow.fxml"));
         Parent root = f.load();
         stage.setTitle("Menu");
         windowTitle = stage.getTitle();
-        stage.setWidth(width);
-        stage.setHeight(height);
+        stage.setWidth(950);
+        stage.setHeight(600);
         stage.setResizable(false);
         stage.setScene(new Scene(root));
         stage.show();

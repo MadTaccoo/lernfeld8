@@ -7,7 +7,7 @@ package Euclidean_Algorithm;
  *
  * @author Wutthichai Laphutama
  */
-public class EuclideanAlgorithm {
+public abstract class EuclideanAlgorithm {
     /**
      * Calculate the greatest commond divisor
      * by repeatedly dividing the divisor by the remainder
