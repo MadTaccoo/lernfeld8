@@ -82,6 +82,11 @@ public class MainController implements Controller {
                 DijkstraController djc = MainGUI.f.getController();
                 djc.load();
                 break;
+            case "sudokuB":
+                MainGUI.setWindow("FXML/SudokuWindow.fxml","Sudoku");
+                SudokuController sc = MainGUI.f.getController();
+                sc.load();
+                break;
         }
         if(isSort){
             SortController sc = MainGUI.f.getController();
