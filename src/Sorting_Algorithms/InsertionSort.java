@@ -1,7 +1,17 @@
 package Sorting_Algorithms;
 
 /**
- * @author Jan-Frederik Reuter
+ *  Implementation of Insertion Sort
+ *  The algorithm iterates through an input array and removes one element per
+ *  iteration, then searches for the place where it belongs and puts it there.
+ *
+ *  Complexity of Insertion Sort:
+ *  Assuming the input array is sorted in an ascending order, and we want it to sort in
+ *  an descending order, each element has to be compared with every other element in the array.
+ *  This means that for every element n, we need (n-1) numbers of comparisons.
+ *  Therefore the complexity of the insertion sort is n*(n-1) or roughtly O(n^2)
+ *
+ *  @author Jan-Frederik Reuter
  */
 public abstract class InsertionSort {
     /**
