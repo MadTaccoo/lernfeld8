@@ -1,6 +1,19 @@
 package Sorting_Algorithms;
 
 /**
+ * Implementation of Quicksort, which works as follows:
+ * 1. Divide
+ * We choose a pivot element in an array and divide it into subarrays.
+ * The elements smaller than the pivot are placed to its left,
+ * while the elements greater than the pivot are placed to its right.
+ * 2. Conquer
+ * Sorting the subarrays by recursively calling the function
+ *
+ * Complexity of Quick Sort:
+ * Assuming the subarrays are of the same length, it would take 2T(n-1/2) to solve it
+ * Since we recursively call the function, each call would take O(n) time.
+ * Thus, it would take T(n) = 2T(n-1/2) + O(n) time or O(n log n) by using the master theorem.
+ *
  * @author Jan-Frederik
  */
 public abstract class QuickSort {
