@@ -12,7 +12,7 @@ import java.io.IOException;
 public class MainController implements Controller {
     @Override
     public void load() {
-
+        //in this case not needed
     }
 
     /**
@@ -73,7 +73,7 @@ public class MainController implements Controller {
                 bsc.load();
                 break;
             case "newtonRaphsonB":
-                MainGUI.setWindow("FXML/NewtonRaphsonWindow.fxml","NewtonGraph");
+                MainGUI.setWindow("FXML/NewtonRaphsonWindow.fxml","Newton Raphson");
                 NewtonRaphsonController ngc = MainGUI.f.getController();
                 ngc.load();
                 break;
@@ -97,7 +97,9 @@ public class MainController implements Controller {
                 EuclideanController ea = MainGUI.f.getController();
                 ea.load();
                 break;
-
+            case "hashB":
+                MainGUI.setWindow("FXML/HashWindow.fxml","Simple Hash",400,400);
+                break;
         }
         if(isSort){
             SortController sc = MainGUI.f.getController();

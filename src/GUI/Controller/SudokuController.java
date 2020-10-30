@@ -38,6 +38,11 @@ public class SudokuController implements Controller {
         String ident = b.getId();
         switch (ident){
             case "solveB":
+                for (int i = 0; i < arrayGameField.length; i++) {
+                    for (int j = 0; j < arrayGameField.length ; j++) {
+                        arrayGameField[i][j] = Integer.parseInt(arrayGameFieldLabel[i][j].getText());
+                    }
+                }
                 Sudoku.grid = arrayGameField;
                 Sudoku.solve();
                 arrayGameField = Sudoku.grid;
