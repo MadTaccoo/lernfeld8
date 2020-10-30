@@ -186,7 +186,7 @@
          <Insets bottom="15.0" left="35.0" right="35.0" top="15.0" />
       </GridPane.margin>
    </Button>
-   <Button fx:id="hashAlgoB" layoutX="669.0" layoutY="406.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleButtons" styleClass="menuButton" text="Hashalgorithm" GridPane.columnIndex="3" GridPane.rowIndex="7">
+   <Button fx:id="hashB" layoutX="669.0" layoutY="406.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleButtons" styleClass="menuButton" text="Hashalgorithm" GridPane.columnIndex="3" GridPane.rowIndex="7">
       <font>
          <Font size="20.0" />
       </font>
