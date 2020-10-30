@@ -1,9 +1,22 @@
 package Backtracking;
 
+/**
+ * @author Daniel Wilke
+ * @version 1.0
+ * @description Class to solve a given sudoku grid.
+ */
 public abstract class Sudoku
 {
+
     public static int[][] grid;
-    // field [row][column]
+
+    /**
+     * Checking if a given number can be set in a specific field in a sudoku grid
+     * @param row x coordinate of the field
+     * @param column y coordinate of the field
+     * @param number number to place in the field
+     * @return true if the number is safe to put in the field and false if the number does not fit
+     */
     public static boolean sudokuChecker(int row, int column, int number){
 
         // checking if the row contains the number
@@ -33,6 +46,12 @@ public abstract class Sudoku
         return true;
     }
 
+    /**
+     * Setting a field in the grid
+     * @param x X coordinate of the field
+     * @param y Y coordinate of the field
+     * @param n number to set in the field
+     */
     public static void setVal(int x, int y, int n){
         if (sudokuChecker(x,y,n)){
             grid[x][y] = n;
@@ -41,6 +60,10 @@ public abstract class Sudoku
         }
     }
 
+    /**
+     * Solving the sudoku grid.
+     * @return returns true if the grid is solved false if there is no solution
+     */
     public static boolean solve(){
         for (int y = 0; y < grid.length; y++) {
             for (int x = 0; x < grid.length; x++) {
@@ -62,6 +85,9 @@ public abstract class Sudoku
         return true;
     }
 
+    /**
+     * Print function for the grid.
+     */
     public static void print(){
         for (int row = 0; row < grid.length; row++)
         {
@@ -72,5 +98,4 @@ public abstract class Sudoku
             System.out.println();
         }
     }
-
 }
