@@ -1,17 +1,18 @@
 package GUI;
 
+import Database.MySqlCon;
 import GUI.Controller.IconHandler;
 import GUI.Controller.SortController;
+import Sorting_Algorithms.SortingTesting.SortTest;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 
-public class MainGUI extends Application {
+public class MainGUI extends Application{
     public static Stage stage;
     public static Stage lastStage;
     public static String windowTitle;
@@ -22,8 +23,9 @@ public class MainGUI extends Application {
      * Is needed to initialize the first window shown to the user
      */
 
-    @Override
+
     public void start(Stage primaryStage) throws Exception{
+        MySqlCon.Connect("jdbc:mysql://localhost:3306/terra", "root", "");
         f = new FXMLLoader(MainGUI.class.getResource(("FXML/MainMenuWindow.fxml")));
         Parent root = f.load();
         primaryStage.setTitle("Menu");
