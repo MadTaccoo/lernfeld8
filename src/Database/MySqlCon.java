@@ -1,30 +1,63 @@
 package Database;
 
 import java.sql.*;
+import java.util.ArrayList;
 
 public class MySqlCon {
-    public static void main(String[] args) {
-        new MySqlCon().query();
-    }
-    public void query() {
+    private static Statement stmt;
+    private static Connection con;
+//    public static void main(String[] args) {
+//        MySqlCon myconn = new MySqlCon();
+//        ArrayList<String> res = myconn.query("SELECT * FROM FLUSS;");
+//        for (String re : res) {
+//            System.out.println(re);
+//        }
+//    }
+
+    public static void Connect(String connString, String user, String password) {
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/terra", "root", "");
-            Statement stmt = con.createStatement();
-            ResultSet rs = stmt.executeQuery("select * from fluss");
-            ResultSetMetaData rsmd = rs.getMetaData();
-            int columnsNumber = rsmd.getColumnCount();
-            while (rs.next()) {
-                for (int i = 1; i <= columnsNumber; i++) {
-                    if (i > 1) System.out.print(",  ");
-                    String columnValue = rs.getString(i);
-                    System.out.print(columnValue + " " + rsmd.getColumnName(i));
-                }
-                System.out.println("");
-            }
+            con = DriverManager.getConnection(connString, user, password);
+            stmt = con.createStatement();
         } catch (Exception e) {
             System.out.println(e);
         }
     }
+    public static void Connect() {
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            con = DriverManager.getConnection("jdbc:mysql://45.146.252.232:3306/db_ProjectTesting", "root", "^LqM9=,Kae_`.AQ[");
+            stmt = con.createStatement();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+
+    public static ArrayList<String> query(String query) {
+        MySqlCon.Connect();
+        try {
+            ResultSet rs = stmt.executeQuery(query);
+            ResultSetMetaData rsmd = rs.getMetaData();
+            String header = "";
+            for (int i = 1; i <= rsmd.getColumnCount(); i++) {
+                header += rsmd.getColumnName(i) + " ";
+            }
+            header = header.trim();
+            ArrayList<String> results = new ArrayList<>();
+            results.add(header);
+            while (rs.next()) {
+                StringBuilder row = new StringBuilder();
+                for (int i = 1; i <= rsmd.getColumnCount(); i++) {
+                    row.append(rs.getString(i)).append(" ");
+                }
+                results.add(row.toString().trim());
+            }
+            return results;
+        } catch (Exception e) {
+            System.out.println(e);
+            return null;
+        }
+    }
 }
+
 
