@@ -2,14 +2,10 @@ package Sorting_Algorithms.SortingTesting;
 
 import Database.MySqlCon;
 import Sorting_Algorithms.*;
-import org.junit.Test;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-
 import java.util.ArrayList;
-import java.util.Arrays;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 public class SortTest {
@@ -30,22 +26,22 @@ public class SortTest {
         switch (whichAlgorithm) {
             case 1:
                 from = System.nanoTime();
-                //InsertionSort.insertionSort(rawArr);
+                InsertionSort.insertionSort(rawArr);
                 to = System.nanoTime();
                 break;
             case 2:
                 from = System.nanoTime();
-                //QuickSort.quickSort(rawArr);
+                QuickSort.quickSort(rawArr);
                 to = System.nanoTime();
                 break;
             case 3:
                 from = System.nanoTime();
-                //BubbleSort.bubbleSortOptimized(rawArr);
+                BubbleSort.bubbleSortOptimized(rawArr);
                 to = System.nanoTime();
                 break;
             case 4:
                 from = System.nanoTime();
-                //MergeSort.mergeSort(rawArr);
+                MergeSort.mergeSort(rawArr);
                 to = System.nanoTime();
                 break;
             case 5:

@@ -17,6 +17,13 @@ public class Function {
     }
 
     /**
+     * basic constructor
+     */
+    public Function(ArrayList<FunctionHelper> ls) {
+        map = ls;
+    }
+
+    /**
      * allows to create a function which is the derivative of the given function
      * only basic functions work nothing with sqr() or 1/x work
      *
