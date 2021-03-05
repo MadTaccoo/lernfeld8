@@ -9,7 +9,7 @@ import static NumericalMathematics.Gauss.Gauss_Jordan.gaussJ;
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
 public class GaussSeidelTest {
-    public static double[][][] matrizes = {
+    public static double[][][] matrices = {
             {
                     {1, 2, 3},
                     {1, 3, 4},
@@ -33,7 +33,7 @@ public class GaussSeidelTest {
             {6, -4, -2},
     };
 
-    public static double[][] matrizesRes = {
+    public static double[][] matricesRes = {
             {-2, -3, 1},
             {-2, -2, -2},
             {8, -115, -62},
@@ -45,6 +45,6 @@ public class GaussSeidelTest {
     @DisplayName("Test Gauss Jordan")
     @ValueSource(ints = {0, 1, 2})
     public void testGS(int i) {
-        assertArrayEquals( matrizesRes[i], gaussSeidel(matrizes[i],matrixResV[i],1000, guess), 0.1);
+        assertArrayEquals( matricesRes[i], gaussSeidel(matrices[i],matrixResV[i],1000, guess), 0.1);
     }
 }

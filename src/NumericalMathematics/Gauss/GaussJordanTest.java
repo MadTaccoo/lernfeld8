@@ -1,24 +1,14 @@
 package NumericalMathematics.Gauss;
 
-import org.junit.Test;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.runners.Parameterized;
-import java.util.Arrays;
-import java.util.Collection;
-import Database.MySqlCon;
-import Sorting_Algorithms.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-import java.util.ArrayList;
 
-import static NumericalMathematics.Gauss.GaussSeidel.gaussSeidel;
-import static org.junit.jupiter.api.Assertions.*;
 import static NumericalMathematics.Gauss.Gauss_Jordan.gaussJ;
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
 public class GaussJordanTest {
-    public static double[][][] matrizes = {
+    public static double[][][] matrices = {
             {
                     {1, 2, 3, -5},
                     {1, 3, 4, -7},
@@ -34,7 +24,7 @@ public class GaussJordanTest {
             }
     };
 
-    public static double[][] matrizesRes = {
+    public static double[][] matricesRes = {
             {-2, -3, 1},
             {-2, -2, -2},
             {8, -115, -62},
@@ -44,6 +34,6 @@ public class GaussJordanTest {
     @DisplayName("Test Gauss Jordan")
     @ValueSource(ints = {0,1,2})
     public void testGJ(int i) {
-        assertArrayEquals(gaussJ(matrizes[i]),matrizesRes[i],0.1);
+        assertArrayEquals(gaussJ(matrices[i]),matricesRes[i],0.1);
     }
 }
