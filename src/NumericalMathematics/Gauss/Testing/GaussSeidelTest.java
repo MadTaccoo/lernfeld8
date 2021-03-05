@@ -1,4 +1,4 @@
-package NumericalMathematics.Gauss;
+package NumericalMathematics.Gauss.Testing;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;

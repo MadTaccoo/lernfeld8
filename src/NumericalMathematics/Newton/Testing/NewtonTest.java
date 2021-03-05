@@ -1,5 +1,8 @@
-package NumericalMathematics.Newton;
+package NumericalMathematics.Newton.Testing;
 
+import NumericalMathematics.Newton.Function;
+import NumericalMathematics.Newton.FunctionHelper;
+import NumericalMathematics.Newton.Newton;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
