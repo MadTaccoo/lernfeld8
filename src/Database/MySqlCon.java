@@ -33,8 +33,19 @@ public class MySqlCon {
         }
     }
 
+    public static void update(String query){
+        if (con == null)
+            MySqlCon.Connect();
+        try {
+            stmt.executeUpdate(query);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+
     public static ArrayList<String> query(String query) {
-        MySqlCon.Connect();
+        if (con == null)
+            MySqlCon.Connect();
         try {
             ResultSet rs = stmt.executeQuery(query);
             ResultSetMetaData rsmd = rs.getMetaData();
