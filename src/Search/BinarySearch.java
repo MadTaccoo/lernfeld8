@@ -19,30 +19,26 @@ public class BinarySearch {
         /*clears step list*/
         ls.clear();
         /*if the arr isnt sorted it returns -1*/
-        if(!isSorted(arr))
+        if(!isSorted(arr)) {
+            System.out.println("--");
             return -1;
-        /*the first index to check is the middle of the array*/
-        int index = arr.length/2;
-        /*gets the item at the selected index*/
-        double itemAtIndex = arr[index];
-        int count = 0;
-        /*while the itemAtIndex is not the one we want*/
-        while (itemAtIndex != target){
-            /*in case the count is outside of the array length*/
-            if(count >=arr.length)
-                return -1;
-            /*if the item is smaller than the target the index is added by the index divided by 2
-            * else is is subtracted*/
-            if(itemAtIndex <= target)
-                index += index/2;
-            else if(itemAtIndex > target)
-                index -= index/2;
-            /*step gets added to the arraylist for the steps*/
-            ls.add(index);
-            itemAtIndex = arr[index-1];
-            count++;
         }
-        return index-1;
+        int l = 0, r = arr.length - 1;
+        while (l <= r) {
+            int m = l + (r - l) / 2;
+            // Check if x is present at mid
+            if (arr[m] == target)
+                return m;
+            // If x greater, ignore left half
+            if (arr[m] < target)
+                l = m + 1;
+                // If x is smaller, ignore right half
+            else
+                r = m - 1;
+        }
+        // if we reach here, then element was
+        // not present
+        return -1;
     }
 
     /**

@@ -2,17 +2,13 @@ package Graph.DijkstraTest;
 
 import Database.MySqlCon;
 import Graph.*;
-import javafx.scene.control.Alert;
-import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Random;
-import java.util.stream.IntStream;
+
 
 public class DijkstraAlgorithmTest {
 
@@ -27,7 +23,7 @@ public class DijkstraAlgorithmTest {
 
     @ParameterizedTest
     @DisplayName("Test DijkstraAlgo")
-    @ValueSource(ints = {1, 2, 3})
+    @ValueSource(ints = {1,2,3})
     public void testD(int i) throws Exception {
         Edge[] graph = {
                 new Edge("a", "b", Integer.MIN_VALUE),
