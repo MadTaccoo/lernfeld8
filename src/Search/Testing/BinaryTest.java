@@ -41,7 +41,7 @@ public class BinaryTest {
     }
 
     @ParameterizedTest
-    @ValueSource(ints = {1,2,3,4})
+    @ValueSource(ints = {0,1,2,3})
     @DisplayName("Test Binary Search")
     public void testBinarySearch(int i){
         Assertions.assertEquals(indexes[i],BinarySearch.binarySearch(listtoSearchIn,valuesToFind[i]));
@@ -49,7 +49,7 @@ public class BinaryTest {
     }
 
     @ParameterizedTest
-    @ValueSource(ints = {1,2,3,4})
+    @ValueSource(ints = {0,1,2,3})
     @DisplayName("Test Linear Search")
     public void testLinearSearch(int i){
         Assertions.assertEquals(indexes[i],LinearSearch.searchTarget(listtoSearchIn,valuesToFind[i]));
