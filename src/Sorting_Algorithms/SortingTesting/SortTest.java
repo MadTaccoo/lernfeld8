@@ -5,6 +5,7 @@ import Sorting_Algorithms.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -18,8 +19,9 @@ public class SortTest {
     /**
      * retrieving data from database and saving the result in a ArrayList
      */
-    ArrayList<String> rawData = MySqlCon.query("SELECT * FROM tbl_rawData;");
-    ArrayList<String> resData = MySqlCon.query("SELECT * FROM tbl_resultsSortingManual;");
+    private ArrayList<String> rawData = MySqlCon.query("SELECT * FROM tbl_SortingRawData;");
+    private ArrayList<String> resData = MySqlCon.query("SELECT * FROM tbl_SortingManualResult;");
+    private String version = "1.0";
 
     /**
      * @param whichAlgorithm (int) gives the function a number between 1 and 7
@@ -28,10 +30,11 @@ public class SortTest {
      */
     @ParameterizedTest
     @DisplayName("Check if Sorting works")
-    @ValueSource(ints = {1,2,3,4,6,7})
+    @ValueSource(ints = {1, 2, 3, 4, 6, 7})
     public void test(int whichAlgorithm) {
         //deletes the header row of the dataset
-        rawData.remove(0);resData.remove(0);
+        rawData.remove(0);
+        resData.remove(0);
         //converts arraylists to arrays
         double[] rawArr = rawData.stream().mapToDouble(Double::parseDouble).toArray();
         double[] resArr = resData.stream().mapToDouble(Double::parseDouble).toArray();
@@ -68,7 +71,7 @@ public class SortTest {
         //saves end time
         to = System.nanoTime();
         //pushes result to the database
-        MySqlCon.query("SELECT addSortingRes(" + Arrays.equals(rawArr, resArr) + "," + whichAlgorithm + ",\'" + (to - from) + "\');");
+        MySqlCon.query("SELECT addSortingRes(" + Arrays.equals(rawArr, resArr) + "," + whichAlgorithm + ",\'" + (to - from) + "\'," + version + ");");
         //asserting if result is correct
         assertArrayEquals(rawArr, resArr, 0.1);
     }

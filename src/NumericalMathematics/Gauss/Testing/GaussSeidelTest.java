@@ -13,6 +13,7 @@ import static org.junit.jupiter.api.Assertions.assertArrayEquals;
  * @author JanFr
  */
 public class GaussSeidelTest {
+    private String version = "1.0";
     //for the Gauss Seidel algorithm to work you have to guess a result vector
     public static double[] guess = {1, 1, 1};
     /**
@@ -87,7 +88,7 @@ public class GaussSeidelTest {
         assertArrayEquals(sol, result, 0.1);
 
         //pushes the result into the database
-        MySqlCon.query("SELECT addGaussJordanTestResult("+ arrayEquals(sol,result,0.1)+","+ i +",1)");
+        MySqlCon.query("SELECT addGaussJordanTestResult("+ arrayEquals(sol,result,0.1)+","+ i +",1,"+version+")");
     }
 
     /**
