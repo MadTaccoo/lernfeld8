@@ -18,6 +18,7 @@ public class SearchTest {
      * valuesToFind stores the values the algorithm is supposed to find
      * indexes stores the indexes which the algorithm should return
      */
+    static String version = "1.0";
     static double[] listToSearchIn;
     static double[] valuesToFind;
     static int[] indexes;
@@ -62,7 +63,7 @@ public class SearchTest {
         int index1 = BinarySearch.binarySearchR(listToSearchIn,valuesToFind[i]);
         Assertions.assertEquals(indexes[i],index1);
         //pushes the result to the database
-        MySqlCon.query("SELECT addSearchTestRes(0,"+ valuesToFind[i] +","+ index1 +","+ indexes[i] +");");
+        MySqlCon.query("SELECT addSearchTestRes(0,"+ valuesToFind[i] +","+ index1 +","+ indexes[i] +","+version+");");
     }
 
     /**
@@ -78,6 +79,6 @@ public class SearchTest {
         int index = LinearSearch.searchTarget(listToSearchIn,valuesToFind[i]);
         Assertions.assertEquals(indexes[i],index);
         //pushes the result to the database
-        MySqlCon.query("SELECT addSearchTestRes(1,"+ valuesToFind[i] +","+ index +","+ indexes[i] +");");
+        MySqlCon.query("SELECT addSearchTestRes(1,"+ valuesToFind[i] +","+ index +","+ indexes[i] +","+version+");");
     }
 }

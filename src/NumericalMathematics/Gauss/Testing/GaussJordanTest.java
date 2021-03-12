@@ -13,11 +13,15 @@ import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
 /**
  * class which allows the testing of the GaussJordan Algorithm
+ *
  * @author JanFr
  */
 public class GaussJordanTest {
+    private String version = "1.0";
+
     /**
      * converts the sql data to a {m*n} double matrix
+     *
      * @param sqlData (ArrayList) data which is converted to matrix
      * @return {m*n} double matrix
      */
@@ -37,6 +41,7 @@ public class GaussJordanTest {
 
     /**
      * solves the given matrix with the Gauss Jordan Algorithm
+     *
      * @param i defines which matrix to retrieve from the database
      */
     @ParameterizedTest
@@ -68,12 +73,12 @@ public class GaussJordanTest {
         assertArrayEquals(arr, givenRes, 0.1);
 
         //pushes the result into the database
-        MySqlCon.query("SELECT addGaussJordanTestResult(" + arrayEquals(arr, givenRes, 0.1) + "," + i + ")");
+        MySqlCon.query("SELECT addGaussJordanTestResult(" + arrayEquals(arr, givenRes, 0.1) + "," + i + ",0," + version + ")");
     }
 
     /**
-     * @param arr double[]
-     * @param arr1 double[]
+     * @param arr     double[]
+     * @param arr1    double[]
      * @param epsilon to negate the double inaccuracy
      * @return if the arrays are equal returns true else false
      */

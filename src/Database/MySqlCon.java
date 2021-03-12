@@ -23,6 +23,7 @@ public class MySqlCon {
             System.out.println(e);
         }
     }
+
     public static void Connect() {
         try {
             Class.forName("com.mysql.jdbc.Driver");

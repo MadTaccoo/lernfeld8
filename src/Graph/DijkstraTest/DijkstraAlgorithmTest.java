@@ -11,7 +11,7 @@ import java.util.ArrayList;
 
 
 public class DijkstraAlgorithmTest {
-
+    private String version = "1.0";
     public int[] getData(ArrayList<String> ls) {
         String[] split = ls.get(1).split(" ");
         int[] ints = new int[split.length - 1];
@@ -65,8 +65,8 @@ public class DijkstraAlgorithmTest {
         for (int val : arr) {
             toAppend.append(",").append(val);
         }
-        MySqlCon.update("INSERT INTO tbl_dijkstraRealResults(dateT,dataRow, startpoint, column_3, column_4, column_5, column_6, column_7, column_8) " +
-                "values(CURRENT_TIME,"+ i +",'"+ startV +"'"+ toAppend+")");
+        MySqlCon.update("INSERT INTO tbl_dijkstraRealResults(dateT,softwareVersion,dataRow, startpoint, column_3, column_4, column_5, column_6, column_7, column_8) " +
+                "values(CURRENT_TIME,"+ version +","+ i +",'"+ startV +"'"+ toAppend+")");
         Assertions.assertArrayEquals(arr, resData);
     }
 }
