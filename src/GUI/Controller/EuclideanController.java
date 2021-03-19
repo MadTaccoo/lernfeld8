@@ -3,6 +3,8 @@ package GUI.Controller;
 import Euclidean_Algorithm.EuclideanAlgorithm;
 import GUI.MainGUI;
 import Interfaces.Controller;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -16,7 +18,17 @@ public class EuclideanController implements Controller {
 
     @Override
     public void load() {
-
+        TextField[] tfLs = {nr1TF,nr2TF,resTF};
+        for (TextField tf:tfLs){
+            tf.textProperty().addListener(new ChangeListener<String>() {
+                @Override
+                public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                    if (!newValue.matches("\\d*")) {
+                        tf.setText(newValue.replaceAll("[^\\d]", ""));
+                    }
+                }
+            });
+        }
     }
 
     /**

@@ -27,7 +27,7 @@
             <Font size="35.0" />
          </font>
       </Label>
-      <Label prefHeight="28.0" prefWidth="66.0" text="N = " GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+      <Label prefHeight="36.0" prefWidth="142.0" text="Number = " GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
          <font>
             <Font size="25.0" />
          </font>

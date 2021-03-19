@@ -4,12 +4,16 @@ import GUI.MainGUI;
 import Graph.Dijkstra_Algorithm;
 import Graph.*;
 import Interfaces.Controller;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.stream.Collectors;
 
 /**
  * Control Class for Dijkstra Visualizer
@@ -62,6 +66,21 @@ public class DijkstraController implements Controller {
         lsL.add(dTA);
         lsL.add(eTA);
         lsL.add(fTA);
+
+        ArrayList<TextArea> allTA = new ArrayList<>();
+        allTA.addAll(Arrays.asList(taLS));
+        allTA.addAll(lsL);
+
+        for (TextArea ta : allTA) {
+            ta.textProperty().addListener(new ChangeListener<String>() {
+                @Override
+                public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                    if (!newValue.matches("\\d*")) {
+                        ta.setText(newValue.replaceAll("[^\\d]", ""));
+                    }
+                }
+            });
+        }
     }
 
     /**

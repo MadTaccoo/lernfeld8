@@ -4,6 +4,8 @@ import GUI.MainGUI;
 import Interfaces.Controller;
 import Search.BinarySearch;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -95,5 +97,15 @@ public class BinarySearchController implements Controller {
         for (int i = 0; i < arr.length; i++) {
             lArr[i].setText(arr[i]+"");
         }
+
+        //Disallows the user to enter any chars that are not numeric
+        nSelection.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                if (!newValue.matches("\\d*")) {
+                    nSelection.setText(newValue.replaceAll("[^\\d]", ""));
+                }
+            }
+        });
     }
 }

@@ -89,7 +89,6 @@ public class GaussSeidelController implements Controller {
 
     public void load(){
         IconHandler.handleIcon("algorithm");
-
     }
 
 }

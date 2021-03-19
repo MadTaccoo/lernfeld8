@@ -79,8 +79,9 @@ public class NewtonRaphsonController implements Controller {
         //create an ArrayList containing more 2 Array lists which then contain Coordinates
         ArrayList<ArrayList<Double>> ls = f.table(xAxis.getLowerBound(), xAxis.getUpperBound(), prec);
         //Creates for each Coordinate a XYChart Data which then can be used to display a graph
-        for (int i = 0; i < ls.get(0).size(); i++)
+        for (int i = 0; i < ls.get(0).size(); i++) {
             series.getData().add(new XYChart.Data(ls.get(0).get(i), ls.get(1).get(i)));
+        }
         graph.getData().add(series);
 
         //calls the algorithm to get intervals of roots and than approximates the root with newton-method
