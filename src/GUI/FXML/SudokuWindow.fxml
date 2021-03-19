@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<GridPane prefHeight="600.0" prefWidth="950.0" style="-fx-background-color: #212731;" stylesheets="@../CSS/mainStyle.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controller.SudokuController">
+<GridPane prefHeight="600.0" prefWidth="950.0" style="-fx-background-color: #212731;" stylesheets="@../CSS/mainStyle.css" xmlns="http://javafx.com/javafx/8.0.241" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controller.SudokuController">
     <rowConstraints>
         <RowConstraints maxHeight="254.0" minHeight="10.0" prefHeight="64.0" vgrow="ALWAYS" />
         <RowConstraints maxHeight="570.0" minHeight="10.0" prefHeight="536.0" vgrow="ALWAYS" />

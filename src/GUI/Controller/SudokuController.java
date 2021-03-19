@@ -3,6 +3,8 @@ package GUI.Controller;
 import Backtracking.Sudoku;
 import GUI.MainGUI;
 import Interfaces.Controller;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
@@ -61,6 +63,7 @@ public class SudokuController implements Controller {
     public void load() {
         createField();
         fillStart();
+
     }
 
     public void createField(){
@@ -86,9 +89,18 @@ public class SudokuController implements Controller {
                 arrayGameFieldLabel[m][i].setLayoutY(labelY);
                 arrayGameFieldLabel[m][i].setPrefWidth(width);
                 arrayGameFieldLabel[m][i].setPrefHeight(height);
-                arrayGameFieldLabel[m][i].setStyle("-fx-background-color: #ae705b; -fx-text-fill: #ffffff;-fx-text-alignment: Center;-fx-font-size: 15");
+                arrayGameFieldLabel[m][i].setStyle("-fx-background-color: #ae705b; -fx-text-fill: #000000;-fx-text-alignment: Center;-fx-font-size: 22");
                 arrayGameFieldLabel[m][i].setText("0");
                 arrayGameFieldLabel[m][i].setAlignment(Pos.CENTER);
+                TextField tf = arrayGameFieldLabel[m][i];
+                tf.textProperty().addListener(new ChangeListener<String>() {
+                    @Override
+                    public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                        if (!newValue.matches("\\d*")) {
+                            tf.setText(newValue.replaceAll("[^\\d]", ""));
+                        }
+                    }
+                });
                 sudokuPane.getChildren().add(arrayGameFieldLabel[m][i]);
 
                 labelX += 60;
@@ -108,6 +120,11 @@ public class SudokuController implements Controller {
     public void setVal(int x, int y, int n){
         if (possible(x,y,n)){
             arrayGameFieldLabel[x][y].setText(String.valueOf(n));
+            if (n != 0){
+                arrayGameFieldLabel[x][y].setStyle("-fx-background-color: Green; -fx-text-fill: #000000;-fx-text-alignment: Center;-fx-font-size: 22");
+            }else{
+                arrayGameFieldLabel[x][y].setStyle("-fx-background-color: #ae705b; -fx-text-fill: #000000;-fx-text-alignment: Center;-fx-font-size: 22");
+            }
             arrayGameField[x][y] = n;
         }else if (n == 0){
             arrayGameFieldLabel[x][y].setText(String.valueOf(n));

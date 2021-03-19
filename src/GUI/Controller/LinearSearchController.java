@@ -2,6 +2,8 @@ package GUI.Controller;
 
 import GUI.MainGUI;
 import Interfaces.Controller;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -81,6 +83,16 @@ public class LinearSearchController implements Controller {
         ls = new int[]{r.nextInt(100),r.nextInt(100),r.nextInt(100),r.nextInt(100),r.nextInt(100),r.nextInt(100),r.nextInt(100),r.nextInt(100),r.nextInt(100),r.nextInt(100)};
         lArr = new Label[]{txt_n_m1,txt_n,txt_n_p1};
         printData();
+
+        //Disallows the user to enter any chars that are not numeric
+        nSelection.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                if (!newValue.matches("\\d*")) {
+                    nSelection.setText(newValue.replaceAll("[^\\d]", ""));
+                }
+            }
+        });
     }
 
     /**
@@ -91,5 +103,7 @@ public class LinearSearchController implements Controller {
             txtF.setStyle("-fx-background-color: #374152");
         }
     }
+
+
 
 }
