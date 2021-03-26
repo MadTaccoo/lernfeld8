@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<GridPane prefHeight="600.0" prefWidth="950.0" style="-fx-background-color: #212731;" stylesheets="@../CSS/mainStyle.css" xmlns="http://javafx.com/javafx/8.0.241" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controller.MainController">
+<GridPane prefHeight="600.0" prefWidth="950.0" style="-fx-background-color: #212731;" stylesheets="@../CSS/mainStyle.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controller.MainController">
    <columnConstraints>
       <ColumnConstraints hgrow="ALWAYS" maxWidth="30.0" minWidth="10.0" />
       <ColumnConstraints hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="10.0" />
@@ -210,4 +210,15 @@
          <Insets bottom="15.0" left="35.0" right="35.0" top="15.0" />
       </GridPane.margin>
    </Button>
+   <CheckBox fx:id="cBdebug" layoutX="669.0" layoutY="481.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleButtons" styleClass="menuButton" text="Debug" GridPane.columnIndex="3" GridPane.rowIndex="9">
+      <font>
+         <Font size="20.0" />
+      </font>
+      <opaqueInsets>
+         <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+      </opaqueInsets>
+      <GridPane.margin>
+         <Insets bottom="15.0" left="80.0" right="100.0" top="15.0" />
+      </GridPane.margin>
+   </CheckBox>
 </GridPane>
