@@ -5,65 +5,74 @@ import Sorting_Algorithms.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+
 import java.util.ArrayList;
+import java.util.Arrays;
+
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * @author JanFr
+ * File to test the different sorting algorithms
+ */
 public class SortTest {
-    ArrayList<String> rawData = MySqlCon.query("SELECT * FROM tbl_rawData;");
-    ArrayList<String> resData = MySqlCon.query("SELECT * FROM tbl_resultsSortingManual;");
+    /**
+     * retrieving data from database and saving the result in a ArrayList
+     */
+    private ArrayList<String> rawData = MySqlCon.query("SELECT * FROM tbl_SortingRawData;");
+    private ArrayList<String> resData = MySqlCon.query("SELECT * FROM tbl_SortingManualResult;");
+    private String version = "1.0";
 
+    /**
+     * @param whichAlgorithm (int) gives the function a number between 1 and 7
+     *                       selects the different Sorting algorithm we dont test number 5 because
+     *                       its mapped to Bogosort which takes way to long with that many values
+     */
     @ParameterizedTest
     @DisplayName("Check if Sorting works")
-    @ValueSource(ints = {1,2,3,4,6,7})
+    @ValueSource(ints = {1, 2, 3, 4, 6, 7})
     public void test(int whichAlgorithm) {
-        double[] rawArr = new double[rawData.size()];
-        double[] resArr = new double[resData.size()];
-        for (int j = 1; j < rawData.size(); j++) {
-            rawArr[j] = Double.parseDouble(rawData.get(j));
-            resArr[j] = Double.parseDouble(resData.get(j));
-        }
+        //deletes the header row of the dataset
+        rawData.remove(0);
+        resData.remove(0);
+        //converts arraylists to arrays
+        double[] rawArr = rawData.stream().mapToDouble(Double::parseDouble).toArray();
+        double[] resArr = resData.stream().mapToDouble(Double::parseDouble).toArray();
+        //used to measure time needed for execution
         long from = 0, to = 0;
+        //saves starting time
+        from = System.nanoTime();
+        //selects wanted sorting algorithm
         switch (whichAlgorithm) {
             case 1:
-                from = System.nanoTime();
                 InsertionSort.insertionSort(rawArr);
-                to = System.nanoTime();
                 break;
             case 2:
-                from = System.nanoTime();
                 QuickSort.quickSort(rawArr);
-                to = System.nanoTime();
                 break;
             case 3:
-                from = System.nanoTime();
                 BubbleSort.bubbleSortOptimized(rawArr);
-                to = System.nanoTime();
                 break;
             case 4:
-                from = System.nanoTime();
                 MergeSort.mergeSort(rawArr);
-                to = System.nanoTime();
                 break;
             case 5:
-                from = System.nanoTime();
                 BogoSort.bogoSort(rawArr);
-                to = System.nanoTime();
                 break;
             case 6:
-                from = System.nanoTime();
                 SelectionSort.SelectionSort(rawArr);
-                to = System.nanoTime();
                 break;
             case 7:
-                from = System.nanoTime();
                 HeapSort.heapSort(rawArr);
-                to = System.nanoTime();
                 break;
             default:
                 throw new IllegalStateException("Unexpected value: " + whichAlgorithm);
         }
-        //MySqlCon.query("SELECT addSortingRes(" + Arrays.equals(rawArr, resArr) + "," + i + ",\'" + (to - from) + "\');");
+        //saves end time
+        to = System.nanoTime();
+        //pushes result to the database
+        MySqlCon.query("SELECT addSortingRes(" + Arrays.equals(rawArr, resArr) + "," + whichAlgorithm + ",\'" + (to - from) + "\'," + version + ");");
+        //asserting if result is correct
         assertArrayEquals(rawArr, resArr, 0.1);
-
     }
 }

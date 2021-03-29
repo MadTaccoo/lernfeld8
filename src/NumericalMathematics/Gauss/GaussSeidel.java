@@ -25,5 +25,4 @@ public abstract class GaussSeidel {
         }
         return guess;
     }
-
 }

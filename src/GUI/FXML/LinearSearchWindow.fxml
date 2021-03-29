@@ -57,7 +57,7 @@
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label alignment="CENTER" layoutX="204.0" layoutY="84.0" maxWidth="1.7976931348623157E308" stylesheets="@../CSS/mainStyle.css" text="is n == to wanted?" textAlignment="CENTER" wrapText="true" GridPane.columnIndex="1">
+            <Label alignment="CENTER" layoutX="204.0" layoutY="84.0" maxWidth="1.7976931348623157E308" stylesheets="@../CSS/mainStyle.css" text="is n == number?" textAlignment="CENTER" wrapText="true" GridPane.columnIndex="1">
                <font>
                   <Font size="20.0" />
                </font>
@@ -124,7 +124,7 @@
          <font>
             <Font size="14.0" />
          </font></TextField>
-      <Label text="N = " GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+      <Label text="number = " GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
          <font>
             <Font size="25.0" />
          </font>

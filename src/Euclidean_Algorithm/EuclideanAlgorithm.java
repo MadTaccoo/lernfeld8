@@ -22,7 +22,6 @@ public abstract class EuclideanAlgorithm {
             b = a % b;
             a = temp;
         }
-
         return a;
     }
 

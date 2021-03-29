@@ -4,7 +4,10 @@ import GUI.MainGUI;
 import Interfaces.Controller;
 import Sorting_Algorithms.*;
 import javafx.application.Platform;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -31,6 +34,15 @@ public class SortController implements Controller {
     @Override
     public void load() {
         IconHandler.handleIcon("sort");
+        howManyRandom.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                if (!newValue.matches("\\d*")) {
+                    howManyRandom.setText(newValue.replaceAll("[^\\d]", ""));
+                }
+            }
+        });
+
     }
     /**
      * this function handles all click events of Buttons
@@ -78,10 +90,6 @@ public class SortController implements Controller {
     }
 
     public void sortList() {
-        Platform.runLater(() -> {
-            statsL.setText("Stats: " + MainGUI.windowTitle +
-                    "Working!");
-        });
         long from = 0;
         long to = 0;
         ArrayList<String> lst = new ArrayList<>();
@@ -89,6 +97,19 @@ public class SortController implements Controller {
              unsorted.getItems()) {
              lst.add(String.valueOf(s));
         }
+        if (lst.size() != 0){
+            Platform.runLater(() -> {
+                statsL.setText("Stats: " + MainGUI.windowTitle +
+                        "Working!");
+            });
+        }else {
+            Platform.runLater(() -> {
+                statsL.setText("Please press scramble\nbutton first!");
+            });
+
+            return;
+        }
+
         String[] ls  = new String[lst.size()];
         ls = lst.toArray(ls);
         if (ls.length < 2) {
