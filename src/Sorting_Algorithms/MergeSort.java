@@ -6,27 +6,40 @@ package Sorting_Algorithms;
  *
  * Then repeatedly merge the sublists into new sorted sublists until only one
  * sublist is remaining. As a result, you then get the sorted list.
+ *
+ * Complexity of Merge sort:
+ * Division: It takes O(1) to divide the problem into two parts
+ *
+ * Solving the sublists: Two equally large sublists are created. Each part
+ * takes T(n/2) time to solve. Thus solving the sublists takes 2T(n/2) time in total
+ *
+ * Merging the sublists: This step takes O(n) time, since the merging does a number of operations
+ * for each element in the list/array and n is the size of the list.
+ *
+ * Thus the runtime is T(n) = 2T(n/2) + O(n).
+ * By using the master theorem we then get a time complexity of O(n log n)
+ *
  * @author Wutthichai Laphutama
  */
 public abstract class MergeSort {
+    /**
+     * Helper function in order to recursively call mergeSort-function
+     * @param arr array of type double
+     */
     public static void mergeSort(double[] arr) {
-        /**
-         * Helper function in order to recursively call mergeSort-function
-         * @param arr array of type double
-         */
         mergeSort(arr, 0, arr.length - 1);
     }
 
+    /**
+     * Divide the array into subarray from
+     * arr[start...mid] and from arr[mid + 1...end] by recursively calling mergeSort()
+     * Then merges the subarray into one sorted subarray by calling merge()
+     * @param arr array of type double
+     * @param start starting position of type int in the array
+     * @param end last position of type int in the array
+     */
     private static void mergeSort(double[] arr, int start, int end) {
-        /**
-         * Divide the array into subarray from
-         * arr[start...mid] and from arr[mid + 1...end] by recursively calling mergeSort()
-         * Then merges the subarray into one sorted subarray by calling merge()
-         * @param arr array of type double
-         * @param start starting position of type int in the array
-         * @param end last position of type int in the array
-         */
-        if (start <end) {
+        if (start < end) {
             int mid = (start + end) / 2;
             mergeSort(arr, start, mid);
             mergeSort(arr, mid + 1, end);
@@ -34,15 +47,14 @@ public abstract class MergeSort {
         }
     }
 
+    /**
+     * Merges the subarrays into sorted subarray
+     * @param arr array of type double
+     * @param start starting position of type int in the array
+     * @param mid center position of type int in the array
+     * @param end last position of type int in the array
+     */
     private static void merge(double[] arr, int start, int mid, int end) {
-        /**
-         * Merges the subarrays into sorted subarray
-         * @param arr array of type double
-         * @param start starting position of type int in the array
-         * @param mid center position of type int in the array
-         * @param end last position of type int in the array
-         */
-
         /* Creating the sizes of the subarrays*/
         int size1 = mid - start + 1;
         int size2 = end - mid;

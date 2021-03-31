@@ -3,7 +3,6 @@ package GUI.Controller;
 import GUI.MainGUI;
 import Interfaces.Controller;
 import NumericalMathematics.Newton.Function;
-import NumericalMathematics.Newton.NewtonDaniel;
 import Parser.FunctionParser;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -39,16 +38,6 @@ public class NewtonRaphsonController implements Controller {
 
     private ArrayList<Double> roots = new ArrayList<>();
     private Function functionToDraw;
-
-    public void drawDaniel() {
-        Series series = new Series();
-        series.setName("Test");
-        int type = 2;
-        NewtonDaniel.controller(type);
-        double[][] ls = NewtonDaniel.plottingTable(type);
-        for (int i = 0; i < ls[0].length; i++) series.getData().add(new XYChart.Data(ls[0][i], ls[1][i]));
-        graph.getData().add(series);
-    }
 
     /**
      * this function allows the user to draw a passed function
@@ -90,8 +79,9 @@ public class NewtonRaphsonController implements Controller {
         //create an ArrayList containing more 2 Array lists which then contain Coordinates
         ArrayList<ArrayList<Double>> ls = f.table(xAxis.getLowerBound(), xAxis.getUpperBound(), prec);
         //Creates for each Coordinate a XYChart Data which then can be used to display a graph
-        for (int i = 0; i < ls.get(0).size(); i++)
+        for (int i = 0; i < ls.get(0).size(); i++) {
             series.getData().add(new XYChart.Data(ls.get(0).get(i), ls.get(1).get(i)));
+        }
         graph.getData().add(series);
 
         //calls the algorithm to get intervals of roots and than approximates the root with newton-method

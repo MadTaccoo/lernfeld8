@@ -1,5 +1,19 @@
 package Sorting_Algorithms;
 
+/**
+ * Implementation of Selection Sort
+ * The algorithm sorts an array by repeatedly finding the smallest element and places
+ * it at the beginning.
+ *
+ * Complexity of Selection Sort
+ * The algorithm requires scanning n elements, i.e. taking (n-1) comparisons and then swapping
+ * it to the first position. Finding the next smallest elements requires stepping
+ * through the remaining n-1 elements. This step is repeated until the array is sorted.
+ * Thus, the number of comparisons would be (n-1) + (n-2) + ... + 1 = n(n-1)/2, which
+ * would be about O(n^2)
+ *
+ * @author Jan-Frederik
+ */
 public abstract class SelectionSort {
     /**
      * help function to execute Selectionsort
