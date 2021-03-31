@@ -7,10 +7,7 @@ package Hashing_algorithm;
  */
 public class Hashing
 {
-<<<<<<< HEAD
 
-=======
->>>>>>> master
     /**
      * A function to hash a given string with matching criteria with
      * a simple algorithm.

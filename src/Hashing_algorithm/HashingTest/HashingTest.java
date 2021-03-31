@@ -1,41 +1,45 @@
 package Hashing_algorithm.HashingTest;
 
 import Hashing_algorithm.Hashing;
+import Database.MySqlCon;
+import org.junit.jupiter.api.*;
+import java.util.ArrayList;
+import java.util.Arrays;
 
-public abstract class HashingTest
+public class HashingTest
 {
-    private static String one;
-    private static String two;
-    private static String three;
+
+    static String one;
+    static String sOne;
+    static String sTwo;
+
+    static String solution;
 
 
-    public static int testing(){
-        int ret = 0;
-
-        one = Hashing.simpleHash("s234sds34ssf5");
-        two = Hashing.simpleHash("s234sds34ssf5");
-        three = Hashing.simpleHash(two);
-
-        for (int i = 0; i < one.length(); i++)
-        {
-            if (one.charAt(i) != two.charAt(i)){
-                ret = -1;
-            }
-        }
-
-        if (one.equals(three)){
-            ret = -1;
-        }
-
-        if (ret == 0){
-            ret = 1;
-        }
-
-        return ret;
-    }
-
-    public static void main(String[] args)
+    @BeforeAll
+    public static void setUp()
     {
-        System.out.println(testing());
+        ArrayList<String> matrix = MySqlCon.query("SELECT data FROM tbl_hashingDataSource;");
+        ArrayList<String> sol = MySqlCon.query("SELECT data FROM tbl_hashingTestResults;");
+        matrix.remove(0);
+        sol.remove(0);
+
+        one = matrix.get(0);
+        solution = sol.get(0);
+
     }
+
+    @Test
+    public void testing()
+    {
+
+        sOne = Hashing.simpleHash(one);
+        sTwo = Hashing.simpleHash(sOne);
+
+        Assertions.assertEquals(solution,one);
+        Assertions.assertNotEquals(sOne,sTwo);
+
+        MySqlCon.query("SELECT addHashingRes("+one+","+sOne+","+(solution.equals(one)&&!sOne.equals(sTwo))+");");
+    }
+
 }
