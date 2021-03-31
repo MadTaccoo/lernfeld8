@@ -4,10 +4,7 @@ import Database.MySqlCon;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-
 import java.util.ArrayList;
-import java.util.Arrays;
-
 import static NumericalMathematics.Gauss.Gauss_Jordan.gaussJ;
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
