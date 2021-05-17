@@ -13,9 +13,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.CheckBox;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.io.StringWriter;
+
+import java.io.*;
 
 public class MainGUI extends Application {
     public static Stage stage;
@@ -142,7 +141,6 @@ public class MainGUI extends Application {
         if (!debug){
             return;
         }
-        System.err.println("***Default exception handler***");
         showErrorDialog(e);
     }
 
@@ -154,7 +152,7 @@ public class MainGUI extends Application {
     private static void showErrorDialog(Throwable e) {
         StringWriter errorMsg = new StringWriter();
         e.printStackTrace(new PrintWriter(errorMsg));
-        errorTxt= errorMsg.toString()+ "\n---------------------------------------\n" + errorTxt;
+        errorTxt = errorMsg.toString()+ "\n---------------------------------------\n" + errorTxt;
         try {
             if (debugStage == null) {
                 debugStage = new Stage();
@@ -169,8 +167,30 @@ public class MainGUI extends Application {
             debugStage.setScene(new Scene(root));
             ((ErrorController)debugf.getController()).setErrorText(errorTxt);
             debugStage.show();
+            writeDebugToFile(errorTxt);
         } catch (IOException exc) {
-            exc.printStackTrace();
+            //exc.printStackTrace();
+        }
+    }
+
+    private static void writeDebugToFile(String errorTxt){
+        String path = "debug.txt";
+        try {
+            File myObj = new File(path);
+            if (myObj.createNewFile()) {
+                System.out.println("File created: " + myObj.getName());
+            } else {
+                System.out.println("File already exists.");
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        try {
+            FileWriter myWriter = new FileWriter(path);
+            myWriter.write(errorTxt);
+            myWriter.close();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 }

@@ -20,13 +20,13 @@ public class HashingTest
     public static void setUp()
     {
         ArrayList<String> matrix = MySqlCon.query("SELECT data FROM tbl_hashingDataSource;");
-        ArrayList<String> sol = MySqlCon.query("SELECT data FROM tbl_hashingTestResults;");
+        ArrayList<String> sol = MySqlCon.query("SELECT resolution FROM tbl_hashingRes;");
+
         matrix.remove(0);
         sol.remove(0);
 
         one = matrix.get(0);
         solution = sol.get(0);
-
     }
 
     @Test
@@ -35,8 +35,8 @@ public class HashingTest
 
         sOne = Hashing.simpleHash(one);
         sTwo = Hashing.simpleHash(sOne);
-
-        Assertions.assertEquals(solution,one);
+        sOne.replace("\u0000","");
+        Assertions.assertEquals(solution,sOne);
         Assertions.assertNotEquals(sOne,sTwo);
 
         MySqlCon.query("SELECT addHashingRes("+one+","+sOne+","+(solution.equals(one)&&!sOne.equals(sTwo))+");");

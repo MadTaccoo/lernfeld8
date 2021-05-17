@@ -93,10 +93,11 @@ public class Hashing
                         break;
                 }
             } while (text[i] % 16 > 0);
-
         }
+
         return ret;
     }
+
 
     /**
      * A function to check a given string if it matches set criteria
