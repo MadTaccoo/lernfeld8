@@ -22,6 +22,11 @@ public class MainGUI extends Application {
     public static String windowTitle;
     public static FXMLLoader f;
     public static boolean debug;
+    public static Stage debugStage;
+    public static Stage debugLastStage;
+    public static String errorTxt;
+    public static FXMLLoader debugf;
+
     /**
      * @param primaryStage is used to display the given FXML file
      *                     Is needed to initialize the first window shown to the user
@@ -137,18 +142,23 @@ public class MainGUI extends Application {
             launch(args);
     }
 
+    /**
+     * @param t thread that handles debug
+     * @param e contains the error
+     */
     private static void showError(Thread t, Throwable e) {
+        //in case the user does not want to debug
         if (!debug){
             return;
         }
         showErrorDialog(e);
     }
 
-    public static Stage debugStage;
-    public static Stage debugLastStage;
-    public static String errorTxt;
-    public static FXMLLoader debugf;
-
+    /**
+     * opens a new window which shows the error occurring
+     * also writes this error to the debug.txt
+     * @param e contains the error
+     */
     private static void showErrorDialog(Throwable e) {
         StringWriter errorMsg = new StringWriter();
         e.printStackTrace(new PrintWriter(errorMsg));
@@ -173,6 +183,10 @@ public class MainGUI extends Application {
         }
     }
 
+    /**
+     * write the error to debug.txt
+     * @param errorTxt
+     */
     private static void writeDebugToFile(String errorTxt){
         String path = "debug.txt";
         try {
