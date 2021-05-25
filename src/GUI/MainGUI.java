@@ -13,9 +13,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.CheckBox;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.io.StringWriter;
+
+import java.io.*;
 
 public class MainGUI extends Application {
     public static Stage stage;
@@ -23,6 +22,11 @@ public class MainGUI extends Application {
     public static String windowTitle;
     public static FXMLLoader f;
     public static boolean debug;
+    public static Stage debugStage;
+    public static Stage debugLastStage;
+    public static String errorTxt;
+    public static FXMLLoader debugf;
+
     /**
      * @param primaryStage is used to display the given FXML file
      *                     Is needed to initialize the first window shown to the user
@@ -138,23 +142,27 @@ public class MainGUI extends Application {
             launch(args);
     }
 
+    /**
+     * @param t thread that handles debug
+     * @param e contains the error
+     */
     private static void showError(Thread t, Throwable e) {
+        //in case the user does not want to debug
         if (!debug){
             return;
         }
-        System.err.println("***Default exception handler***");
         showErrorDialog(e);
     }
 
-    public static Stage debugStage;
-    public static Stage debugLastStage;
-    public static String errorTxt;
-    public static FXMLLoader debugf;
-
+    /**
+     * opens a new window which shows the error occurring
+     * also writes this error to the debug.txt
+     * @param e contains the error
+     */
     private static void showErrorDialog(Throwable e) {
         StringWriter errorMsg = new StringWriter();
         e.printStackTrace(new PrintWriter(errorMsg));
-        errorTxt= errorMsg.toString()+ "\n---------------------------------------\n" + errorTxt;
+        errorTxt = errorMsg.toString()+ "\n---------------------------------------\n" + errorTxt;
         try {
             if (debugStage == null) {
                 debugStage = new Stage();
@@ -169,8 +177,34 @@ public class MainGUI extends Application {
             debugStage.setScene(new Scene(root));
             ((ErrorController)debugf.getController()).setErrorText(errorTxt);
             debugStage.show();
+            writeDebugToFile(errorTxt);
         } catch (IOException exc) {
-            exc.printStackTrace();
+            //exc.printStackTrace();
+        }
+    }
+
+    /**
+     * write the error to debug.txt
+     * @param errorTxt
+     */
+    private static void writeDebugToFile(String errorTxt){
+        String path = "debug.txt";
+        try {
+            File myObj = new File(path);
+            if (myObj.createNewFile()) {
+                System.out.println("File created: " + myObj.getName());
+            } else {
+                System.out.println("File already exists.");
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        try {
+            FileWriter myWriter = new FileWriter(path);
+            myWriter.write(errorTxt);
+            myWriter.close();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 }
