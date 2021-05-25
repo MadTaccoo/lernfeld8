@@ -1,50 +1,99 @@
 package Hashing_algorithm;
+import java.util.ArrayList;
 
 /**
  * @author Daniel Wilke
- * @version 1.0
+ * @version 2.0
  * @description Class to hash a given input string.
  */
 public class Hashing
 {
-<<<<<<< HEAD
 
-=======
->>>>>>> master
+
+    private static Exception OutOfBoundsException;
+
     /**
      * A function to hash a given string with matching criteria with
      * a simple algorithm.
+     *
      * @param text Input string to convert with the hash algorithm
      * @return ret Created hash based on the input string
      */
-    public static String simpleHash(String text)
+    public static String simpleHash(String text) throws Exception
     {
-        char[] ret = new char[16];
-
-        for (char c : ret)
+        if (text.length() > 31 || text.isEmpty())
         {
-            c = 'x';
+            throw OutOfBoundsException;
         }
 
-        int[] a = new int[text.length() / 2];
+        ArrayList<Character> stringlist = new ArrayList<>();
+        int var = 0;
+        int helper = 0;
+        char[] ret = new char[16];
+        int[] a = new int[8];
+        String tmpTXT = "";
 
-        for (int i = 0; i < text.length() / 2; i++)
+
+        for (int i = 0; i < text.length(); i++)
         {
-            a[i] = ((int) text.charAt(i)) * 2;
-            a[i] = (int) text.charAt((text.length() - 1) - i);
+            stringlist.add(text.charAt(i));
+        }
+
+        /*
+          If the given string is smaller than 16 characters
+          add the character from the increment var to the end until 16 characters.
+          Else add the character from index 16 to the first character and remove index 16
+          do until 15 iterations or arraylist is empty!
+         */
+        if (text.length() < 16)
+        {
+
+            do
+            {
+                stringlist.add(text.charAt(var));
+                helper = 16 - stringlist.size() + 1;
+                if (helper == 0)
+                {
+                    break;
+                }
+            } while (stringlist.size() < 16 || (var = var % helper) > 0);
+        } else if (text.length() > 16)
+        {
+            do
+            {
+                var = var % (text.length() - 16);
+                stringlist.get((16 + var));
+                helper = stringlist.get(var) + stringlist.get((16 + var));
+                stringlist.set(var, (char) helper);
+                stringlist.remove((16 + var));
+            } while (var > 0);
+        }
+
+        tmpTXT = "";
+
+        for (int i = 0; i < 16; i++)
+        {
+            tmpTXT += stringlist.get(i);
+        }
+
+        /**
+         * pre setting the char array
+         */
+        for (int i = 0; i < ret.length; i++)
+        {
+            ret[i] = 'x';
+        }
+
+        for (int i = 0; i < tmpTXT.length() / 2; i++)
+        {
+            a[i] = ((int) tmpTXT.charAt(i)) * 2;
+            a[i] = (int) tmpTXT.charAt((tmpTXT.length() - 1) - i);
             a[i] *= 7;
         }
 
-        String tmpTXT = convert(a);
+        tmpTXT = convert(a);
 
-        for (int i = 0; i < tmpTXT.length(); i++)
-        {
-            ret[i] = tmpTXT.charAt(i);
-        }
-
-        tmpTXT = convert(new int[]{text.length() * 15});
-
-        for (int i = 1; i <= tmpTXT.length(); i++)
+        for (int i = 1; i <= ret.length; i++)
         {
             ret[ret.length - i] = tmpTXT.charAt(i - 1);
         }
@@ -55,6 +104,7 @@ public class Hashing
     /**
      * A function to convert a dez number from the given integer array in a hex number
      * and chaining them together.
+     *
      * @param text Int array used to convert dez in hex numbers an chain them together.
      * @return ret String with the hex number
      */
@@ -96,38 +146,6 @@ public class Hashing
                         break;
                 }
             } while (text[i] % 16 > 0);
-
-        }
-        return ret;
-    }
-
-    /**
-     * A function to check a given string if it matches set criteria
-     * the string must contain at least one lowercase character, one uppercase character
-     * and between or 8 and 16 characters long.
-     * @param input Input string to check if it matches the criteria
-     * @return ret Boolean to report if the string matched the criteria
-     */
-    private static boolean checkInput(String input)
-    {
-        boolean ret = false;
-        boolean containsUpperCase = false;
-        boolean containsLowerCase = false;
-
-        if (input.length() >= 8 || input.length() <= 16)
-        {
-            for (int i = 0; i < input.length(); i++)
-            {
-                if ((int) input.charAt(i) > 64 && (int) input.charAt(i) < 91 && !containsUpperCase)
-                    containsUpperCase = true;
-
-                if ((int) input.charAt(i) > 96 && (int) input.charAt(i) < 123 && !containsLowerCase)
-                    containsLowerCase = true;
-
-                if (containsLowerCase && containsUpperCase) break;
-            }
-
-            if (containsUpperCase || containsLowerCase) ret = true;
         }
 
         return ret;
