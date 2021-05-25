@@ -1,4 +1,5 @@
 package Hashing_algorithm;
+
 import java.util.ArrayList;
 
 /**
@@ -145,40 +146,6 @@ public class Hashing
                         break;
                 }
             } while (text[i] % 16 > 0);
-
-        }
-
-        return ret;
-    }
-
-
-    /**
-     * A function to check a given string if it matches set criteria
-     * the string must contain at least one lowercase character, one uppercase character
-     * and between or 8 and 16 characters long.
-     * @param input Input string to check if it matches the criteria
-     * @return ret Boolean to report if the string matched the criteria
-     */
-    private static boolean checkInput(String input)
-    {
-        boolean ret = false;
-        boolean containsUpperCase = false;
-        boolean containsLowerCase = false;
-
-        if (input.length() >= 8 || input.length() <= 16)
-        {
-            for (int i = 0; i < input.length(); i++)
-            {
-                if ((int) input.charAt(i) > 64 && (int) input.charAt(i) < 91 && !containsUpperCase)
-                    containsUpperCase = true;
-
-                if ((int) input.charAt(i) > 96 && (int) input.charAt(i) < 123 && !containsLowerCase)
-                    containsLowerCase = true;
-
-                if (containsLowerCase && containsUpperCase) break;
-            }
-
-            if (containsUpperCase || containsLowerCase) ret = true;
 
         }
 
